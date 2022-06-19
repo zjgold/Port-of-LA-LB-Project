@@ -1,0 +1,489 @@
+sum.taxonomy,LA11,LA14,LA3,LA6,LB1,LB14,LB2
+;;;;;;,0.6646789471911165,0.5946120999634025,1,0.8289555396510216,0.8201657476054752,0.6535313723355822,0.5494901348286225
+Bacteria;Proteobacteria;Alphaproteobacteria;;;;,0,1,0,0,0.4161889919592495,0,0
+Bacteria;Proteobacteria;Alphaproteobacteria;Pelagibacterales;;;,0.14722634917668367,0,0,0,1,0,0
+Bacteria;Proteobacteria;Alphaproteobacteria;Pelagibacterales;NA;Candidatus Fonsibacter;Candidatus Fonsibacter ubiquis,0.8829736632258397,0.32337419696062936,0.7543595320194894,1,0.9231788495322162,0.7847604908631599,0.7855092498166498
+Bacteria;Proteobacteria;Alphaproteobacteria;Pelagibacterales;Pelagibacteraceae;;,1,0,0.5958144865211894,0.3036895595779465,0.9029396482349316,0.5706237599656222,0.7644866755732623
+Bacteria;Proteobacteria;Alphaproteobacteria;Pelagibacterales;Pelagibacteraceae;Candidatus Pelagibacter;,0.4918591981716118,0.41831943364764956,0.2553084134978141,0.5680362800298118,0.26114991511016916,1,0.3865753858870811
+Bacteria;Proteobacteria;Alphaproteobacteria;Pelagibacterales;Pelagibacteraceae;Candidatus Pelagibacter;Candidatus Pelagibacter sp. HIMB1321,0.4232493093432145,1,0.6914407107510264,0.6486439741384589,0.5453433501493606,0.4314263325577718,0.767348044290262
+Bacteria;Proteobacteria;Alphaproteobacteria;Pelagibacterales;Pelagibacteraceae;Candidatus Pelagibacter;Candidatus Pelagibacter sp. RS39,0.2294890589389991,1,0.4819492293642085,0.3934384913300472,0.19488776317296747,0.15054086015281845,0.43344599044183574
+Bacteria;Proteobacteria;Alphaproteobacteria;Pelagibacterales;Pelagibacteraceae;Candidatus Pelagibacter;Candidatus Pelagibacter sp. RS40,0.6834446411789731,0.1801445298136839,0.32250732461616904,1,0.3256906563531055,0.7464403831803028,0.3567306747976149
+Bacteria;Proteobacteria;Alphaproteobacteria;Pelagibacterales;Pelagibacteraceae;Candidatus Pelagibacter;Candidatus Pelagibacter ubique,0.6003562971278236,1,0.6819521871904496,0.7252201368081167,0.6448181102249796,0.6378594602924288,0.6924399971537326
+Bacteria;Proteobacteria;Alphaproteobacteria;Pelagibacterales;Pelagibacteraceae;NA;alpha proteobacterium HIMB5,0.6585263041893173,0.9438970574873823,0.7652136870872407,0.7199457547479846,0.7764636214369256,0.6738398672957229,1
+Eukaryota;;;;;;,0.5121917337729257,0.8342265927505603,0.9149944393258846,0.8887988338055763,0.567224462718941,1,0.32705767199534835
+Eukaryota;;;;Vannellidae;Ripella;,0.7769370380032633,0,0.7953641336864756,0,0,0.268560963793889,1
+Eukaryota;;;Himatismenida;Cochliopodiidae;Cochliopodium;Cochliopodium minus,0,0,0,0,0,1,0
+Eukaryota;;Chlorarachniophyceae;;;Bigelowiella;Bigelowiella natans,0.2511853392813667,0,1,0,0.28790720031277917,0,0.3337311512755063
+Eukaryota;;Chrysophyceae;;;;,0.40099847479623124,0.3389973853511891,0.6054637559077176,0.5892157564987878,0.2941581824189638,1,0
+Eukaryota;;Dictyochophyceae;Florenciellales;;Pseudochattonella;Pseudochattonella farcimen,0.4106971970731836,0.15504970364704365,1,0.02250886574818833,0.6352794184787519,0.10121520751111338,0.1966895831245089
+Eukaryota;;Dinophyceae;;;;,0.48072209767112156,0.27445851700030977,1,0.35847518632995257,0.4825296113758835,0.36690230699662046,0.29119463729628936
+Eukaryota;;Dinophyceae;Dinophysiales;Dinophysiaceae;Dinophysis;,0.6268184792741239,0.2155825182487277,0.8786230435711102,0.24590132027964817,1,0.3222442278846994,0.7043959676533759
+Eukaryota;;Dinophyceae;Gonyaulacales;;;,0.9060547866961541,0,1,0.11902242910998981,0.9470457759223375,0.2064365975875709,0.9654453345619411
+Eukaryota;;Dinophyceae;Gonyaulacales;Gonyaulacaceae;;,0.4589376558327202,0,0.3364824456391391,0,0.2665227372214967,0,1
+Eukaryota;;Dinophyceae;Gonyaulacales;Gonyaulacaceae;Alexandrium;,1,0.6691490572309948,0.9230381282454357,0.652801011475442,0.7933899757599824,0.6565273107922589,0.7411832113538915
+Eukaryota;;Dinophyceae;Gonyaulacales;Gonyaulacaceae;Gonyaulax;,0.5753650398101943,0.5681109317424737,0.9677593096630192,0.5184065176178999,0.792398594171982,0,1
+Eukaryota;;Dinophyceae;Gymnodiniales;;;,0.3613034916837994,0.41465318094258696,0.5580536224921545,0.38461183917601355,0.24411519837922224,1,0.10106039886468328
+Eukaryota;;Dinophyceae;Gymnodiniales;Gymnodiniaceae;;,0.9468457617755027,0.4062360722641246,0.6384769424215927,1,0.723692966676555,0.7384478413583596,0.5338652530551756
+Eukaryota;;Dinophyceae;Gymnodiniales;Kareniaceae;;,1,0.10262127106085792,0.7172641331963656,0.11584932733977324,0.5690798047217003,0.18511114866340397,0.13277515981390753
+Eukaryota;;Dinophyceae;Lophodiniales;Lophodiniaceae;Woloszynskia;,0.5064864717542527,0.33891778180013354,0.9683553385026988,0.20617708878663685,0.27407951578150397,0,1
+Eukaryota;;Dinophyceae;Peridiniales;Protoperidiniaceae;Protoperidinium;Protoperidinium cf. depressum,0.9433576293162815,0,0.8450153468487432,0.9400383003754221,0,1,0
+Eukaryota;;Dinophyceae;Prorocentrales;Prorocentraceae;Prorocentrum;,1,0.6040878603434702,0.967074725292854,0.39967190780819106,0.6539388365749836,0.2640779858647629,0.5094959768022496
+Eukaryota;;Dinophyceae;Suessiales;Symbiodiniaceae;Symbiodinium;,0.5572951081634311,0,1,0,0.6909716722143694,0,0.5990046304944984
+Eukaryota;;Dinophyceae;Thoracosphaerales;Thoracosphaeraceae;Scrippsiella;,0,1,0,0,0,0,0
+Eukaryota;;Eustigmatophyceae;Eustigmatales;Monodopsidaceae;Nannochloropsis;Nannochloropsis gaditana,0,0,1,0,0,0,0
+Eukaryota;;Haptophyceae;Isochrysidales;Noelaerhabdaceae;Emiliania;Emiliania huxleyi,1,0.3703559678184617,0.7186766112691009,0,0.7736545783490671,0.9944642756010026,0.7421719973030667
+Eukaryota;;Haptophyceae;Prymnesiales;Chrysochromulinaceae;Chrysochromulina;Chrysochromulina sp. CCMP291,0.3936097712193793,0.29150926535429705,1,0.3580835465244194,0.2398173079058862,0.23195153931998486,0.19465545728512704
+Eukaryota;;Labyrinthulomycetes;;Thraustochytriaceae;Thraustochytrium;,0.1476001732943842,0,0.0719528084687717,0,0.9774756337217912,1,0.7680790830380344
+Eukaryota;;Labyrinthulomycetes;;Thraustochytriaceae;Thraustochytrium;Thraustochytrium aureum,1,0,0.5555056840504111,0,0.8253388648600724,0.2572400492152715,0.9114986281013042
+Eukaryota;;Oomycetes;;;;,0.43123164609958337,0.66420034564154,0.7634945957755009,1,0.3433985098274819,0.721995319857132,0.24135705354287565
+Eukaryota;;Oomycetes;Peronosporales;Peronosporaceae;;,0.2656558196167099,0.28040017144718365,0.577078517647621,1,0.08581921665541846,0.021501253118331273,0.051652243160778606
+Eukaryota;;Oomycetes;Peronosporales;Peronosporaceae;Nothophytophthora;Nothophytophthora vietnamensis,1,0,0,0,0,0.8458658088902163,0
+Eukaryota;;Oomycetes;Peronosporales;Peronosporaceae;Phytophthora;,0.3821530444636165,0.2938780095332279,0.4976876282292901,0.7718134748718348,0.35579715348812263,1,0.17085677549083336
+Eukaryota;;Oomycetes;Peronosporales;Peronosporaceae;Phytophthora;Phytophthora bisheria,0,0,0,0,0.5864050317401766,0,1
+Eukaryota;;Oomycetes;Peronosporales;Peronosporaceae;Phytophthora;Phytophthora fallax,0.4109323006491378,0.4652615291848148,0.9114703777336735,0.8124209795971832,0.41867400395426374,1,0
+Eukaryota;;Oomycetes;Peronosporales;Peronosporaceae;Phytophthora;Phytophthora multivora,0,0,0,0,0,1,0
+Eukaryota;;Oomycetes;Peronosporales;Peronosporaceae;Phytophthora;Phytophthora riparia,0.44644269286336663,0,1,0.5606753831821456,0.615801511780111,0.5672652311872854,0
+Eukaryota;;Oomycetes;Pythiales;Pythiaceae;;,0.2634983461088846,0,1,0,0,0.17705757516049722,0.26174992256902446
+Eukaryota;;Oomycetes;Pythiales;Pythiaceae;Pythium;,0.1797162870600378,0.18255312363235107,0.353402750288222,0.8998244546574236,0.2616880531938849,1,0.16280901752180824
+Eukaryota;;Oomycetes;Saprolegniales;Saprolegniaceae;Saprolegnia;Saprolegnia turfosa,0.37443216882818675,0.33294372099757014,1,0.5786938038943092,0.25738830168447685,0.4141714830097175,0
+Eukaryota;;Phaeophyceae;;;;,0.43763437389721516,0.8056052330981317,1,0.7947267892457204,0.4288752622635485,0.5887743534379115,0.3929728708453673
+Eukaryota;;Phaeophyceae;Cutleriales;Cutleriaceae;Cutleria;Cutleria multifida,0.3374599934828108,1,0.2763709924913346,0.8178149528318527,0,0.5225855164968548,0
+Eukaryota;;Phaeophyceae;Ectocarpales;;;,0.4599556103068886,0.46053564039302064,1,0.7428616016290943,0.5443480138678078,0.8589037950831818,0.4377476860891715
+Eukaryota;;Phaeophyceae;Ectocarpales;Chordariaceae;;,1,0.07893400828760863,0.952793390637949,0.3001167412299706,0.4987866337447305,0.8869879005224175,0.6105239300814834
+Eukaryota;;Phaeophyceae;Ectocarpales;Chordariaceae;Laminariocolax;Laminariocolax aecidioides,0.45675934895042763,0,1,0.23361474299256066,0.2606567245630099,0.540252601130748,0.4326144553571377
+Eukaryota;;Phaeophyceae;Ectocarpales;Chordariaceae;Leathesia;Leathesia difformis,1,0,0.9099712157778164,0,0.5943229624949324,0,0.6643125594636624
+Eukaryota;;Phaeophyceae;Ectocarpales;Chordariaceae;Punctaria;Punctaria latifolia,1,0.5807176179828802,0.5566070635823016,0.3516869332421127,0.41891592154750235,0.10433832866917576,0.07712335782691594
+Eukaryota;;Phaeophyceae;Ectocarpales;Scytosiphonaceae;;,0.3139816741017084,0,1,0.26698827770578365,0,0.810378901696122,0
+Eukaryota;;Phaeophyceae;Ectocarpales;Scytosiphonaceae;Hydroclathrus;Hydroclathrus stephanosorus,0.5878801984149961,0,0.37761462980004556,0,0,1,0
+Eukaryota;;Phaeophyceae;Fucales;Durvillaeaceae;Durvillaea;Durvillaea potatorum,0.9417198556542742,0,0.7198278880563368,0,0.3837845036247418,1,0
+Eukaryota;;Phaeophyceae;Fucales;Durvillaeaceae;Durvillaea;Durvillaea sp. A CIF-2010,0.6431698198809047,0.32728229071353876,0.29592102283919297,0.6470709682008661,0.2839926439977534,1,0.28804435227968533
+Eukaryota;;Raphidophyceae;Chattonellales;Chattonellaceae;Chattonella;,0.42033672146001366,0.3654193370181232,0.5396167747199389,0.5327478932168337,0.15747141641264845,1,0.19557312602544713
+Eukaryota;;Raphidophyceae;Chattonellales;Chattonellaceae;Chattonella;Chattonella subsalsa,0.6664007824077075,0,0,0,0,1,0
+Eukaryota;;Raphidophyceae;Chattonellales;Chattonellaceae;Heterosigma;Heterosigma akashiwo,0.36631195311865977,0,1,0,0.5287184697101963,0.20259472542403048,0.73003689341517
+Eukaryota;Annelida;;;;;,0.003791706069500733,0.012720018728351238,0,0.04769135570908041,0.04249453341513019,1,0
+Eukaryota;Annelida;Clitellata;Haplotaxida;;;,0.07965364581617183,0.18031637919625496,0.28744389171896995,0.8908750206450355,0.38864116043862323,1,0
+Eukaryota;Annelida;Clitellata;Haplotaxida;Megascolecidae;;,0.03136917238845859,0.01697322851849284,0.01887656131269439,0.8856972516861334,0,0.012685455581193826,1
+Eukaryota;Annelida;Polychaeta;;;;,0.08851180549060488,0.008733239485183258,0,0.058319779288631426,0,1,0.00754646041260495
+Eukaryota;Annelida;Polychaeta;;Nereididae;Gymnonereis;Gymnonereis crosslandi,0.27717604452645256,0,1,0,0.3607726028610751,0,0
+Eukaryota;Annelida;Polychaeta;;Orbiniidae;Scoloplos;,0,0,0.69447552559349,0.028369787353205975,0.028326483096854337,1,0
+Eukaryota;Annelida;Polychaeta;Eunicida;Dorvilleidae;Protodorvillea;Protodorvillea gracilis,0.07840184953808971,0.23671288822603073,0.14982119532115035,0,0,0.47986622211227525,1
+Eukaryota;Annelida;Polychaeta;Eunicida;Dorvilleidae;Schistomeringos;Schistomeringos longicornis,0.08352315717671005,0.309085920510348,0.005911654290321164,1,0.0024327992663075336,0.750682509971218,0.007357930144713758
+Eukaryota;Annelida;Polychaeta;NA;Chaetopteridae;Chaetopterus;Chaetopterus variopedatus,0.24209091344683653,0.08322540688187313,0.8020446361223353,0.07383440467105999,0.6783901130667133,0.11205331612097302,1
+Eukaryota;Annelida;Polychaeta;NA;Chrysopetalidae;Paleanotus;Paleanotus bellis,0.24632508643497955,0,1,0,0.24751012833735908,0,0.45062569463395885
+Eukaryota;Annelida;Polychaeta;NA;NA;NA;Polychaeta sp. BMOO-04339,0.9214778633484584,0,0,0,1,0,0
+Eukaryota;Annelida;Polychaeta;NA;Orbiniidae;Scoloplos;Scoloplos sp. CMC02,0,0.06684017037630922,0.17834587725499473,0.025932091044839234,0.014085524210995019,1,0
+Eukaryota;Annelida;Polychaeta;NA;Poecilochaetidae;Poecilochaetus;Poecilochaetus martini,0.6268953974032306,0.3232857754080125,0.774060042931526,1,0.7546067797852237,0.7578424675320302,0.4373823502512176
+Eukaryota;Annelida;Polychaeta;NA;Spionidae;Paraprionospio;Paraprionospio alata,0.5316507053602466,0,0,0,1,0,0
+Eukaryota;Annelida;Polychaeta;NA;Syllidae;Syllis;NA,0,0,0,0.001633884021906508,0,1,0
+Eukaryota;Annelida;Polychaeta;Phyllodocida;Goniadidae;Glycinde;Glycinde wireni,0,0,0,0.15619866154445264,0,1,0
+Eukaryota;Annelida;Polychaeta;Phyllodocida;Goniadidae;Goniada;Goniada maculata,1,0.19569056221302972,0,0.2869866338011594,0.28211044518428285,0,0
+Eukaryota;Annelida;Polychaeta;Phyllodocida;Hesionidae;Amphiduros;Amphiduros pacificus,0,0,1,0,0,0,0
+Eukaryota;Annelida;Polychaeta;Phyllodocida;Nephtyidae;Bipalponephtys;Bipalponephtys cornuta,0.4202286301722278,0,0,1,0.1501704261905738,0.7145869803033672,0
+Eukaryota;Annelida;Polychaeta;Phyllodocida;Phyllodocidae;Eumida;Eumida longicornuta,0,0,0,0.8785627797794423,0,1,0
+Eukaryota;Annelida;Polychaeta;Phyllodocida;Polynoidae;;,0.2083319476436269,0.03768525677096513,0.0604041417616228,0.013025813587687118,1,0.23541301026990152,0
+Eukaryota;Annelida;Polychaeta;Phyllodocida;Polynoidae;Halosydna;,0,0.4813784423524334,1,0.24342821356846925,0.5786650954262166,0.03211652869576148,0.029778432873531473
+Eukaryota;Annelida;Polychaeta;Sabellida;Sabellidae;Chone;Chone infundibuliformis,0.007732439584559684,0.13592549067091264,0.017625925111474174,0.11292787975657531,0.001969528457660827,1,0.007807870231601813
+Eukaryota;Annelida;Polychaeta;Sabellida;Sabellidae;Myxicola;Myxicola infundibulum CMC02,0,0.4026657072238796,0,1,0,0,0
+Eukaryota;Annelida;Polychaeta;Spionida;Chaetopteridae;Chaetopterus;Chaetopterus variopedatus,0.24711257890872315,0.08171405114745565,1,0.035798236649595715,0.5638417879439741,0.03148429894156992,0.8048394611011832
+Eukaryota;Annelida;Polychaeta;Spionida;Cirratulidae;Cirriformia;Cirriformia cf. tentaculata HK-2018,0,1,0,0.3974945883181932,0,0,0
+Eukaryota;Annelida;Polychaeta;Spionida;Cirratulidae;Tharyx;Tharyx sp. CMC01,0,0,0,0,0,1,0
+Eukaryota;Annelida;Polychaeta;Terebellida;Cirratulidae;Timarete;NA,0.07951669009815074,1,0.061379459290198446,0.4041940628970578,0.02374569789333147,0.1690877742957821,0.03885898734284606
+Eukaryota;Annelida;Polychaeta;Terebellida;Terebellidae;Amaeana;Amaeana occidentalis,0.5924854413879095,0,0.9899812116610153,0.729653834054113,0.33304689128113185,1,0.9229136331347748
+Eukaryota;Annelida;Polychaeta;Terebellida;Terebellidae;Pista;Pista wui,0,1,0,0.651030038166914,0,0.5611136466813557,0
+Eukaryota;Annelida;Polychaeta;Terebellida;Terebellidae;Thelepus;Thelepus crispus,0.006405885064625005,0.10888161712275123,0.0102010492856821,0.1259646768053936,0,1,0.01418503300970362
+Eukaryota;Annelida;Polychaeta;Terebellida;Trichobranchidae;NA;Trichobranchidae sp. BOLD:AAY8419,0.3096065278863367,0,0,0,0,1,0
+Eukaryota;Arthropoda;;;;;,0.1750191378707787,0.09713645211924957,0.3235602569923186,0.11818388994897835,0.12718154084532368,1,0.0615533354650909
+Eukaryota;Arthropoda;;;Pollicipedidae;Pollicipes;Pollicipes polymerus,0,0.006202603703021722,0,0,1,0,0
+Eukaryota;Arthropoda;;Sessilia;Tetraclitidae;Tetraclita;,0,4.1344990875959945e-4,1,0,6.696906840089567e-4,0,0
+Eukaryota;Arthropoda;Arachnida;;;;,0.2747339648389948,0,1,0,0,0,0
+Eukaryota;Arthropoda;Arachnida;Araneae;Orsolobidae;Osornolobus;Osornolobus sp. 2 NCP-2017,0.6966999005500979,0.6677759766485415,0.7245449777552644,0.620636092137771,0.13520481595587233,1,0
+Eukaryota;Arthropoda;Arachnida;Araneae;Theridiidae;Phoroncidia;Phoroncidia scutula,0.3834137208029265,0.14024776150721338,0.8229545714493544,0.06629459334610131,1,0.14247970854627076,0.11033947803362916
+Eukaryota;Arthropoda;Branchiopoda;Diplostraca;;;,1,0,0,0,0,0.5682881087251136,0
+Eukaryota;Arthropoda;Branchiopoda;Diplostraca;Podonidae;;,0.02671365774796484,0.01059264492537614,0.019316867931231683,0.028077100836657376,0.11713168999812007,0.004589595266906895,1
+Eukaryota;Arthropoda;Branchiopoda;Diplostraca;Podonidae;Pleopis;,0,0,0,0,1,0,0.8362977474900235
+Eukaryota;Arthropoda;Branchiopoda;Diplostraca;Sididae;Penilia;Penilia avirostris,1,0,0,0.16778096459850902,0.2291307764074219,0.26519011297107586,0
+Eukaryota;Arthropoda;Hexanauplia;;;;,0.038148071330620204,0.05736817409167317,0,1,0,0.14041352462874448,0
+Eukaryota;Arthropoda;Hexanauplia;Calanoida;;;,1,0.8526298563421141,0,0.44871797133854996,0.004580654550151485,0.008564816305424043,0.17372745772765874
+Eukaryota;Arthropoda;Hexanauplia;Calanoida;Acartiidae;Acartia;Acartia californiensis,1,0.641446187479823,0.10711737749372781,0.2623627329137311,0.004501499400340326,0.2530474278927644,0.24778359965688257
+Eukaryota;Arthropoda;Hexanauplia;Calanoida;Calanidae;Ctenocalanus;Ctenocalanus vanus,0,0,0,0.44454147662613425,0,1,0
+Eukaryota;Arthropoda;Hexanauplia;Calanoida;Calocalanidae;Calocalanus;,0.05880007801219317,0.13276869605049335,0.05041947202601361,0.05384563199624125,1,0.09631020857355681,0
+Eukaryota;Arthropoda;Hexanauplia;Calanoida;Candaciidae;Candacia;Candacia bispinosa,0,0,0,0.8523013923403829,0,1,0
+Eukaryota;Arthropoda;Hexanauplia;Calanoida;Centropagidae;Centropages;Centropages tenuiremis,0.4360025123265985,1,0.38936343794325096,0.5398500717450655,0,0.6413250308964997,0.1900133326447159
+Eukaryota;Arthropoda;Hexanauplia;Calanoida;Clausocalanidae;Clausocalanus;Clausocalanus furcatus,0.21149181905539477,0,0,0,1,0,0
+Eukaryota;Arthropoda;Hexanauplia;Calanoida;Paracalanidae;Paracalanus;Paracalanus sp. C AC-2013,0.554358147112585,0.6547608526658861,0.23927455178056004,0.2655446122991537,0.37782347295374874,1,0.07923594866008493
+Eukaryota;Arthropoda;Hexanauplia;Cyclopoida;Cyclopidae;Acanthocyclops;Acanthocyclops americanus,0.4885330433927506,0,0,0.32169856796812013,0.19218466762218925,1,0
+Eukaryota;Arthropoda;Hexanauplia;Poecilostomatoida;NA;NA;Poecilostomatoida sp. BMBM-0966,0.16218067076687614,0.8478962219877,0.043123950629239106,0.5660848075631816,1,0.6124416140788032,0.03078247328362202
+Eukaryota;Arthropoda;Hexanauplia;Sessilia;;;,0.5049423056046307,0.6714613489458492,1,0.011126154414103346,0.001240093530599728,4.487810501898335e-4,0.6597985361737931
+Eukaryota;Arthropoda;Hexanauplia;Sessilia;Chthamalidae;Chthamalus;,0.007334833412634464,0,1,0,0.046083604902439436,0,0.3056758174726113
+Eukaryota;Arthropoda;Hexanauplia;Siphonostomatoida;Caligidae;Lepeophtheirus;Lepeophtheirus salmonis,0,0,0,0.6074116770748349,0,1,0
+Eukaryota;Arthropoda;Insecta;;;;,0.00432747672516168,1,0.004261301082602039,0.012276080539299955,0.0019173025692940527,0.025362141817313163,0
+Eukaryota;Arthropoda;Insecta;Coleoptera;Anischiidae;Anischia;Anischia sp. UPOL RK0120,0.28367703724341686,1,0,0.017507853334446093,0.020977354762626292,0.10344760109114001,0.004863231449606269
+Eukaryota;Arthropoda;Insecta;Coleoptera;Cerambycidae;Trachysida;Trachysida mutabilis,0.5746069852841722,0,1,0.5863271980989758,0.35125932935763904,0.47669347158595404,0.30537490966386194
+Eukaryota;Arthropoda;Insecta;Coleoptera;Coccinellidae;Nephus;Nephus sp. CO589,0,1,0,0.3361876426599638,0,0.7132506457300118,0
+Eukaryota;Arthropoda;Insecta;Coleoptera;Curculionidae;Pandeleteius;Pandeleteius hilaris,0.5588356956748514,0.41449811730253056,1,0.5974274732613984,0,0.2331447237022573,0
+Eukaryota;Arthropoda;Insecta;Coleoptera;Scarabaeidae;Temnoplectron;Temnoplectron reyi,0,0,0.06870345638709548,0,1,0,0.6520287522803573
+Eukaryota;Arthropoda;Insecta;Diptera;Cecidomyiidae;Peromyia;Peromyia inflata,0.3296807578067938,0.2835842322902381,1,0.3294566888356624,0.31579564706672353,0.49557786680647453,0.24334563113838997
+Eukaryota;Arthropoda;Insecta;Diptera;Chironomidae;;,0.014448304634695713,0,0,0,0,1,0
+Eukaryota;Arthropoda;Insecta;Diptera;Platystomatidae;Rivellia;Rivellia variabilis,0.9691427378509267,0,0.32083757296225307,0.4151209134457865,0.27895650777752656,1,0
+Eukaryota;Arthropoda;Insecta;Diptera;Psychodidae;Psychoda;Psychoda sp. BARS_2016_26_066,0.3630986903720049,0,1,0,0.4994881252989735,0,0.7556522230086847
+Eukaryota;Arthropoda;Insecta;Diptera;Psychodidae;Sergentomyia;Sergentomyia purii,0,0.3564420306539339,0,1,0,0.8921474779509653,0
+Eukaryota;Arthropoda;Insecta;Diptera;Tabanidae;Apocampta;Apocampta subcana,0.3496614097950843,0,1,0,0.641247855242099,0.5801576228051781,0.6194252428977198
+Eukaryota;Arthropoda;Insecta;Hymenoptera;Eulophidae;NA;Eulophidae sp. BIOUG23059-C11,0.28919364719894197,0,1,0.4795249987742035,0,0,0
+Eukaryota;Arthropoda;Insecta;Hymenoptera;Pamphiliidae;Cephalcia;Cephalcia sp. tK7,0.639658769878375,0.057222941395197346,0.09313137096146677,0.06527058387512366,0.5561254694033995,1,0.6345671428712464
+Eukaryota;Arthropoda;Insecta;Hymenoptera;Pompilidae;Ageniella;Ageniella sp. USNM ENT 01117065,0.5952569238178221,0,1,0,0.6064711858440487,0,0
+Eukaryota;Arthropoda;Insecta;Lepidoptera;Nepticulidae;Stigmella;Stigmella prunifoliella,0.3551964553854693,0.14576021450049495,0.5930337638246613,0.3527130494400586,0.5742359104050652,1,0.15492973800925722
+Eukaryota;Arthropoda;Insecta;Megaloptera;Corydalidae;Neoneuromus;Neoneuromus tonkinensis,0,0,0,0.4060259325565204,0.3621628414487,1,0
+Eukaryota;Arthropoda;Insecta;Plecoptera;Pteronarcyidae;Pteronarcella;Pteronarcella regularis,0.061583859770306754,0,0,0.10996996647443631,0.153095507712976,1,0.31419595396349764
+Eukaryota;Arthropoda;Malacostraca;Amphipoda;;;,0.8820097181786498,0.5547888566605796,0,1,0.44931311027764764,0.32520645341476057,0.19531004445169411
+Eukaryota;Arthropoda;Malacostraca;Amphipoda;Caprellidae;Caprella;,0.856013195708868,0.7006686441089216,1,0.990667030434618,0,0.21325760570950578,0
+Eukaryota;Arthropoda;Malacostraca;Amphipoda;Caprellidae;Caprella;Caprella californica,0.49547335529604597,1,0.8467492645323849,0.6517923684223789,0,0.5346917446782492,0.796380437610592
+Eukaryota;Arthropoda;Malacostraca;Amphipoda;Caprellidae;Caprella;Caprella mutica,1,0.14968456952177753,0,0.0401731070937756,0.192536572776761,0.07258085378121179,0
+Eukaryota;Arthropoda;Malacostraca;Amphipoda;Ischyroceridae;Ericthonius;Ericthonius brasiliensis,0.2540219925034107,0,0.4526740401489042,0.9180115416150311,0,0.12488084816415838,1
+Eukaryota;Arthropoda;Malacostraca;Decapoda;;;,0.017333936188784926,0.035196098128153254,0.0379806458788163,0.08773928491221024,0.005112248994657949,0.012109658003797177,1
+Eukaryota;Arthropoda;Malacostraca;Decapoda;Alpheidae;Alpheus;,0.0508361711076244,0.02842331115659656,0,0,0,0,1
+Eukaryota;Arthropoda;Malacostraca;Decapoda;Callianassidae;;,0,0.1646331831026117,0,0.16692145918834783,1,0.054283935741459295,0
+Eukaryota;Arthropoda;Malacostraca;Decapoda;Epialtidae;Pugettia;,0.027112624590733013,0,0,0,0,0,1
+Eukaryota;Arthropoda;Malacostraca;Decapoda;Grapsidae;Pachygrapsus;,0,1,0.06996118387098392,0,0,0,0.10035641188203344
+Eukaryota;Arthropoda;Malacostraca;Decapoda;Hippolytidae;Hippolyte;,0,1,0.46134370400128305,0.03592556361383191,0,0,0
+Eukaryota;Arthropoda;Malacostraca;Decapoda;Penaeidae;Penaeus;Penaeus vannamei,0,0,1,0,0,0,0
+Eukaryota;Arthropoda;Malacostraca;Decapoda;Pinnotheridae;Pinnixa;,0.05425665317515723,0.7371588960472754,0,1,0,0.06001503177204346,0.30276435956525594
+Eukaryota;Arthropoda;Malacostraca;Decapoda;Sicyoniidae;Sicyonia;,0.6722166189303987,1,0.501595732091741,0.1929732815361994,0.6763896724842052,0.26161911922672365,0.6412340988122655
+Eukaryota;Arthropoda;Malacostraca;Isopoda;Desmosomatidae;Torwolia;Torwolia sp. VTDes024,0,0,0,0.0187991919646758,0.23926126169515333,0,1
+Eukaryota;Arthropoda;Pycnogonida;Pantopoda;Nymphonidae;Nymphon;,0,0,1,0,0,0.42077366049606335,0
+Eukaryota;Bacillariophyta;;;;;,0.5220015147646072,0.36044821119465875,1,0.3160658681437048,0.6472767545577188,0.4405952815237946,0.2946488887170949
+Eukaryota;Bacillariophyta;Bacillariophyceae;;;;,0.636336192846129,0,1,0.7368876464679628,0.48258730719094406,0.3959279776858196,0.4004773815306075
+Eukaryota;Bacillariophyta;Bacillariophyceae;Bacillariales;Bacillariaceae;Cylindrotheca;Cylindrotheca closterium,1,0.3389459034629826,0.4002287436328479,0.2946418136319714,0.680266038088877,0.79355838219458,0.2452449215636577
+Eukaryota;Bacillariophyta;Bacillariophyceae;Bacillariales;Bacillariaceae;Nitzschia;,0.44070090156091535,1,0.667399495057012,0.7502645967451843,0.18877808291707895,0.19112619609362289,0
+Eukaryota;Bacillariophyta;Bacillariophyceae;Bacillariales;Bacillariaceae;Nitzschia;Nitzschia sp. NIES-3581,0.576795964275731,0.8426502902338504,1,0.688236449197131,0.4833997437350366,0.3704589264896558,0.29664991224489445
+Eukaryota;Bacillariophyta;Bacillariophyceae;Bacillariales;Bacillariaceae;Pseudo-nitzschia;,0.3542718510930809,1,0.637760517821102,0.7038333150877727,0.17390378099035309,0.22307107705360077,0.11893035839604418
+Eukaryota;Bacillariophyta;Bacillariophyceae;Bacillariales;Bacillariaceae;Pseudo-nitzschia;Pseudo-nitzschia cuspidata,0.3251887209925268,1,0,0.44934170853360966,0,0.9292294411302302,0.2160269515512603
+Eukaryota;Bacillariophyta;Bacillariophyceae;Bacillariales;Bacillariaceae;Pseudo-nitzschia;Pseudo-nitzschia sabit,1,0,0.6133880047094911,0.5668871778788335,0.33961312142567573,0.6821148638358283,0
+Eukaryota;Bacillariophyta;Bacillariophyceae;Naviculales;;;,0.564669945478796,0.5083026638395136,0,0.7618478813446172,0.6980403348439249,1,0
+Eukaryota;Bacillariophyta;Bacillariophyceae;Naviculales;Naviculaceae;Haslea;Haslea ostrearia,0,0,0,0.6813853377266696,0,1,0
+Eukaryota;Bacillariophyta;Bacillariophyceae;Naviculales;Pinnulariaceae;Pinnularia;,0,0,0,0,0,1,0
+Eukaryota;Bacillariophyta;Bacillariophyceae;Naviculales;Pinnulariaceae;Pinnularia;Pinnularia subanglica,1,0.8045739127722527,0.8118152297402443,0.6279365662657846,0.3719119917151106,0.8458430583305366,0
+Eukaryota;Bacillariophyta;Bacillariophyceae;Naviculales;Pinnulariaceae;Pinnularia;Pinnularia viridiformis,0.7526577555656613,0,0,0,0.9311596383126979,0,1
+Eukaryota;Bacillariophyta;Bacillariophyceae;Naviculales;Sellaphoraceae;Sellaphora;Sellaphora blackfordensis,0.4989821905219491,0,1,0,0.2845383993034139,0.22692725119297408,0.25859444353348493
+Eukaryota;Bacillariophyta;Coscinodiscophyceae;;;;,0.45444709605716266,0.5272963997427901,0.6566593182881277,0.6342125066532849,0.3602091698306505,1,0.1651574304883646
+Eukaryota;Bacillariophyta;Coscinodiscophyceae;Chaetocerotales;Chaetocerotaceae;Chaetoceros;,0.3373381263183138,0.31049476782981195,1,0.5569797827280261,0,0.20119576624031152,0
+Eukaryota;Bacillariophyta;Coscinodiscophyceae;Chaetocerotales;Chaetocerotaceae;Chaetoceros;Chaetoceros socialis,0.5487264075056847,0.4975161970004177,1,0.48641589055709566,0.09065903743542303,0.6665379417317346,0
+Eukaryota;Bacillariophyta;Coscinodiscophyceae;Chaetocerotales;Chaetocerotaceae;Chaetoceros;Chaetoceros sp. MBTD-CMFRI-S005,0,0,1,0,0,0.5672652311872853,0
+Eukaryota;Bacillariophyta;Coscinodiscophyceae;Melosirales;Stephanopyxidaceae;Stephanopyxis;Stephanopyxis turris,0.5162983716167707,0.6735647907423841,0,1,0.3506834031435299,0.5710942596551893,0
+Eukaryota;Bacillariophyta;Coscinodiscophyceae;Rhizosoleniales;Rhizosoleniaceae;Rhizosolenia;Rhizosolenia setigera,1,0.3184406248049592,0.597024262128339,0.8465076698245786,0.22929954614025086,0.7661643346418541,0.1457248362855387
+Eukaryota;Bacillariophyta;Coscinodiscophyceae;Thalassiosirales;;;,0.6535637724707024,0.996393323689491,1,0.6135476491797848,0.3856151150827524,0.36423505036266324,0.2294049674840458
+Eukaryota;Bacillariophyta;Coscinodiscophyceae;Thalassiosirales;Skeletonemataceae;Skeletonema;,0.9664869292302687,0.8652011278956327,0.7944377859424682,0.4797626128631352,0.5288942648492791,1,0.3528911255292196
+Eukaryota;Bacillariophyta;Coscinodiscophyceae;Thalassiosirales;Skeletonemataceae;Skeletonema;Skeletonema menzelii,0.37526521619530634,0.3702648460651445,1,0.2202653291072715,0.662845766698476,0.2457375269049731,0.2947903810840673
+Eukaryota;Bacillariophyta;Coscinodiscophyceae;Thalassiosirales;Skeletonemataceae;Skeletonema;Skeletonema potamos,0.4471344913647244,1,0.3661915650510184,0,0.25814965852607497,0.6676963161669638,0
+Eukaryota;Bacillariophyta;Coscinodiscophyceae;Thalassiosirales;Skeletonemataceae;Skeletonema;Skeletonema pseudocostatum,0.31294075203280497,0,0.7356482812004322,0.576556824230259,0,1,0
+Eukaryota;Bacillariophyta;Coscinodiscophyceae;Thalassiosirales;Stephanodiscaceae;Cyclotella;Cyclotella cryptica,0.3423136308424181,0.8566379842020426,0,1,0.5287691063048373,0.5618590368855956,0
+Eukaryota;Bacillariophyta;Coscinodiscophyceae;Thalassiosirales;Stephanodiscaceae;Stephanodiscus;,0.2563777806451458,0.984060221949162,1,0.4783486190655086,0.11353068540361647,0.11563988660786814,0.18637107429114408
+Eukaryota;Bacillariophyta;Fragilariophyceae;Fragilariales;Fragilariaceae;Asterionella;Asterionella formosa,0.4180997841332488,1,0.8877371273964083,0.3456474681027767,0.16565753488304277,0.4196520056717168,0.1440179677008402
+Eukaryota;Bacillariophyta;Mediophyceae;Cymatosirales;Cymatosiraceae;Minutocellus;Minutocellus polymorphus,0.9504310134970633,0.996377032371107,1,0.20204518312870112,0.6455576863870124,0,0.4559990205115776
+Eukaryota;Bacillariophyta;Mediophyceae;Lithodesmiales;Lithodesmiaceae;Ditylum;Ditylum brightwellii,0.2773818996872635,0.6206510496886471,1,0.5532802524343302,0.23326869273132747,0.46930641524829597,0.16207152710490225
+Eukaryota;Blastocladiomycota;Blastocladiomycetes;Blastocladiales;Blastocladiaceae;Blastocladiella;Blastocladiella emersonii,0.3614441418160583,0.053944933504653736,0.3760225420159099,0.1845947038602765,0.21476463674049168,1,0.15756583623506495
+Eukaryota;Brachiopoda;NA;NA;NA;Phoronis;Phoronis architecta,1,0.027857309165417992,0.17670301646632058,0.05396717840310665,0.09447466173530059,0.009185295164480883,0.05746286922889631
+Eukaryota;Bryozoa;;;;;,0.14431490888427134,0,0.48614547154355575,0,0,0,1
+Eukaryota;Bryozoa;Gymnolaemata;Cheilostomatida;;;,0.29460828918336995,0.8619843962987286,0.6556317480212548,0.6123014140730635,0.5720299463001803,0.23411297175200152,1
+Eukaryota;Bryozoa;Gymnolaemata;Cheilostomatida;Bugulidae;;,0.015236815642046684,0,0.03119639322234526,0.011105428396088456,0,1,0.004820003808211428
+Eukaryota;Bryozoa;Gymnolaemata;Cheilostomatida;Bugulidae;Bugula;Bugula neritina,0.20324019061479245,0.11520552380385023,0.3141095554598106,0.10426087819791605,0.8279068211221905,0.1305603986630275,1
+Eukaryota;Bryozoa;Gymnolaemata;Cheilostomatida;Bugulidae;Bugulina;,0,1,0.4303337244542739,0.18010052285355208,0,0.17354030309732651,0.7682763013815497
+Eukaryota;Bryozoa;Gymnolaemata;Cheilostomatida;Bugulidae;Bugulina;Bugulina foliolata,0.6856608353246709,0,1,0.38336778337240723,0,0,0
+Eukaryota;Bryozoa;Gymnolaemata;Cheilostomatida;Bugulidae;Bugulina;Bugulina fulva,0.14287241152616273,0,0.21310881794632738,0,0.08303652965882775,0.5278720783455619,1
+Eukaryota;Bryozoa;Gymnolaemata;Cheilostomatida;Candidae;Caberea;Caberea sp. KHFA-2013,1,0,0.1084733899602695,0,0,0,0
+Eukaryota;Bryozoa;Gymnolaemata;Cheilostomatida;Candidae;Scrupocellaria;Scrupocellaria varians,0.3741961535913772,0,0.45800935959809386,0.21366574657100462,0.962398651544572,0.04632365310571563,1
+Eukaryota;Bryozoa;Gymnolaemata;Cheilostomatida;Cellariidae;Cellaria;,0.39784061592105563,0,0.7585912458647236,0,0.7871557026340847,0.050389044316405535,1
+Eukaryota;Bryozoa;Gymnolaemata;Cheilostomatida;Celleporidae;Celleporina;Celleporina souleae,1,0,0,0,0,0.12656578345180464,0
+Eukaryota;Bryozoa;Gymnolaemata;Cheilostomatida;Cryptosulidae;Cryptosula;Cryptosula pallasiana,0.4733370797055684,1,0.4122635556970088,0.07906114109723246,0.43632545419730234,0.056097149016338055,0.9583048134347022
+Eukaryota;Bryozoa;Gymnolaemata;Cheilostomatida;Electridae;Electra;Electra monostachys,1,0,0,0,0,0,0
+Eukaryota;Bryozoa;Gymnolaemata;Cheilostomatida;Lepraliellidae;Celleporaria;,0.8140265624859107,0,1,0,0.12440434581416382,0,0
+Eukaryota;Bryozoa;Gymnolaemata;Cheilostomatida;Lepraliellidae;Celleporaria;NA,0.3229304659856343,1,0.52894337174036,0,0.4555582209283677,0.5770215077986106,0.3960494111773106
+Eukaryota;Bryozoa;Gymnolaemata;Cheilostomatida;Membraniporidae;Membranipora;Membranipora grandicella,1,0,0.11395587969224957,0,0.08893735887059132,0,0.3735483759783393
+Eukaryota;Bryozoa;Gymnolaemata;Cheilostomatida;Membraniporidae;Membranipora;Membranipora membranacea,1,0.11182317840744556,0.29574064512779036,0,0.41602607374645273,0.11061322116256675,0.2952500264282944
+Eukaryota;Bryozoa;Gymnolaemata;Cheilostomatida;Phidoloporidae;Phidolopora;Phidolopora pacifica,1,0,0.18334967532077176,0.04066799319565544,0.63706171521541,0.04996297670869561,0.033536551914953
+Eukaryota;Bryozoa;Gymnolaemata;Cheilostomatida;Phidoloporidae;Rhynchozoon;Rhynchozoon sp. MHD-2004,0.49512408966939453,0,0.34932662579413293,0.14146643792555605,0.5103552475146751,0.0763355472319825,1
+Eukaryota;Bryozoa;Gymnolaemata;Cheilostomatida;Savignyellidae;Savigyniella;Savigyniella lafonti,0,0,1,0.5042044812789078,0,0,0.7562972133221904
+Eukaryota;Bryozoa;Gymnolaemata;Cheilostomatida;Scrupariidae;Scruparia;Scruparia sp. H729,0.022767765045859353,0,0.07407398395977594,0.24704057711144897,1,0.0926294041727475,0.21817167974299848
+Eukaryota;Bryozoa;Gymnolaemata;Cheilostomatida;Thalamoporellidae;Thalamoporella;Thalamoporella californica,0.27330954571520294,0.4821447060799518,1,0.3276855855530188,0.12471387076902331,0.3409100870170061,0.6468878080452468
+Eukaryota;Bryozoa;Gymnolaemata;Cheilostomatida;Watersiporidae;Watersipora;,0,0.7153989510831152,0.27110502010493875,0.46286296215883926,0,0.5500704026278406,1
+Eukaryota;Bryozoa;Gymnolaemata;Cheilostomatida;Watersiporidae;Watersipora;Watersipora subovoidea,0,0,0.8038304397290169,0,1,0,0.7824345027364287
+Eukaryota;Bryozoa;Gymnolaemata;Ctenostomatida;Alcyonidiidae;Alcyonidium;Alcyonidium sp. ALCY-1,0.570013180044772,0.16907227757950052,0.0093855815506543,0.021926102217918228,0,1,0.009862469330647997
+Eukaryota;Bryozoa;Gymnolaemata;Ctenostomatida;Nolellidae;Anguinella;Anguinella palmata,0.3665168532919024,0,0.2988255654412571,0.14094040011896375,0.19747676621963917,0.08415556554985403,1
+Eukaryota;Bryozoa;Gymnolaemata;Ctenostomatida;Paludicellidae;Paludicella;Paludicella articulata,0.012521792545317646,0.07207833332190187,0,0.21672562490188826,0.09130864676280864,1,0
+Eukaryota;Bryozoa;Gymnolaemata;Ctenostomatida;Vesiculariidae;Amathia;,0.5375525469000837,0.8077540466236517,0.251282081510194,0.22622208352978207,0,0,1
+Eukaryota;Bryozoa;Gymnolaemata;Ctenostomatida;Vesiculariidae;Amathia;Amathia cf. gracilis AW-2014,0.16317456123234964,0.10617690688588909,0.23795191990196957,0.29311748664522097,0.3027274563573934,0.11137476773316791,1
+Eukaryota;Bryozoa;Gymnolaemata;Ctenostomatida;Vesiculariidae;Amathia;Amathia vidovici,0.23765456698572415,0.77849552933226,0.19346708100599422,1,0.7805276463715086,0.4592890805358714,0.9872472532934926
+Eukaryota;Chaetognatha;Sagittoidea;Aphragmophora;Sagittidae;Sagitta;Sagitta setosa,1,0.6600347890657283,0.22278453552169245,0.34425293150746084,0.22627249407590105,0.2807119315865025,0.11306673846500362
+Eukaryota;Chlorophyta;;;;;,0,0,0.9239430341712839,0.17267737157415294,1,0.47420449613228804,0
+Eukaryota;Chlorophyta;Chloropicophyceae;Chloropicales;Chloropicaceae;Chloropicon;Chloropicon primus,0.43905035741330234,0,0.5136726696725155,0.6240078452808056,0.4175003345637324,0.27751299592035195,1
+Eukaryota;Chlorophyta;Mamiellophyceae;Dolichomastigales;Dolichomastigaceae;Dolichomastix;Dolichomastix tenuilepis,0.8781076275024134,0.8322659919397836,1,0.33309231178130033,0.8979764556961681,0.4838461698710709,0.8577019193233796
+Eukaryota;Chlorophyta;Mamiellophyceae;Mamiellales;Bathycoccaceae;Ostreococcus;Ostreococcus tauri,1,0,0,0,0,0.8295991587192506,0
+Eukaryota;Chlorophyta;Mamiellophyceae;Mamiellales;Mamiellaceae;Micromonas;Micromonas commoda,0,0.6144325032955159,1,0,0.6220217290708192,0,0
+Eukaryota;Chlorophyta;Mamiellophyceae;Mamiellales;Mamiellaceae;Micromonas;Micromonas pusilla,0.6402001128156549,0.8536958159953549,1,0.5139953705684862,0.7811012402004271,0.5448363163036785,0.8288466742386248
+Eukaryota;Chlorophyta;Mamiellophyceae;Monomastigales;Monomastigaceae;Monomastix;Monomastix minuta,0.1911192798879964,0,1,0,0.739935413364244,0.35233865291135735,0.5431192347146675
+Eukaryota;Chlorophyta;NA;NA;Pycnococcaceae;Pycnococcus;Pycnococcus provasolii,0.8175658084097625,0,1,0.37920074224879413,0.4711739474314225,0.8338681452235459,0.3456213311820612
+Eukaryota;Chlorophyta;NA;Pyramimonadales;NA;Cymbomonas;Cymbomonas tetramitiformis,0.34722194966213177,0.14499882083669993,1,0,0.45478145404630765,0.2677358023302822,0.5031672552826381
+Eukaryota;Chlorophyta;NA;Pyramimonadales;NA;Pyramimonas;Pyramimonas parkeae,1,0,0,0,0,0.5530661058128338,0
+Eukaryota;Chlorophyta;Nephroselmidophyceae;NA;NA;Nephroselmis;Nephroselmis olivacea,0.8117574988970998,0.3796493516297497,1,0.6609587850521228,0.8209031777005579,0.5534294938412541,0.6172669667900624
+Eukaryota;Chlorophyta;Nephroselmidophyceae;NA;NA;Nephroselmis;Nephroselmis pyriformis,0.5198770064216424,0,0.6487103302565274,0,0.8193013852732046,0.4291438081242557,1
+Eukaryota;Chlorophyta;Palmophyllophyceae;Prasinococcales;Prasinococcaceae;Prasinococcus;Prasinococcus capsulatus,0.29304956249492786,0,1,0,0.5307918754737657,0,0.6056602374999928
+Eukaryota;Chlorophyta;Palmophyllophyceae;Prasinococcales;Prasinococcaceae;Prasinoderma;Prasinoderma coloniale,0.10374927011279275,0.11783941257551919,1,0.14189591388074504,0.07067360404556901,0.16023632984498506,0.1048087940914209
+Eukaryota;Chlorophyta;Trebouxiophyceae;Chlorellales;Chlorellaceae;Chlorella;,0,0,1,0,0.6397937784728426,0,0
+Eukaryota;Chlorophyta;Trebouxiophyceae;Chlorellales;Chlorellaceae;Chlorella;Chlorella heliozoae,0.4267430410918367,0,0.4659886607124736,0,1,0,0.9525289598530436
+Eukaryota;Chlorophyta;Ulvophyceae;NA;NA;Oltmannsiellopsis;Oltmannsiellopsis viridis,0.8147021032016665,0.6810840433684734,1,0.14928079012802628,0.8213120340872848,0.3513883619387749,0.3198833856624147
+Eukaryota;Chordata;Actinopteri;;;;,0.3725195344757092,1,0.4279086305275281,0.5388381785815977,0.870094375263804,0.4563589872047635,0.640112990032405
+Eukaryota;Chordata;Actinopteri;Atheriniformes;Atherinopsidae;Atherinops;Atherinops affinis,0.23561773868938923,0.32111045398358623,1,0,0,0,0.3032649071473403
+Eukaryota;Chordata;Actinopteri;Atheriniformes;Atherinopsidae;Atherinopsis;Atherinopsis californiensis,0,0,1,0,0,0,0
+Eukaryota;Chordata;Actinopteri;Batrachoidiformes;Batrachoididae;Porichthys;,0,0,0.8676090033020336,0,0,0,1
+Eukaryota;Chordata;Actinopteri;Cypriniformes;Cyprinidae;;,0.5165698498119189,0.3661593138137829,1,0.37244149035688573,0,0.1919465033619234,0
+Eukaryota;Chordata;Actinopteri;Perciformes;Serranidae;Paralabrax;Paralabrax nebulifer,0.20564161006715334,0.6898649535160093,0,1,0.41903153453944564,0.9553605975725424,0
+Eukaryota;Chordata;Actinopteri;Salmoniformes;Salmonidae;;,0.1705826630293109,0.7423290847205112,0.344727851994775,1,0.360798360476547,0.9689318022436353,0.4191392411957013
+Eukaryota;Chordata;Actinopteri;Scombriformes;Scombridae;;,0.8721538802292819,0.1678645662598207,1,0.5058604965167324,0.3002540258681257,0.23250416221343925,0.1809213278795566
+Eukaryota;Chordata;Ascidiacea;Enterogona;Ascidiidae;Ascidia;Ascidia ahodori,0.5956548727076849,0.7626380619563878,1,0.4799983526410835,0.8610152489286378,0.5836967952001791,0.8980798987143038
+Eukaryota;Chordata;Ascidiacea;Enterogona;Didemnidae;Didemnum;Didemnum vexillum,0.08895046202139632,0,0.05448043466223648,0,0.15104372029671212,0,1
+Eukaryota;Chordata;Ascidiacea;Enterogona;Didemnidae;Diplosoma;Diplosoma listerianum,0.09381611369555555,1,0.1595039879305742,0.23234254197347623,0,0.03833406532645822,0.2645481270107954
+Eukaryota;Chordata;Ascidiacea;Stolidobranchia;Pyuridae;Microcosmus;Microcosmus squamiger,0,1,0,0,0,0,0
+Eukaryota;Chordata;Ascidiacea;Stolidobranchia;Styelidae;Botrylloides;Botrylloides violaceus,0,1,0,0,0,0,0
+Eukaryota;Chordata;Ascidiacea;Stolidobranchia;Styelidae;Polyandrocarpa;NA,0,0,0,0,0,0.3842487635820258,1
+Eukaryota;Chordata;Ascidiacea;Stolidobranchia;Styelidae;Styela;Styela clava,0.13029282421722294,1,0.27944807819796713,0.9098704802916446,0.06850499562832596,0.23250586542446203,0.08303850167756283
+Eukaryota;Chordata;Chondrichthyes;Lamniformes;Alopiidae;;,0.6109055502152595,0,0,0,1,0.0626654380853787,0
+Eukaryota;Chordata;Chondrichthyes;Myliobatiformes;;;,0.345622243682142,0.5343240867854365,0.38991950096918576,1,0.9490164759135362,0.12577758235385886,0.46461193667799894
+Eukaryota;Chordata;Chondrichthyes;Myliobatiformes;Dasyatidae;;,0,0.31030338176408495,0.4981751734569424,0,1,0,0.896414028389133
+Eukaryota;Chordata;Chondrichthyes;Myliobatiformes;Myliobatidae;;,0.011811057558887053,0.10702718234069841,1,0.017536553191599077,0.053398968537890376,0,0.2995054587704371
+Eukaryota;Chordata;Chondrichthyes;Myliobatiformes;Myliobatidae;Myliobatis;Myliobatis californica,0,1,0.6061674432817312,0.27933958646673385,0,0,0
+Eukaryota;Chordata;Mammalia;Carnivora;Otariidae;;,0.5447246459647318,0,0.46360552145979766,1,0.08413288263471691,0.6787602005896455,0
+Eukaryota;Chordata;Mammalia;Cetacea;Delphinidae;;,1,0,0,0.16071251492864927,0,0.13371909402763626,0
+Eukaryota;Cnidaria;;;;;,0.45209937937627515,0.20714222238030647,1,0.29331072298795813,0.3626338484560176,0.8121698829078134,0.20434831607725124
+Eukaryota;Cnidaria;Anthozoa;Actiniaria;Actinostolidae;Paranthus;Paranthus rapiformis,0.3456665823107453,0,0,0.5426417169225967,0.3521787209732924,1,0
+Eukaryota;Cnidaria;Anthozoa;Alcyonacea;;;,0.8563498747698366,0.11049203633720896,0.22943545032089993,0.41334392088869487,0.2110621913401595,1,0.7001648948981377
+Eukaryota;Cnidaria;Anthozoa;Alcyonacea;Plexauridae;Muricea;,1,0,0.6465584954210801,0,0,0,0
+Eukaryota;Cnidaria;Anthozoa;Ceriantharia;Cerianthidae;;,0.011776970401540602,1,0.018784650722672318,0.13908972514496848,0.013675534981052019,0.009966421321623904,0
+Eukaryota;Cnidaria;Anthozoa;Ceriantharia;Cerianthidae;Ceriantheopsis;Ceriantheopsis americana,0.21939612818486193,0,0,0.8247883865777187,1,0.1617874163274865,0
+Eukaryota;Cnidaria;Anthozoa;Ceriantharia;Cerianthidae;Pachycerianthus;Pachycerianthus sp. SS63,0,1,0,0.9393478250793107,0,0,0.3494553628035093
+Eukaryota;Cnidaria;Anthozoa;Pennatulacea;Virgulariidae;Acanthoptilum;Acanthoptilum gracile,0,0,0,0,0,1,0
+Eukaryota;Cnidaria;Cubozoa;Carybdeida;Carybdeidae;Carybdea;Carybdea arborifera,0.8363029124574776,0.36135678736371424,0.7126117079572256,0.25672725994661405,0.9776804076679718,1,0.7079818495784175
+Eukaryota;Cnidaria;Hydrozoa;;;;,0.6485286320054783,0.2132006758422995,1,0.5252109764146001,0.2688932486633854,0.634033242643064,0.2603505065673377
+Eukaryota;Cnidaria;Hydrozoa;Anthoathecata;Bythotiaridae;Bythotiara;Bythotiara murrayi,0,0,0.3896812627071899,0,0.2520858213282514,1,0
+Eukaryota;Cnidaria;Hydrozoa;Anthoathecata;Corynidae;NA;Corynidae sp. BCnid2010-002,1,0,0.606647477185211,0.7936420490303668,0.7396019088825826,0.6882600427893042,0.472400042285271
+Eukaryota;Cnidaria;Hydrozoa;Anthoathecata;Hydridae;Hydra;Hydra canadensis,1,0,0,0,0.7053503291148648,0,0
+Eukaryota;Cnidaria;Hydrozoa;Anthoathecata;Hydridae;Hydra;Hydra vulgaris,0,0,1,0.807032748519755,0,0.221012427735306,0
+Eukaryota;Cnidaria;Hydrozoa;Anthoathecata;Ptilocodiidae;Thecocodium;Thecocodium quadratum,0.8324945723157481,0.2537512895980111,0.5559410881207428,0.6234049652175929,0.8515580782145232,1,0.505582491810209
+Eukaryota;Cnidaria;Hydrozoa;Anthoathecata;Zancleidae;Zanclea;Zanclea sp. MA063,0,0,1,0.4672294859851213,0,0.5981368083947568,0
+Eukaryota;Cnidaria;Hydrozoa;Leptothecata;;;,0.4537231928658758,0.15615373001502109,0.5581777042060609,0.3393442036449806,0.48227617043275084,1,0.23060419602642582
+Eukaryota;Cnidaria;Hydrozoa;Leptothecata;Aequoreidae;Aequorea;,0.5405460241633679,0.2520959677828772,1,0,0.5878237916216311,0.31032489693872156,0.3863988521978108
+Eukaryota;Cnidaria;Hydrozoa;Leptothecata;Aglaopheniidae;Aglaophenia;Aglaophenia tubulifera,0.30325065486025765,0.11666439935990809,1,0.10202162826890308,0.3212466651403725,0.32667659717837827,0.3379555962283608
+Eukaryota;Cnidaria;Hydrozoa;Leptothecata;Aglaopheniidae;Lytocarpia;Lytocarpia miriophyllum,1,0,0,0,0,0,0
+Eukaryota;Cnidaria;Hydrozoa;Leptothecata;Campanulariidae;Campanularia;Campanularia sp. BMBM-0903,0,0,0,0,0.3125102386658612,1,0
+Eukaryota;Cnidaria;Hydrozoa;Leptothecata;Campanulariidae;Clytia;Clytia sp. 3 AFC-2016,0,0,1,0,0,0,0
+Eukaryota;Cnidaria;Hydrozoa;Leptothecata;Halopterididae;Halopteris;Halopteris diaphana,1,0,0.5233402532055517,0.2844416297455414,0.3314132070250557,0.8424376781290945,0.28069544766070237
+Eukaryota;Cnidaria;Hydrozoa;Leptothecata;Kirchenpaueriidae;Kirchenpaueria;Kirchenpaueria halecioides,0,0,1,0,0,0,0
+Eukaryota;Cnidaria;Hydrozoa;Limnomedusae;Olindiasidae;Cubaia;Cubaia aphrodite,0.2940512102914938,0.1574125896511484,0.5038439394403228,0.21745568803148177,0.15298261182550257,1,0.07204098886773583
+Eukaryota;Cnidaria;Hydrozoa;NA;NA;NA;Hydrozoa sp. BOLD:AAZ8616,0.1624156109574172,0.12096321718349579,1,0.2814388769014409,0.08714554366144085,0.16180968280506403,0.057567753063267064
+Eukaryota;Cnidaria;Hydrozoa;Siphonophorae;Agalmatidae;Agalma;Agalma elegans,0,0,0.7223431100209877,1,0.3694352240060659,0.3902477440977127,0
+Eukaryota;Cnidaria;Hydrozoa;Siphonophorae;Apolemiidae;Apolemia;,1,0,0.7891156636823251,0,0.9551619040097129,0,0
+Eukaryota;Cnidaria;Scyphozoa;;;;,0.45391685092624423,0.22841291251472073,0.7346411850439193,0.5982681690757499,0.41622152024909226,1,0.24123413201799918
+Eukaryota;Cnidaria;Scyphozoa;Rhizostomeae;Cassiopeidae;Cassiopea;Cassiopea andromeda,1,0,0.11029954130640199,0,0.4939827220737101,0.9117210956429744,0.9304849317740186
+Eukaryota;Cnidaria;Scyphozoa;Semaeostomeae;Cyaneidae;Cyanea;,0.6564236753880747,0.4722455330257934,1,0,0.42091695952160696,0.5813808536604385,0.274449959930515
+Eukaryota;Cnidaria;Scyphozoa;Semaeostomeae;Cyaneidae;Cyanea;Cyanea tzetlinii,0.8954292187345017,0,1,0,0,0,0
+Eukaryota;Cnidaria;Scyphozoa;Semaeostomeae;Pelagiidae;;,0.6840603871545434,0.3129292092855633,0.7061280641944707,0.6393855287303916,0.7062135727385134,1,0.28020183965399537
+Eukaryota;Cnidaria;Scyphozoa;Semaeostomeae;Pelagiidae;Pelagia;Pelagia sp. Plg_P5,0,0,1,0,0,0,0.29676296480291464
+Eukaryota;Cnidaria;Staurozoa;Stauromedusae;Haliclystidae;Manania;Manania gwilliami,0.43957434374239174,0,1,0,0.522498252419488,0,0
+Eukaryota;Cryptophyta;NA;Pyrenomonadales;Geminigeraceae;Guillardia;Guillardia theta,0,0,1,0,0,0,0
+Eukaryota;Cryptophyta;NA;Pyrenomonadales;Pyrenomonadaceae;Rhodomonas;Rhodomonas salina,0.33901914803553873,0,0.9254929989295759,0.8648352363453885,0,1,0
+Eukaryota;Echinodermata;Asteroidea;;;;,0.3327335027831416,0,0.30457358196942474,0.4971988937750108,0.15774727657765938,0.47349143786023273,1
+Eukaryota;Echinodermata;Asteroidea;Paxillosida;Astropectinidae;;,0.24490769129035542,0,0.8745886140299309,0,1,0.3681750808489899,0.5400894257543691
+Eukaryota;Echinodermata;Crinoidea;Comatulida;Aporometridae;Aporometra;Aporometra wilsoni,0.24073697688532297,0.08331649456761375,0.35010635086596276,0.22633849132565706,0.5453910621499928,1,0.14730666172479506
+Eukaryota;Echinodermata;Echinoidea;;;;,0.544157465503121,0,0.6631975937877461,1,0.7092296628597847,0.3349286194361286,0
+Eukaryota;Echinodermata;Echinoidea;Clypeasteroida;Mellitidae;;,0.21941129024908512,0,0.29762150388750896,0.1970311995071069,0.34715276166679004,0.11269098216640243,1
+Eukaryota;Echinodermata;Ophiuroidea;;;;,0.2543892445818563,0,0.21559254384065432,0,0,0,1
+Eukaryota;Echinodermata;Ophiuroidea;Ophiurida;Amphiuridae;Amphipholis;Amphipholis squamata,0.07199133114018977,0.2975467221938613,0.22462547124484225,0.13242499103483674,0.0091092989645633,0.10634715857237802,1
+Eukaryota;Echinodermata;Ophiuroidea;Ophiurida;Ophiactidae;Ophiactis;Ophiactis simplex,0,0,0.470027279438903,0,0.8871255608377028,0,1
+Eukaryota;Echinodermata;Ophiuroidea;Ophiurida;Ophiactidae;Ophiopholis;Ophiopholis sp. EAC01,0,0.6888383687637532,0.34715784388133886,1,0,0,0.3348172190600471
+Eukaryota;Echinodermata;Ophiuroidea;Ophiurida;Ophiolepididae;Ophiolepis;Ophiolepis cincta,0.4979325421939253,1,0.51202815587658,0,0.26616884818286646,0,0
+Eukaryota;Echinodermata;Ophiuroidea;Ophiurida;Ophiotrichidae;Ophiothrix;Ophiothrix angulata,0.057209559111772036,0.03437384633821068,1,0,0.04175810209146758,0.07225406291346542,0.020420612403221537
+Eukaryota;Echinodermata;Ophiuroidea;Ophiurida;Ophiuridae;Amphiophiura;Amphiophiura gibbosa,0,0,1,0,0,0.1389220974336209,0.4588803330038212
+Eukaryota;Entoprocta;NA;NA;Loxosomatidae;Loxosomella;Loxosomella aloxiata,0,0,0,0.013721493392875268,0,1,0
+Eukaryota;Hemichordata;Enteropneusta;;Harrimaniidae;;,1,0.8395340163512836,0,0.6139824203487672,0,0.16790519725189618,0
+Eukaryota;Hemichordata;Enteropneusta;;Harrimaniidae;Stereobalanus;Stereobalanus canadensis,0.15526695958369652,0,0.022707074568616297,0.042437659115681654,1,0.0950735597731773,0
+Eukaryota;Hemichordata;Enteropneusta;;Ptychoderidae;Balanoglossus;,1,0,0,0,0,0,0
+Eukaryota;Hemichordata;Enteropneusta;NA;Harrimaniidae;Saccoglossus;Saccoglossus pusillus,0.4934060673722836,0,0.04726161252620085,1,0,0.019149906825685164,0
+Eukaryota;Hemichordata;Enteropneusta;NA;Spengelidae;Schizocardium;Schizocardium brasiliense,0.057286517189371076,0.17723157195222794,0,0.2108844796895591,1,0.11377800279921947,0
+Eukaryota;Mollusca;;;;;,0.3649388765199155,0,0.7712915763516804,0,1,0.052086535044278785,0
+Eukaryota;Mollusca;Bivalvia;Lucinoida;Thyasiridae;Thyasira;Thyasira gouldii,0,0,0,0,0,1,0
+Eukaryota;Mollusca;Bivalvia;Myoida;Hiatellidae;Hiatella;Hiatella arctica,1,0.04372718992714775,0.35300346071055,0.07805245124217654,0.06743845079226757,0.03784729359533852,0.819809609742817
+Eukaryota;Mollusca;Bivalvia;Myoida;Myidae;;,0.021053363792046472,0,0.006631599823636564,0,0,0,1
+Eukaryota;Mollusca;Bivalvia;Mytiloida;Mytilidae;;,0.2641621988150594,1,0.2429321157553903,0.541162199199751,0.6337371523916283,0.188936893706513,0.6002089913813399
+Eukaryota;Mollusca;Bivalvia;Mytiloida;Mytilidae;Leiosolenus;Leiosolenus mucronatus,0.07484560586590928,0.11141485432362609,0.13380349591411572,0.34289780435812756,1,0.16305832437667786,0
+Eukaryota;Mollusca;Bivalvia;Mytiloida;Mytilidae;Modiolus;,1,0.7520717360371554,0.19749567619767122,0.34733494332303777,0.8468909240878906,0.941893118007717,0.3217967110850061
+Eukaryota;Mollusca;Bivalvia;Mytiloida;Mytilidae;Modiolus;Modiolus modiolus,0.8682949999849713,0.07123855110672649,1,0.7379366825349548,0.7452241005292906,0.6767139206710197,0
+Eukaryota;Mollusca;Bivalvia;Mytiloida;Mytilidae;Musculista;Musculista senhousia,0,1,0,0.16224205674461123,0,0,0.024142859668361372
+Eukaryota;Mollusca;Bivalvia;Mytiloida;Mytilidae;Mytilus;,0.18839490748178273,0.8639036842927309,1,0.4625896777550596,0.2308460663158384,0.3757238972500106,0.3196139282943089
+Eukaryota;Mollusca;Bivalvia;Mytiloida;Mytilidae;Mytilus;Mytilus californianus,0.19198703052045768,0,0.28335518376643243,0.11665300003261286,1,0.0931346407791019,0.13887087312331026
+Eukaryota;Mollusca;Bivalvia;Mytiloida;Mytilidae;Mytilus;Mytilus chilensis,0.6767674689844557,0.7091698834983684,0.23321552013722852,0.7783002857815846,1,0.22611803997924051,0.1973613561164387
+Eukaryota;Mollusca;Bivalvia;Mytiloida;Mytilidae;Xenostrobus;Xenostrobus securis,0.022147892766693184,0.35033878824368675,6.702024434906011e-4,0.9571632634851013,0.7227778522562115,1,0.0015377136022447081
+Eukaryota;Mollusca;Bivalvia;Ostreoida;Ostreidae;Ostrea;,0.037038075264574505,0.06367887270950076,0.2216010541391315,0.9401142559947514,1,0.4113288413918878,0.05708327189775202
+Eukaryota;Mollusca;Bivalvia;Pectinoida;Pectinidae;;,0.3702101420471297,1,0.09386420922036719,0.30063331687508926,0.6085833689759329,0.06948678946839631,0.1139469845569643
+Eukaryota;Mollusca;Bivalvia;Pholadomyoida;Thraciidae;Thracia;Thracia phaseolina,0,0.836829692794997,0.10303064907130992,0,0,0,1
+Eukaryota;Mollusca;Bivalvia;Veneroida;;;,0.40181393977041946,0.9500904044999181,0.41164730954059475,0.9852610084727926,0.5988581147251687,1,0.112503013830922
+Eukaryota;Mollusca;Bivalvia;Veneroida;Cardiidae;Acanthocardia;,0.15128364270940572,1,0.49013366953155785,0.13807156894003275,0.002670427380419081,0.4130079457070087,0.3579244861775529
+Eukaryota;Mollusca;Bivalvia;Veneroida;Cardiidae;Afrocardium;Afrocardium exochum,0.33182659728874553,0.32596777879513544,0.6642605186572942,0.041004296890890385,0.04182589414673743,0.3038428642166796,1
+Eukaryota;Mollusca;Bivalvia;Veneroida;Cardiidae;Dallocardia;Dallocardia senticosa,0.3722504621204405,0.035343025334106846,0.040744333691200826,1,0,0.2583200197337105,0.7745330019614776
+Eukaryota;Mollusca;Bivalvia;Veneroida;Donacidae;Donax;Donax vittatus,0.6543393296741497,0,0,0,1,0,0
+Eukaryota;Mollusca;Bivalvia;Veneroida;Galeommatidae;Galeomma;Galeomma turtoni,0,0.0053504543850846084,0,0.12104133269638485,0,1,0
+Eukaryota;Mollusca;Bivalvia;Veneroida;Lasaeidae;Lasaea;Lasaea sp.,0.37070124497759205,1,0.03129842436333491,0,0.44301198312502227,0,0
+Eukaryota;Mollusca;Bivalvia;Veneroida;Pharidae;Ensis;,0,0,0.008302538748021985,1,0.016931721528888912,0,0
+Eukaryota;Mollusca;Bivalvia;Veneroida;Semelidae;Theora;Theora lubrica,1,0.7044860239669071,0.1617726605827229,0.3514700502848767,0.07697897418981982,0.1868134401856683,0.11022667653322991
+Eukaryota;Mollusca;Bivalvia;Veneroida;Solenidae;Solen;,1,0.05110177337447262,0.07421239148000508,0.07293542306967901,0.4693487202858447,0.21322419051750519,0.00747279775572046
+Eukaryota;Mollusca;Bivalvia;Veneroida;Tellinidae;;,0.09068375337864129,0.22543399310347426,0.4532209338003528,0.10028330568222572,0.025652218322803313,0.019210769581775908,1
+Eukaryota;Mollusca;Bivalvia;Veneroida;Tellinidae;Limecola;Limecola balthica,0,0,1,0,0.44279512916905767,0.9042363451129044,0
+Eukaryota;Mollusca;Bivalvia;Veneroida;Tellinidae;Macoma;,0,0,1,0,0,0,0
+Eukaryota;Mollusca;Bivalvia;Veneroida;Veneridae;;,0,0.05557238248189426,0,0.07395254521002752,1,0.08428898039180176,0
+Eukaryota;Mollusca;Bivalvia;Veneroida;Veneridae;Chione;Chione elevata,0,0.0532487952189689,0.03520699660529171,1,0,0.006218296449964893,0
+Eukaryota;Mollusca;Bivalvia;Veneroida;Veneridae;Compsomyax;Compsomyax subdiaphana,0,0.005023132970331403,0,0.034273243232556545,1,0.05604646323532914,0
+Eukaryota;Mollusca;Bivalvia;Veneroida;Veneridae;Protothaca;Protothaca jedoensis,0.018762527830672934,1,0.10756216964519817,0.09333297486457352,0.4549608458681416,0.10376918202515195,0.7727793388825571
+Eukaryota;Mollusca;Bivalvia;Veneroida;Veneridae;Ruditapes;Ruditapes philippinarum,0,1,0,0.45509409600438877,0,0,0
+Eukaryota;Mollusca;Bivalvia;Veneroida;Veneridae;Saxidomus;Saxidomus purpuratus,0.078862641503079145,0.1080557027738381,0.11625374681429983,0.05047035270444145,1,0,0.08334684149109779
+Eukaryota;Mollusca;Cephalopoda;Octopoda;Octopodidae;Octopus;,0.15155037717819578,0.9644748474590221,0.4823829639056618,0.2217286759881035,0.10899211054600706,0.28103473444726007,1
+Eukaryota;Mollusca;Cephalopoda;Teuthida;;;,0,0,1,0,0,0,0
+Eukaryota;Mollusca;Gastropoda;;;;,1,0.5995533049606521,0.025512548723953643,0.7897980221148203,0.8044618170203756,0.6957869502422278,0.03346035693944895
+Eukaryota;Mollusca;Gastropoda;;Lottiidae;;,0,0,1,0,0.8957112898619795,0,0.9733825245535599
+Eukaryota;Mollusca;Gastropoda;;Lottiidae;Lottia;,0.05201226629618598,0.5418554410833419,0.252778341137773,0.14211532384964265,0.007032132896581894,0.037300655084840324,1
+Eukaryota;Mollusca;Gastropoda;;Placobranchidae;Thuridilla;,0,1,0,0.568712614269744,0,0.05620627067810518,0
+Eukaryota;Mollusca;Gastropoda;Aplysiida;Aplysiidae;Aplysia;,0.05004310457751205,0,0,1,0,0,0
+Eukaryota;Mollusca;Gastropoda;Cephalaspidea;;;,1,5.255083799302593e-4,0.05965538818916693,0.018182228163067585,0.002234396851343791,0.014468385572555222,0
+Eukaryota;Mollusca;Gastropoda;Cephalaspidea;Bullidae;Bulla;,0.0034196172447326727,0.9703208907039071,0.22071221348945627,0.10140972566860328,0,0,1
+Eukaryota;Mollusca;Gastropoda;Cephalaspidea;Bullidae;Bulla;Bulla gouldiana,0.17094557812204123,0.7782811708409868,1,0.3737835887880971,0,0,0.6651447251115993
+Eukaryota;Mollusca;Gastropoda;Cephalaspidea;Haminoeidae;Haminoea;Haminoea orteai,0.0028282516435512205,0.018285814549366803,0.14304690058655248,0.019676858635766337,0,0,1
+Eukaryota;Mollusca;Gastropoda;Littorinimorpha;Calyptraeidae;Crepidula;,0.015083229387747293,0.030043535967134376,0,0.015631363326367814,0,1,0
+Eukaryota;Mollusca;Gastropoda;NA;Ancylidae;Ancylus;Ancylus fluviatilis,0,0,0,1,0.2282225322045195,0,0
+Eukaryota;Mollusca;Gastropoda;NA;Hermaeidae;Hermaea;Hermaea oliviae,0,1,0,0.27184798403546784,0,0.10568159483491037,0
+Eukaryota;Mollusca;Gastropoda;Neogastropoda;;;,0,0,1,0,0,0,0.8721176759269688
+Eukaryota;Mollusca;Gastropoda;Neogastropoda;Drilliidae;Fenimorea;Fenimorea fucata,0.7212829788961845,0.5820939504904886,1,0.906974884559353,0.5268889940364585,0.9001979873949489,0.3345060688094277
+Eukaryota;Mollusca;Gastropoda;Neogastropoda;Muricidae;Mancinella;Mancinella siro,0.5955223112764733,0,0.7345866190782027,0,1,0,0.7985520673995387
+Eukaryota;Mollusca;Gastropoda;Nudibranchia;;;,0.03144308610460599,0.06836794663914499,1,0.5445440456593403,0.04212068933145271,0.4139811151368482,0.5210404786892565
+Eukaryota;Mollusca;Gastropoda;Nudibranchia;Cuthonellidae;Cuthonella;Cuthonella cocoachroma,0.673034739093411,0,0.4593316798451525,0,1,0,0
+Eukaryota;Mollusca;Gastropoda;Nudibranchia;Dendrodorididae;Doriopsilla;Doriopsilla areolata,0,1,0,0,0,0.06134447923440379,0
+Eukaryota;Mollusca;Gastropoda;Nudibranchia;Glaucidae;Hermissenda;,0.5650319133925644,0,0,0.576556824230259,0,1,0
+Eukaryota;Mollusca;Gastropoda;Nudibranchia;Polyceridae;Polycera;Polycera hedgpethi,0.001289594033786789,1,0.3934136793755984,0.06217617012205691,0.02365000498005802,0.1134036893050018,0.010280322159047645
+Eukaryota;Mollusca;Gastropoda;Nudibranchia;Trinchesiidae;Tenellia;Tenellia sp. E DS-2016,1,0.27944247392195193,0.7323746030330754,0.18627798264074785,0.11110020329167089,0.5955569342643774,0
+Eukaryota;Mollusca;Gastropoda;Trochida;Tegulidae;Tegula;,0.06277092406757831,0,0.2719678248114164,0.2784046139805656,1,0.37399106891644923,0.9274080052160396
+Eukaryota;Mollusca;Gastropoda;Trochida;Turbinidae;;,0.2519382923411903,0,0.2585600686271051,0.13047143899779362,0,0.05866885484222206,1
+Eukaryota;NA;Chrysophyceae;Chromulinales;Chromulinaceae;Pedospumella;Pedospumella sinomuralis,0,0.20051675331870808,0,0.4383737837122631,0.44404818601209795,1,0
+Eukaryota;NA;Chrysophyceae;Chromulinales;Chromulinaceae;Spumella;Spumella sp.,0.8453352764276765,0,1,0,0,0.7480420631041127,0
+Eukaryota;NA;Chrysophyceae;Chromulinales;Dinobryaceae;Dinobryon;Dinobryon divergens,0.4533974363129071,0,1,0.21157561629514926,0.22533617355018354,0.39754436686979566,0
+Eukaryota;NA;Chrysophyceae;Chromulinales;Paraphysomonadaceae;Paraphysomonas;Paraphysomonas sp.,1,0,0.5620410450392396,0,0,0,0
+Eukaryota;NA;Dinophyceae;Gymnodiniales;Gymnodiniaceae;Margalefidinium;Margalefidinium polykrikoides,0.33899083273043257,0.3144508605803993,0.49630502070599714,0.6146164350015437,0.3460503419553986,1,0.2215396326115037
+Eukaryota;NA;Dinophyceae;Gymnodiniales;Kareniaceae;Karlodinium;Karlodinium sp. RS-24,0.6477554510038654,0.36524332749808786,1,0.6390894833781735,0.48352533473107057,0.4418494894272445,0.451697288040589
+Eukaryota;NA;Dinophyceae;Prorocentrales;Prorocentraceae;Prorocentrum;Prorocentrum cassubicum,0,0,1,0,0.9052401333711497,0,0.6834387938354783
+Eukaryota;NA;Dinophyceae;Suessiales;Suessiaceae;Protodinium;Protodinium simplex,1,0,0,0,0.6792262428513514,0,0
+Eukaryota;NA;Eustigmatophyceae;Eustigmatales;Eustigmataceae;Eustigmatos;Eustigmatos magnus,0,0,0,0.9883831272518726,0,1,0
+Eukaryota;NA;Haptophyceae;Isochrysidales;Isochrysidaceae;Isochrysis;Isochrysis galbana,0.8784520000761898,0,0.8530044762447458,0.1512280194702319,0.4794160520689398,1,0.733486054925971
+Eukaryota;NA;Haptophyceae;Isochrysidales;Noelaerhabdaceae;Emiliania;Emiliania huxleyi,0.6096757149030787,0.20612870648972378,1,0.3674521063403858,0.9670204285561057,0.7299639140665133,0.6745102463496043
+Eukaryota;NA;Haptophyceae;Phaeocystales;Phaeocystaceae;Phaeocystis;Phaeocystis antarctica,0.41667834672646326,0,0.9479132543974256,0,1,0.5121126013345216,0.7381457572985177
+Eukaryota;NA;Haptophyceae;Phaeocystales;Phaeocystaceae;Phaeocystis;Phaeocystis pouchetii,0.9113950278866239,0.1745216252946605,0.9591591108484694,0.4986123349720819,0.6680464993882792,1,0.2600197984722354
+Eukaryota;NA;Haptophyceae;Prymnesiales;Chrysochromulinaceae;Chrysochromulina;Chrysochromulina parva,0.559475736557514,0.23867719288119782,1,0.37433543463768587,0.6489902892731516,0.35111510661011064,0.6144317510633365
+Eukaryota;NA;Haptophyceae;Prymnesiales;Chrysochromulinaceae;Chrysochromulina;Chrysochromulina sp. NIES-1333,0.4120660972840942,0.15775197293912782,1,0.16342166207479594,0.44603297660859625,0.2921354968193736,0.29686550084390967
+Eukaryota;NA;Katablepharidophyta;NA;Katablepharidaceae;Leucocryptos;Leucocryptos marina,0.31935310221875857,0.09452932656453379,0.4945120291126492,0.5690690732662296,0.25838167101177417,1,0
+Eukaryota;NA;Labyrinthulomycetes;NA;Thraustochytriaceae;Aurantiochytrium;Aurantiochytrium limacinum,0.21824421602325833,1,0.44562994688748275,0.9742938007147016,0.19523923754072897,0.9326551717887747,0
+Eukaryota;NA;Labyrinthulomycetes;NA;Thraustochytriaceae;Botryochytrium;Botryochytrium radiatum,0.7347208626209347,0,0.7952384287098578,0.7321356498162019,0.5172949915523792,1,0.4938040345914739
+Eukaryota;NA;NA;Cercomonadida;Cercomonadidae;Paracercomonas;Paracercomonas marina,0.5284958712933336,0,1,0,0.11965608834034078,0,0
+Eukaryota;NA;Oomycetes;Lagenidiales;Lagenidiaceae;Lagenidium;Lagenidium sp. PWL-2010f,0.6279633482034168,0,1,0,0,0,0.3128729543207871
+Eukaryota;NA;Oomycetes;Myzocytiopsidales;Myzocytiopsidaceae;Chlamydomyzium;Chlamydomyzium dictyuchoides,1,0,0.8355819338796298,0.1600432431844235,0.8958887149395948,0.5790020321944241,0.44287503964244157
+Eukaryota;NA;Oomycetes;NA;NA;Haptoglossa;Haptoglossa sp. DM2 4/12,0.7033189499878267,0,1,0.6541212803791697,0,0.26742503755972025,0
+Eukaryota;NA;Oomycetes;NA;NA;Haptoglossa;Haptoglossa zoospora,0,0.3362772484252486,1,0,0.05749498144384328,0.0629686308750365,0.07892290739623459
+Eukaryota;NA;Oomycetes;Peronosporales;Peronosporaceae;Phytophthora;Phytophthora obscura,0,0,0,0,1,0,0.7335323463154018
+Eukaryota;NA;Oomycetes;Peronosporales;Peronosporaceae;Phytophthora;Phytophthora palmivora,0,0,0,0,0,0,1
+Eukaryota;NA;Oomycetes;Peronosporales;Peronosporaceae;Phytophthora;Phytophthora sp. B106,0.6734219744201624,0,1,0.14866392735890224,0.38169515192982084,0.8165181357998803,0.5419970875355049
+Eukaryota;NA;Oomycetes;Pythiales;Pythiaceae;Halophytophthora;Halophytophthora bahamensis,0.5864641583833169,0,0.37232476968431216,0.17396111075912982,0.27791291641791643,1,0
+Eukaryota;NA;Oomycetes;Pythiales;Pythiaceae;Phytopythium;Phytopythium chamaehyphon,1,0,0,0,0.9056349904684685,0,0
+Eukaryota;NA;Oomycetes;Pythiales;Pythiaceae;Pythium;Pythium pachycaule,0.3339673160895782,0.2693545073607498,0.5507537379779345,1,0.3015797746988293,0.869871955664516,0.14739043717352338
+Eukaryota;NA;Oomycetes;Pythiales;Pythiaceae;Pythium;Pythium rostratum,0.36054144346020583,0.4003296839367129,1,0.749896291866059,0.2360507790377447,0.3398280775543599,0
+Eukaryota;NA;Oomycetes;Saprolegniales;Saprolegniaceae;Achlya;Achlya hypogyna,0,1,0.7087578678406808,0,0.5812857586039386,0,0.7665472474399558
+Eukaryota;NA;Oomycetes;Saprolegniales;Saprolegniaceae;Achlya;Achlya papillosa,0.6684884609151467,0,0,0.8575267695593711,0.4410819083912525,1,0
+Eukaryota;NA;Oomycetes;Saprolegniales;Saprolegniaceae;Achlya;Achlya recurva,0,0,0.5609048478361067,0.5765568242302589,0.9420165088970933,1,0.7643649675494558
+Eukaryota;NA;Oomycetes;Saprolegniales;Saprolegniaceae;Saprolegnia;Saprolegnia diclina,0.637477944388317,0,1,0.7220819328860966,0.3901772664171502,0.9245686560260301,0.5088135923802699
+Eukaryota;NA;Phaeophyceae;Desmarestiales;Desmarestiaceae;Desmarestia;Desmarestia antarctica,0,0,0.925492998929576,0,0,1,0
+Eukaryota;NA;Phaeophyceae;Dictyotales;Dictyotaceae;Dictyota;Dictyota crenulata 3 AT-2012,0.7516829050076363,0,0,0,0.14488943058192497,1,0
+Eukaryota;NA;Phaeophyceae;Dictyotales;Dictyotaceae;Dictyota;Dictyota hamifera,0,0,0,0,0,1,0
+Eukaryota;NA;Phaeophyceae;Dictyotales;Dictyotaceae;Dictyota;Dictyota humifusa,0.7578867995558479,0,1,0.9666816951416303,0.8922794458395199,0,0
+Eukaryota;NA;Phaeophyceae;Ectocarpales;Acinetosporaceae;NA;Acinetosporaceae sp. 11 AP-2014,0.2664196474820253,0,1,0.22992608915583598,0.11985171967211589,0.18326825490660653,0
+Eukaryota;NA;Phaeophyceae;Ectocarpales;Chordariaceae;Hecatonema;Hecatonema maculans,0.147970009813019,0,0.046527736555297114,1,0,0.6101370087781542,0.1564538959507642
+Eukaryota;NA;Phaeophyceae;Ectocarpales;Chordariaceae;Punctaria;Punctaria latifolia,1,0,0.5713772750232801,0,0.4738787740823382,0,0.18538955147823136
+Eukaryota;NA;Phaeophyceae;Ectocarpales;Chordariaceae;Vimineoleathesia;Vimineoleathesia japonica,0.5172506658629819,0,1,0.14004153530889193,0.7878296232193971,0.49550143199076224,0.4774083226693209
+Eukaryota;NA;Phaeophyceae;Ectocarpales;NA;NA;Ectocarpoid sp. 1BC,0.390851365310539,0.26107710901674336,0.5257696433604931,1,0.37137795540294255,0.6998315345543132,0.25275417517278065
+Eukaryota;NA;Phaeophyceae;Ectocarpales;Scytosiphonaceae;Colpomenia;Colpomenia sp. 1WA,0.9594011264134974,0,0.637981568423109,0.5961676005646215,0.35088868902833537,1,0
+Eukaryota;NA;Phaeophyceae;Ectocarpales;Scytosiphonaceae;Diplura;Diplura sp. F PEL-2013,0.1906198004795287,0.15872007057222742,0.5147715499141717,0.24234930916797323,0.10390860752774178,1,0.05143171949357878
+Eukaryota;NA;Phaeophyceae;Ectocarpales;Scytosiphonaceae;Hydroclathrus;Hydroclathrus stephanosorus,0.8093749821288483,0,1,0,0.4691821042134179,0.41676629230086276,0
+Eukaryota;NA;Phaeophyceae;Fucales;Sargassaceae;Sargassum;Sargassum horneri,1,0,0.8388797145451745,0.7573258391975041,0,0,0
+Eukaryota;NA;Phaeophyceae;Laminariales;Lessoniaceae;Egregia;Egregia menziesii,0.42267322352482745,0.26150530914368986,0.49224764241791663,0.8093399542005087,0.3420548402998702,1,0.15190123476894504
+Eukaryota;NA;Raphidophyceae;Chattonellales;Chattonellaceae;Fibrocapsa;Fibrocapsa japonica,0.7868238925004002,0.0766406041693654,1,0.17151008058578018,0.07579229130075675,0.39463445953199366,0.018570042816039353
+Eukaryota;NA;Synurophyceae;Parmales;Triparmaceae;Triparma;Triparma laevis,0.6670856654237576,0.16554997160145424,1,0.31624099631225827,0.4528181916330245,0.5719687083057561,0.2477512495935046
+Eukaryota;NA;Synurophyceae;Synurales;Mallomonadaceae;Mallomonas;Mallomonas sp.,0.5426843749906071,0,1,0.6921918310890686,0.22116328144740235,0.6002806679230532,0
+Eukaryota;NA;Synurophyceae;Synurales;Mallomonadaceae;Synura;Synura synuroidea,0,0,0.35555663235712526,0.6058732729199331,0,1,0
+Eukaryota;Nemertea;Enopla;Monostilifera;;;,0.017519438687459036,0.1788161216821295,1,0.0072727062950126474,0.09852358374920946,0.004577672943732128,0.04261297769289108
+Eukaryota;Nemertea;Enopla;Monostilifera;Poseidonemertidae;Poseidonemertes;Poseidonemertes collaris,0.002923939391238777,0.007864553003249375,0.0028023948019035697,0.10318945438769613,0.0013396796795391997,0.1157117246824462,1
+Eukaryota;Nemertea;Palaeonemertea;;Cephalothricidae;Cephalothrix;,0.25364341063861057,1,0.4452190601662408,0.14837752593349407,0,0.054497877430913805,0.5261032405582288
+Eukaryota;Nemertea;Palaeonemertea;;Tubulanidae;Tubulanus;,0.6329820148729974,0.19051238859718375,0.7336939663262282,0.7909638605723049,1,0.01666023084903941,0.036221796120143854
+Eukaryota;Nemertea;Palaeonemertea;;Tubulanidae;Tubulanus;Tubulanus punctatus,0.8624095022191243,0,0.08561103526174668,1,0,0,0
+Eukaryota;Nemertea;Palaeonemertea;;Tubulanidae;Tubulanus;Tubulanus sp. 1 TCH-2015,0.009870633612832802,0.06923804506276529,0.015891217445449034,0.21230314257727514,0.8630678570260023,1,0.011529118028780686
+Eukaryota;Nemertea;Palaeonemertea;;Tubulanidae;Tubulanus;Tubulanus sp. 3 TCH-2015,0.28982100980696435,0.01130258752987723,0.006991827575708735,0.48068452063197703,1,0.00965187285097345,0.0064816407398919675
+Eukaryota;Nemertea;Palaeonemertea;NA;Carinomidae;Carinoma;Carinoma tremaphoros,1,0,0.332953044183605,0.021117485930916807,0,0,0
+Eukaryota;Nemertea;Pilidiophora;;Hubrechtidae;Hubrechtella;Hubrechtella juliae,0.2118038170529021,0.0011492717843114258,0.13284946359919356,0.009831761339627819,1,0.022073572474275768,0
+Eukaryota;Nemertea;Pilidiophora;Heteronemertea;;;,0,0.1400667977668821,0.18236899515000551,0,0,0.14778798599308687,1
+Eukaryota;Nemertea;Pilidiophora;Heteronemertea;;;Heteronemertea gen. sp. 4 TCH-2015,0.031302178743871485,0,0,0.04477555357957709,1,0.02836457903607783,0.10420711770678863
+Eukaryota;Nemertea;Pilidiophora;Heteronemertea;Cerebratulidae;Cerebratulus;,1,0.3559487801050956,0,0,0,0.028939505536718046,0
+Eukaryota;Nemertea;Pilidiophora;Heteronemertea;Cerebratulidae;Cerebratulus;Cerebratulus albifrons,1,0,0.7522027688115303,0.443561962498943,0.03428786322086149,0.3201401881724288,0
+Eukaryota;Nemertea;Pilidiophora;Heteronemertea;Lineidae;;,1,0,0.06422181455141959,0.004091771645712485,0.00326842070165505,0.011828182622979869,0
+Eukaryota;Nemertea;Pilidiophora;Heteronemertea;Lineidae;Maculaura;,0,0.004512048339740324,0,1,9.028081569106997e-4,0,0
+Eukaryota;Nemertea;Pilidiophora;Heteronemertea;Lineidae;Micrura;Micrura sp. albocephala,0,0,0,0,0,1,0
+Eukaryota;Nemertea;Pilidiophora;Heteronemertea;Lineidae;Micrura;Micrura sp. not coei,0,0.29554981171176714,1,0,0.29762558682122736,0.04103184312385427,0
+Eukaryota;Nemertea;Pilidiophora;Heteronemertea;NA;NA;Heteronemertea gen. sp. 15 TCH-2015,0,0,0,0,0,0,1
+Eukaryota;Porifera;;;;;,0.9425207307006439,0.06898625268339538,1,0.4817647824117318,0.2803510643177918,0.4066535177807102,0.6434601495264171
+Eukaryota;Porifera;Demospongiae;;;;,0.6770427382347571,1,0.5089986371348038,0.5687521138813075,0.7895731320287515,0.3597436645621799,0.8466351312622822
+Eukaryota;Porifera;Demospongiae;Agelasida;Agelasidae;Agelas;Agelas schmidti,0.29772588960961766,0,0.2214161643028001,0.13001420188037144,1,0.12875385763803412,0.19003853081538052
+Eukaryota;Porifera;Demospongiae;Axinellida;;;,0.6115344263970998,0,0,0,0,0,1
+Eukaryota;Porifera;Demospongiae;Bubarida;Dictyonellidae;Scopalina;Scopalina ruetzleri,1,0,0.9974684480641448,0,0.7641295232077704,0.7870556121182636,0.7665144916888413
+Eukaryota;Porifera;Demospongiae;Clionaida;Clionaidae;Clionaopsis;Clionaopsis platei,0.48216056609498836,0,0.8775044730591536,0,0.5731181920796143,1,0.6406106394700202
+Eukaryota;Porifera;Demospongiae;Desmacellida;Desmacellidae;Desmacella;Desmacella cf. annexa BELUM<GBR> Mc4240,0.6220386982375185,0.5789921252077694,0.8112797654209195,0.49308226718682086,0.4566337803127836,1,0.3670165121963658
+Eukaryota;Porifera;Demospongiae;Haplosclerida;;;,0.5435570332820494,0.8465428723168245,1,0.30705142657983686,0.20158326588063932,0.15566197747404154,0.44456434271538536
+Eukaryota;Porifera;Demospongiae;Haplosclerida;Chalinidae;Haliclona;Haliclona simulans,0.3238296549834656,0,0,1,0.4862132207835414,0.30164076838470544,0.573664285152802
+Eukaryota;Porifera;Demospongiae;Poecilosclerida;;;,0.10168304741392184,0,0.11687829003693449,0,1,0.6263075683147648,0.11139713325037003
+Eukaryota;Porifera;Demospongiae;Poecilosclerida;Crellidae;Crella;Crella elegans,1,0,0.17389175972740462,0,0,0,0
+Eukaryota;Porifera;Demospongiae;Poecilosclerida;Microcionidae;Clathria;,0.5991966337372312,0.23804078237362616,0,0,0.5997748521763406,1,0.1440326428677598
+Eukaryota;Porifera;Demospongiae;Poecilosclerida;Tedaniidae;Tedania;Tedania ignis,0.3336089561816713,1,0.5763530588383535,0.7403780916057368,0.472074912268412,0.6072995633170413,0.3842166519681466
+Eukaryota;Porifera;Demospongiae;Poecilosclerida;Tedaniidae;Tedania;Tedania klausi,1,0,0.7002821964898848,0.32164685527472936,0.5758657276348413,0.418406532223622,0.774068547548963
+Eukaryota;Porifera;Demospongiae;Suberitida;Halichondriidae;;,0.42843786840900594,1,0.13625129103599196,0.2385481959167143,0.16401387401248105,0.1628435999966226,0.31072055150480704
+Eukaryota;Porifera;Demospongiae;Suberitida;Halichondriidae;Halichondria;,0.046072544612609484,0.12106726579494956,0.04976809853069553,0.8953877033885573,0.059191209651496365,0.03375696053744701,1
+Eukaryota;Porifera;Demospongiae;Tethyida;Tethyidae;Tethya;Tethya aurantium,0.33796137283897804,0.13465723827012838,1,0.26780663257997755,0.17983815967695022,0.5066161843936803,0.09599565586976486
+Eukaryota;Porifera;Demospongiae;Verongiida;Aplysinidae;Aplysina;,0.5494679296779896,0,1,0.8282704524281695,0,0.663037283205918,0.5973029127942299
+Eukaryota;Porifera;Demospongiae;Verongiida;Aplysinidae;Aplysina;Aplysina cauliformis,0.28948375214063893,0,0.5005015755783485,0,0.3932499226659961,0.138756497960176,1
+Eukaryota;Porifera;Homoscleromorpha;Homosclerophorida;Plakinidae;;,0.5212900871304005,0,1,0.5031702156762845,0,0.43635787014406563,0.4492534728708738
+Eukaryota;Porifera;Homoscleromorpha;Homosclerophorida;Plakinidae;Oscarella;,0.9081980846456632,0,0.47548264165189214,0.19042243736045247,0,1,0
+Eukaryota;Rhodophyta;Florideophyceae;;;;,0.5195778918367102,0,1,0.339065842260036,0.3219058438949062,0.5990541329044605,0.1641080876658587
+Eukaryota;Rhodophyta;Florideophyceae;Batrachospermales;Batrachospermaceae;Kumanoa;Kumanoa gracillima,0.5327838673945279,0.34695182118649665,1,0.41954245037476273,0.14653426602693465,0.5106841711493847,0.1425537567413618
+Eukaryota;Rhodophyta;Florideophyceae;Batrachospermales;Batrachospermaceae;Sheathia;Sheathia involuta,0.35875042120162826,0,0.528853142245472,0.30200595554918325,0.3070276028997934,1,0
+Eukaryota;Rhodophyta;Florideophyceae;Ceramiales;Ceramiaceae;Aglaothamnion;Aglaothamnion callophyllidicola,0.47144395510767023,0,1,0.4503923873910629,0.35416011961509697,0.4672454928698361,0.3902299310147155
+Eukaryota;Rhodophyta;Florideophyceae;Ceramiales;Dasyaceae;Rhodoptilum;Rhodoptilum plumosum,0,1,0,0.6709627321995076,0,0,0.2096732176821056
+Eukaryota;Rhodophyta;Florideophyceae;Ceramiales;Delesseriaceae;Cryptopleura;Cryptopleura ruprechtiana,0.9060083026257457,0,0.3091655537419296,0,1,0.970847312299176,0
+Eukaryota;Rhodophyta;Florideophyceae;Ceramiales;Rhodomelaceae;Chondrophycus;Chondrophycus succisus,0,0,1,0.36765598897189883,0,0,0
+Eukaryota;Rhodophyta;Florideophyceae;Ceramiales;Rhodomelaceae;Laurencia;Laurencia pacifica,0.2819680190668588,0.5883141092073203,0.5350689703859168,1,0.5339206082363626,0.7188774233378917,0.46600291307772634
+Eukaryota;Rhodophyta;Florideophyceae;Ceramiales;Rhodomelaceae;Neosiphonia;,0,0,0,0,0.836650217901937,1,0
+Eukaryota;Rhodophyta;Florideophyceae;Ceramiales;Rhodomelaceae;Neosiphonia;Neosiphonia yendoi,0,1,0,0,0.5627483905585718,0.8229310339312719,0
+Eukaryota;Rhodophyta;Florideophyceae;Ceramiales;Rhodomelaceae;Polysiphonia;Polysiphonia sp. 23GWS,0,0,0,0,0,1,0
+Eukaryota;Rhodophyta;Florideophyceae;Ceramiales;Spyridiaceae;Spyridia;Spyridia filamentosa,0,1,0,0,0,0,0
+Eukaryota;Rhodophyta;Florideophyceae;Gelidiales;Gelidiellaceae;Parviphycus;Parviphycus sp. GHB-2016b,0.42597251798954644,0.06160227794925756,1,0.06415574470412781,0.651115809276643,0.11392331106802858,0.35482517854588286
+Eukaryota;Rhodophyta;Florideophyceae;Gelidiales;Pterocladiaceae;Pterocladia;Pterocladia rectangularis,0.41864223213561125,0,1,0,0.13329037051517556,0.31836313995204796,0.24334563113839
+Eukaryota;Rhodophyta;Florideophyceae;Gigartinales;Gigartinaceae;Chondracanthus;Chondracanthus acicularis,0.5573590034980062,0,1,0,0.45252903569967,0.14149472886757686,0.1699556788903041
+Eukaryota;Rhodophyta;Florideophyceae;Gigartinales;Kallymeniaceae;;,0.5698185937401374,0,1,0.776925658687903,0.460439073013342,0.7389662015466554,0
+Eukaryota;Rhodophyta;Florideophyceae;Gigartinales;Peyssonneliaceae;Incendia;Incendia crenata,0.8162155215912059,0,0.6184826487370085,0,0.5793882193945675,0.9928798298483703,1
+Eukaryota;Rhodophyta;Florideophyceae;Gigartinales;Phyllophoraceae;NA;Phyllophoraceae sp. 1 DWF-2013,0.35921500022664404,0.24174393572282593,1,0.3584645892476013,0.10033924285339116,0.2285002804782508,0.07978545283225902
+Eukaryota;Rhodophyta;Florideophyceae;Gigartinales;Rhizophyllidaceae;Portieria;Portieria cf. hornemannii sp.41 FL-2018,0.9647382261052838,0,0.45089762716015336,0.7421423481441395,0.7325513527798104,1,0.5860257363663895
+Eukaryota;Rhodophyta;Florideophyceae;Gracilariales;Gracilariaceae;Gracilaria;,0,0,0.5484402956619711,0,0.6012623890120954,1,0
+Eukaryota;Rhodophyta;Florideophyceae;Hapalidiales;Hapalidiaceae;Neopolyporolithon;Neopolyporolithon reclinatum,0.94061278640659,0.6360827528964544,0.7307549452081972,0.8962544257556178,1,0.9088446817320079,0.8298547756295456
+Eukaryota;Rhodophyta;Florideophyceae;Palmariales;Palmariaceae;;,0.7595586086725151,0,1,0,0.9165673125425895,0,0.6065747717346633
+Eukaryota;Rhodophyta;Florideophyceae;Palmariales;Palmariaceae;Devaleraea;Devaleraea mollis,0.5978644975159904,0,1,0.0622617879957394,0.24037810099513549,0.48221236582134275,0.18957677870006692
+Eukaryota;Rhodophyta;Florideophyceae;Palmariales;Palmariaceae;Halosaccion;Halosaccion americanum,0,0,0,0,1,0,0.4945338845797878
+Eukaryota;Rhodophyta;Florideophyceae;Plocamiales;Plocamiaceae;Plocamium;Plocamium sp. 1cirrhosum,0,0,0,0,1,0,0
+Eukaryota;Rotifera;Monogononta;Ploima;Synchaetidae;Synchaeta;,0.6467496094023315,0,0.5326243401929965,0,0.2597947516053318,0.33654126550495045,1
+Eukaryota;Rotifera;Monogononta;Ploima;Synchaetidae;Synchaeta;Synchaeta cf. pectinata,0.5258176097675783,0.7424162088645344,0.56082721403688,1,0.43159066643961896,0.21974562979098045,0.7248267732824359
+Eukaryota;Rotifera;Monogononta;Ploima;Synchaetidae;Synchaeta;Synchaeta kitina,0.38827094472202994,0.4133030212582519,0.21402758815436668,1,0,0.4884733667617628,0
+Eukaryota;Streptophyta;Liliopsida;Poales;Poaceae;Coix;Coix lacryma-jobi,0.46621521306011243,0,1,0,0.8651756777075938,0,0.9607411930658514

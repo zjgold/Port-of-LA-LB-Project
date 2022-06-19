@@ -1,0 +1,1978 @@
+---
+title: "Ports Data Analysis"
+author: "Zack Gold"
+date: "02/20/2021"
+output: html_document
+indent: true
+header-includes:
+  - \setlength{\parindent}{4em}
+  - \setlength{\parskip}{0em} 
+---
+<br />
+
+```{r load libraries, results="hide", warning=FALSE, include=FALSE}
+library(ape)
+#library(ampvis2)
+library(biomformat)
+library(colorspace)
+library(cluster)
+library(dendextend)
+library(dynamicTreeCut)
+library(dplyr)
+#library(gradientForest)
+library(grid)
+library(gridExtra)
+library(gridBase)
+library(ggfortify)
+#library(ggbiplot)
+library(ggrepel)
+library(ggplot2)
+library(knitr)
+library(iNEXT)
+#library(microbiomeSeq)
+library(multcompView)
+library(optparse)
+library(phyloseq)
+library(proxy)
+library(plotly)
+library(readr)
+library(RColorBrewer)
+library(reshape2)
+library(vegan)
+library(R.utils)
+library(scales)
+library(tibble)
+library(tidyverse)
+library(treemapify)
+library(ggpmisc)
+library(wesanderson) 
+library(VennDiagram)
+library(here)
+library(patchwork)
+```
+
+
+```{r Import Data}
+#For community ecology and richness tabulation
+ports_post_eidx <- readRDS(file =here("decontamination","Output_R","post_occupancy_results_sum.taxonomy_tech_reps_summed_eDNA_index.RDS"))
+                           
+ports_post_reads <- readRDS(file =here("decontamination","Output_R","post_occupancy_results_sum.taxonomy_tech_reps_summed_read_counts.RDS"))
+
+ports_pre_reads <- readRDS(file =here("decontamination","Output_R","pre_occupancy_results_sum.taxonomy_tech_reps_summed_read_counts.RDS"))
+
+ports_post_eidx_sites <- readRDS(file =here("decontamination","Output_R","post_occ_site_averaged_sum.taxonomy_e_index.RDS"))
+
+ports_pre_eidx_sites <- readRDS(file =here("decontamination","Output_R","pre_occ_site_averaged_sum.taxonomy_e_index.RDS"))
+
+#Trawl Data
+abundance_trawl <- read.table(here("data","abundance_trawl.txt"), header = 1, sep = "\t", stringsAsFactors = F)
+biomass_trawl <- read.table(here("data","biomass_trawl.txt"), header = 1, sep = "\t", stringsAsFactors = F)
+
+#Metadata
+input_meta_path <- here("data","la_ports_meta_data.txt")
+metadata <- read.table(input_meta_path, header = 1, sep = "\t", stringsAsFactors = F)
+
+#Load In All data
+ASV.nested <- readRDS(file=here("decontamination","ASV.nested_final.RDS"))
+
+ASV.nested_old <- readRDS(file=here("data","Anacapa_output_old","decontamination","ASV.nested_final.RDS"))
+
+ASV.nested_co1_16S <- readRDS(file=here("data","invert","decontamination","ASV.nested_final.RDS"))
+
+
+#CA Fish Species
+input_CA_path <- here("data","CA_fish_list_20210216.csv")
+CA_fish_list <- read.table(input_CA_path, header = 1, sep = ",", stringsAsFactors = F)
+
+```
+<br />
+<br />
+
+```{r}
+head(metadata)
+```
+
+# General Taxonomic Comparisons
+## Comparison of Elas vs. MiFish
+```{r}
+
+ASV.nested$Step4.tibble[[1]] -> elas_asv_table
+ASV.nested$Step4.tibble[[2]] -> mifish_asv_table
+
+
+elas_asv_table %>% 
+  dplyr::select(sum.taxonomy) %>% 
+  distinct() %>% 
+  separate(sum.taxonomy, into=c("Domain","Phylum","Class","Order","Family","Genus","Species"), sep =";", remove =F) -> elas_tax
+  
+mifish_asv_table %>% 
+  dplyr::select(sum.taxonomy) %>% 
+  distinct() %>% 
+  separate(sum.taxonomy, into=c("Domain","Phylum","Class","Order","Family","Genus","Species"), sep =";", remove =F) -> mifish_tax
+
+#Shared
+intersect(elas_tax$sum.taxonomy,mifish_tax$sum.taxonomy) -> shared_fishes
+
+#Unique Elas
+setdiff(elas_tax$sum.taxonomy,mifish_tax$sum.taxonomy) -> unique_elas
+
+#Unique MiFish
+setdiff(mifish_tax$sum.taxonomy,elas_tax$sum.taxonomy) -> unique_mifish
+
+#Shared taxa
+elas_tax %>% 
+  filter(., sum.taxonomy %in% shared_fishes) %>% 
+  dplyr::summarise(n_distinct(Species)-1,n_distinct(Genus)-1,n_distinct(Family))
+```
+
+```{r}
+#Additional Elas Species
+elas_tax %>% 
+  filter(., Species != "") %>% 
+  filter(., !sum.taxonomy %in% shared_fishes) %>% 
+  dplyr::summarise(n_distinct(Species))
+
+#Additional Elas Genera
+elas_tax %>% 
+  filter(., !sum.taxonomy %in% shared_fishes) %>% 
+  filter(., !Genus %in% mifish_tax$Genus)
+
+#Additional Elas Families
+elas_tax %>% 
+  filter(., !sum.taxonomy %in% shared_fishes) %>% 
+  filter(., !Family %in% mifish_tax$Family)
+
+#Additional Mifish Species
+mifish_tax %>% 
+  filter(., Species != "") %>% 
+  filter(., !sum.taxonomy %in% shared_fishes) %>% 
+  dplyr::summarise(n_distinct(Species))
+
+#Additional Mifish Genera
+mifish_tax %>% 
+  filter(., !sum.taxonomy %in% shared_fishes) %>% 
+  filter(., !Genus %in% mifish_tax$Genus)
+
+#Additional Mifish Families
+mifish_tax %>% 
+  filter(., !sum.taxonomy %in% shared_fishes) %>% 
+  filter(., !Family %in% mifish_tax$Family)
+
+
+#Shared MiFish & Elas 
+elas_tax %>% 
+  filter(., sum.taxonomy %in% shared_fishes) %>% 
+  dplyr::summarise(n_distinct(Species),n_distinct(Genus),n_distinct(Family))
+
+```
+
+## Old vs. New Species
+```{r}
+
+ASV.nested_old$Step4.tibble[[2]] -> mifish_asv_table_old
+
+mifish_asv_table_old -> fish_old
+
+mifish_asv_table -> fish_new
+
+setdiff(fish_new$sum.taxonomy,fish_old$sum.taxonomy) -> fish_old_missed
+
+setdiff(fish_old$sum.taxonomy,fish_new$sum.taxonomy) -> old_not_in_new
+
+
+fish_new %>% 
+  filter(., sum.taxonomy %in% fish_old_missed) %>% 
+ dplyr::select(sum.taxonomy) %>% 
+  distinct() %>% 
+  separate(sum.taxonomy, into=c("Domain","Phylum","Class","Order","Family","Genus","Species"), sep =";", remove =F) %>% 
+  filter(., Species !="") %>% 
+  dplyr::summarise(n_distinct(Species))
+
+fish_new %>% 
+  filter(., sum.taxonomy %in% fish_old_missed) %>% 
+ dplyr::select(sum.taxonomy) %>% 
+  distinct() %>% 
+  separate(sum.taxonomy, into=c("Domain","Phylum","Class","Order","Family","Genus","Species"), sep =";", remove =F) %>% 
+  filter(., Species %in% abundance_trawl$Scientific)
+
+
+fish_old %>% 
+  dplyr::select(sum.taxonomy) %>% 
+  distinct() %>% 
+  separate(sum.taxonomy, into=c("Domain","Phylum","Class","Order","Family","Genus","Species"), sep =";", remove =F) %>% 
+  filter(., Species %in% CA_fish_list$Walker_Miller_Lea_Combo_20210216)-> old_unique_species
+
+old_unique_species%>% 
+  dplyr::summarise(n_distinct(Species))
+
+fish_new %>% 
+  dplyr::select(sum.taxonomy) %>% 
+  distinct() %>% 
+  separate(sum.taxonomy, into=c("Domain","Phylum","Class","Order","Family","Genus","Species"), sep =";", remove =F) %>% 
+  filter(., Species %in% CA_fish_list$Walker_Miller_Lea_Combo_20210216) -> new_unique_species
+
+new_unique_species %>% 
+  dplyr::summarise(n_distinct(Species))
+
+ 
+setdiff(old_unique_species$Species,new_unique_species$Species) -> old_CA_species_unique
+setdiff(new_unique_species$Species,old_unique_species$Species) 
+
+fish_old %>% 
+    separate(sum.taxonomy, into=c("Domain","Phylum","Class","Order","Family","Genus","Species"), sep =";", remove =F) %>% 
+  filter(., Species %in% old_CA_species_unique) %>% 
+  dplyr::select(seq_number, old_tax = sum.taxonomy) %>% 
+  distinct() -> old_asvs_CA_unique
+
+
+fish_new %>% 
+    separate(sum.taxonomy, into=c("Domain","Phylum","Class","Order","Family","Genus","Species"), sep =";", remove =F) %>% 
+  dplyr::select(seq_number, new_tax = sum.taxonomy) %>%  distinct() %>% 
+  mutate(., seq_number=str_remove(seq_number,"fishcard_"),
+         seq_number=str_remove(seq_number,"all_"))-> new_hash
+
+old_asvs_CA_unique %>% 
+  left_join(new_hash)
+
+```
+
+## Comparison of CO1 vs. 16S vs. MiFish
+```{r}
+
+ASV.nested_co1_16S$Step4.tibble[[1]] -> co1_asv_table
+ASV.nested_co1_16S$Step4.tibble[[2]] -> M16S_asv_table
+
+
+fish_new %>% 
+  dplyr::select(sum.taxonomy) %>% 
+  distinct() %>% 
+  separate(sum.taxonomy, into=c("Domain","Phylum","Class","Order","Family","Genus","Species"), sep =";", remove =F) -> fish_new_tax
+  
+co1_asv_table %>% 
+  dplyr::select(sum.taxonomy) %>% 
+  distinct() %>% 
+  separate(sum.taxonomy, into=c("Domain","Phylum","Class","Order","Family","Genus","Species"), sep =";", remove =F) -> co1_tax
+
+M16S_asv_table %>% 
+  dplyr::select(sum.taxonomy) %>% 
+  distinct() %>% 
+  separate(sum.taxonomy, into=c("Domain","Phylum","Class","Order","Family","Genus","Species"), sep =";", remove =F) -> M16S_tax
+
+#Shared
+intersect(fish_new_tax$sum.taxonomy,co1_tax$sum.taxonomy) 
+intersect(fish_new_tax$sum.taxonomy,M16S_tax$sum.taxonomy) 
+
+intersect(co1_tax$sum.taxonomy,M16S_tax$sum.taxonomy) -> shared_uni
+
+#Unique Co1
+setdiff(co1_tax$sum.taxonomy,M16S_tax$sum.taxonomy) 
+
+#Unique 16S
+setdiff(M16S_tax$sum.taxonomy,co1_tax$sum.taxonomy)
+
+#Shared taxa
+co1_tax %>% 
+  filter(., sum.taxonomy %in% shared_uni) %>% 
+  dplyr::summarise(n_distinct(Species),n_distinct(Genus),n_distinct(Family))
+
+```
+
+```{r}
+
+
+# Co1 unique taxa
+co1_tax %>% 
+  filter(., !sum.taxonomy %in% shared_uni) %>% 
+  dplyr::summarise(n_distinct(Species),n_distinct(Genus),n_distinct(Family), n_distinct(Class),n_distinct(Phylum))
+
+# 16S unique taxa
+M16S_tax %>% 
+  filter(., !sum.taxonomy %in% shared_uni) %>% 
+  dplyr::summarise(n_distinct(Species),n_distinct(Genus),n_distinct(Family))
+
+
+#Additional CO1 Species
+co1_tax %>% 
+  filter(., Species != "") %>% 
+  filter(., !sum.taxonomy %in% shared_uni) %>% 
+  dplyr::summarise(n_distinct(Species))
+
+#Additional CO1 Genera
+co1_tax %>% 
+  filter(., !sum.taxonomy %in% shared_uni) %>% 
+  filter(., !Genus %in% M16S_tax$Genus) %>% 
+  filter(., Genus != "") %>% 
+  filter(., Genus != "NA") %>% 
+  dplyr::summarise(n_distinct(Genus))
+
+#Additional CO1 Families
+co1_tax %>% 
+  filter(., !sum.taxonomy %in% shared_uni) %>% 
+  filter(., !Family %in% M16S_tax$Family) %>% 
+    filter(., Family != "") %>% 
+  filter(., Family != "NA") %>% 
+  dplyr::summarise(n_distinct(Family))
+
+#Additional CO1 Class
+co1_tax %>% 
+  filter(., !sum.taxonomy %in% shared_uni) %>% 
+  filter(., !Class %in% M16S_tax$Class) %>% 
+    filter(., Class != "") %>% 
+  filter(., Class != "NA") %>% 
+  dplyr::select(Class) %>%  unique()
+
+#Additional CO1 Phylum
+co1_tax %>% 
+  filter(., !sum.taxonomy %in% shared_uni) %>% 
+  filter(., !Phylum %in% M16S_tax$Phylum) %>% 
+  dplyr::select(Phylum) %>%  unique()
+```
+
+```{r}
+
+#Additional 16S Species
+M16S_tax %>% 
+  filter(., Species != "") %>% 
+  filter(., !sum.taxonomy %in% shared_uni) %>% 
+  dplyr::summarise(n_distinct(Species))
+
+#Additional 16S Genera
+M16S_tax %>% 
+  filter(., !sum.taxonomy %in% shared_uni) %>% 
+  filter(., !Genus %in% co1_tax$Genus) %>% 
+  filter(., Genus != "") %>% 
+  filter(., Genus != "NA") %>% 
+  dplyr::summarise(n_distinct(Genus))
+
+#Additional 16S Families
+M16S_tax %>% 
+  filter(., !sum.taxonomy %in% shared_uni) %>% 
+  filter(., !Family %in% co1_tax$Family) %>% 
+    filter(., Family != "") %>% 
+  filter(., Family != "NA") %>% 
+  dplyr::summarise(n_distinct(Family))
+
+#Additional 16S Class
+M16S_tax %>% 
+  filter(., !sum.taxonomy %in% shared_uni) %>% 
+  filter(., !Class %in% co1_tax$Class) %>% 
+    filter(., Class != "") %>% 
+  filter(., Class != "NA") %>% 
+  dplyr::select(Class) %>%  unique()
+
+#Additional 16S Phylum
+M16S_tax %>% 
+  filter(., !sum.taxonomy %in% shared_uni) %>% 
+  filter(., !Phylum %in% co1_tax$Phylum) %>% 
+  dplyr::select(Phylum) %>%  unique()
+
+```
+
+
+```{r anacapa to phyloseq functions from ranacapa library imported manually since they do not work on R3.6.0,  results="hide", warning=FALSE, include=FALSE}
+#' Takes a site-abundance table from Anacapa, and summarizes to each unique taxon in the sum.taxonomy column
+#' @param taxon_table OTU table from Anacapa
+#' @author Gaurav Kandlikar
+#' @examples
+#' good_taxon_table <- data.frame(sum.taxonomy = c("a;b;c;d;f;u", "p;q;r;s;t;u"),
+#' site_1 = c(0,1), site_2 = c(10, 20))
+#' group_anacapa_by_taxonomy(good_taxon_table)
+#' @export
+group_anacapa_by_taxonomy <- function(taxon_table) {
+  # If tables were made in New Anacapa (with Domain), get rid of domain...
+  if(stringr::str_count(taxon_table$sum.taxonomy, ";")[1] == 6) {
+    taxon_table$sum.taxonomy = gsub(pattern = "^.*?;", replacement = "", x = taxon_table$sum.taxonomy)
+  }
+  taxon_table %>%
+    dplyr::filter(sum.taxonomy != "") %>%
+    dplyr::group_by(sum.taxonomy) %>%
+    dplyr::summarize_if(is.numeric, sum) %>%
+    dplyr::mutate(sum.taxonomy = as.character(sum.taxonomy)) %>%
+    data.frame
+}
+
+
+#' Takes an site-abundance table from Anacapa, along with a qiime-style mapping file, and returns a phyloseq object
+#' @param taxon_table Taxon table in the anacapa format
+#' @param metadata_file Metadata file with rows as sites, columns as variables
+#' @return phyloseq class object
+#' @author Gaurav Kandlikar
+#' @examples
+#' good_taxon_table <- data.frame(sum.taxonomy = c("a;b;c;d;f;u", "p;q;r;s;t;u"),
+#' site_1 = c(0,1), site_2 = c(10, 20))
+#' good_maps <- data.frame(site = c("site_1", "site_2"), season = c("wet", "dry"),
+#'  host = c("oak", "sage"))
+#' convert_anacapa_to_phyloseq(good_taxon_table, good_maps)
+#' @export
+
+convert_anacapa_to_phyloseq <- function(taxon_table, metadata_file) {
+
+  # Validate the files
+  validate_input_files(taxon_table, metadata_file)
+
+  # Group the anacapa ouptut by taxonomy, if it has not yet happened, and turn it into a matrix
+  taxon_table2 <- group_anacapa_by_taxonomy(taxon_table) %>%
+    tibble::column_to_rownames("sum.taxonomy") %>%
+    as.matrix
+  # Reorder the columns (sites) for ease of displaying later
+  taxon_table2 <- taxon_table2[ , order(colnames(taxon_table2))]
+
+  # Convert the matrix into a phyloseq otu_table object, with taxa as the rows
+  ana_taxon_table_physeq <- phyloseq::otu_table(taxon_table2, taxa_are_rows = TRUE)
+
+  # Extract the rownames of the matrix above- this has the full taxonomic path.
+  # Split the taxonomic path on semicolons, and turn the resulting matrix into
+  # a phyloseq tax_table object
+  taxon_names <- reshape2::colsplit(rownames(taxon_table2), ";",
+                          names = c("Phylum","Class","Order","Family","Genus","Species")) %>%
+    as.matrix
+  rownames(taxon_names) <- rownames(taxon_table2)
+
+  tax_physeq <- phyloseq::tax_table(taxon_names)
+  colnames(tax_physeq) <- c("Phylum","Class","Order","Family","Genus","Species")
+
+  # Make a phyloseq object out of the otu_table and the tax_table objects
+  physeq_object <- phyloseq::phyloseq(ana_taxon_table_physeq, tax_physeq)
+
+  # Make sure the mapping file (ie the site metadata) is ordered according to site name
+  rownames(metadata_file) <- metadata_file[, 1]
+  metadata_file <- metadata_file[order(metadata_file[, 1]), ]
+
+  # Convert the mapping file into a phyloseq sample_data object, and merge it with the
+  # phyloseq object created above to make a phyloseq object with otu table, tax table, and sample data.
+  sampledata <- phyloseq::sample_data(metadata_file)
+  phyloseq::merge_phyloseq(physeq_object, sampledata)
+}
+
+#' Takes a phyloseq object with an otu_table object and returns a vegan style community matrix.
+#' @param physeq_object phyloseq object with an otu_table object within
+#' @return vegan-style community matrix
+#' @examples
+#' good_taxon_table <- data.frame(sum.taxonomy = c("a;b;c;d;f;u", "p;q;r;s;t;u"),
+#' site_1 = c(0,1), site_2 = c(10, 20))
+#' good_maps <- data.frame(site = c("site_1", "site_2"), season = c("wet", "dry"),
+#' host = c("oak", "sage"))
+#' physeq_object <- convert_anacapa_to_phyloseq(good_taxon_table, good_maps)
+#' vegan_otu(physeq_object)
+#' @export
+vegan_otu <- function(physeq_object) {
+  OTU <- phyloseq::otu_table(physeq_object)
+  if (phyloseq::taxa_are_rows(OTU)) {
+    OTU <- t(OTU)
+  }
+  return(methods::as(OTU, "matrix"))
+}
+
+#' Remove "xxx_seq_number" column from ana_taxon_table file if it exists
+#' takes one taxon table as its input, and if it include
+#' a column named "xxx_seq_number", it gets rid of that column - it's not of use to us
+#' any longer
+#'
+#' @param taxon_table taxonomy table from Anacapa
+#' @return ana_taxon_table file, with "xxx_seq_number" column removed (if it existed)
+#' @examples
+#' good_taxon_table <- data.frame(seq_number = c(1,2),
+#' sum.taxonomy = c("a;b;c;d;f;u", "p;q;r;s;t;u"),
+#' site_1 = c(0,1), site_2 = c(10, 20))
+#' scrub_seqNum_column(good_taxon_table)
+#' @export
+scrub_seqNum_column <- function(taxon_table) {
+  to_return <- taxon_table %>% dplyr::select(-dplyr::matches("seq_number"))
+  return(to_return)
+}
+
+#' Replace empty calls in Anacapa taxonomy tables with Unknown
+#' (that is what they effectively are to most users)
+#' @param taxon_table taxonomy table from Anacapa
+#' @return ana_taxon_table with scrubbed 'sum.taxonomy' column
+#' @examples
+#' good_taxon_table <- data.frame(sum.taxonomy = c("a;b;c;d;f;u", "p;q;r;s;t;u"),
+#' site_1 = c(0,1), site_2 = c(10, 20))
+#' scrub_taxon_paths(good_taxon_table)
+#' @export
+scrub_taxon_paths <- function(taxon_table) {
+  to_return <- taxon_table
+  new_sum_tax <- reshape2::colsplit(taxon_table$sum.taxonomy, ";",
+                          names = c("Phylum", "Class", "Order", "Family", "Genus", "Species"))
+
+  new_sum_tax <- new_sum_tax %>%
+    dplyr::mutate(Phylum = ifelse(is.na(Phylum) | Phylum == "", "unknown", Phylum)) %>%
+    dplyr::mutate(Class = ifelse(is.na(Class) | Class == "", "unknown", Class)) %>%
+    dplyr::mutate(Order = ifelse(is.na(Order) | Order == "", "unknown", Order)) %>%
+    dplyr::mutate(Family = ifelse(is.na(Family) | Family == "", "unknown", Family)) %>%
+    dplyr::mutate(Genus = ifelse(is.na(Genus) | Genus == "", "unknown", Genus)) %>%
+    dplyr::mutate(Species = ifelse(is.na(Species)| Species == "", "unknown", Species))
+
+  new_sum_tax2 <- paste(new_sum_tax$Phylum,
+                        new_sum_tax$Class,
+                        new_sum_tax$Order,
+                        new_sum_tax$Family,
+                        new_sum_tax$Genus,
+                        new_sum_tax$Species, sep = ";")
+  to_return$sum.taxonomy <- new_sum_tax2
+  return(to_return)
+}
+
+#' Verify that the input taxon_table file and the input mapping file meets specificationss
+#' The function takes one taxon table as its input, and verfies that it meets
+#' the expected standards.
+#' The standards incude:
+#' 1. Column names exist.
+#' 2. One of the columns is named "sum.taxonomy"
+#' 3. The "xxx_seq_number" column, if it ever existed, is removed
+#' 4. All columns apart from sum.taxonomy should be numeric
+#' 5. All columns apart from sum.taxonomy should have corresponding row in metadata file
+#' @param taxon_table taxonomy table from Anacapa
+#' @param metadata_file Qiime-style mapping
+#' @examples
+#' good_taxon_table <- data.frame(sum.taxonomy = c("a;b;c;d;f;u", "p;q;r;s;t;u"),
+#' site_1 = c(0,1), site_2 = c(10, 20))
+#' good_maps <- data.frame(site = c("site_1", "site_2"),
+#' season = c("wet", "dry"), host = c("oak", "sage"))
+#' validate_input_files(good_taxon_table, good_maps)
+#' @export
+validate_input_files <- function(taxon_table, metadata_file) {
+
+  # 1. Column names exist.
+  if (is.null(colnames(taxon_table))) {
+    stop("The input taxon table should have column names. The taxonomy column should be named 'sum.taxonomy'; the rest of the columns should be named according to their sample names.")
+  }
+
+  # 2. One of the columns is named "sum.taxonomy"
+  if (!("sum.taxonomy" %in% colnames(taxon_table))) {
+    stop("Please make sure that the taxonomy column in the input taxon table is named 'sum.taxonomy'!")
+  }
+
+  # 3. The "xxx_seq_number" column, if it ever existed, is removed
+  if (any(stringr::str_detect(colnames(taxon_table), "seq_number"))) {
+    stop("Please makes sure that you have removed the 'xxx_seq_number' column from the taxon table (note: this can be done with the function `scrub_seqNum_column`)")
+  }
+
+  # 4. All columns apart from sum.taxonomy should be numeric
+  if (!(all(sapply(taxon_table %>% dplyr::select(-sum.taxonomy), is.numeric)))) {
+    stop("Please make sure that all columns apart from sum.taxonomy only contain numeric data!")
+  }
+
+  # 5. All columns apart from sum.taxonomy should have corresponding row in metadata file
+  if (!(all(colnames(taxon_table %>% dplyr::select(-sum.taxonomy)) %in% metadata_file[, 1]))) {
+    stop("Please make sure that each sample in your taxon table has a corresponding row in the mapping file!")
+  }
+
+
+}
+
+```
+
+```{r Convert to Phyloseq Object pre-SOM}
+
+metadata %>%  
+  dplyr::select(-Seq_number) %>%  distinct() -> metadata2
+
+#Create phyloseq object
+physeq_obj_eidx <- convert_anacapa_to_phyloseq(ports_post_eidx, metadata2)
+physeq_obj_reads <- convert_anacapa_to_phyloseq(ports_post_reads, metadata2)
+physeq_obj_reads_pre <- convert_anacapa_to_phyloseq(ports_pre_reads, metadata2)
+
+
+```
+
+```{r}
+
+subset_samples(physeq_obj_eidx, Bio_rep!=0) -> physeq_obj_eidx
+subset_samples(physeq_obj_reads, Bio_rep!=0) -> physeq_obj_reads
+subset_samples(physeq_obj_reads_pre, Bio_rep!=0) -> physeq_obj_reads_pre
+
+physeq_obj_eidx = prune_samples(sample_sums(physeq_obj_eidx)>=1, physeq_obj_eidx)
+physeq_obj_reads = prune_samples(sample_sums(physeq_obj_reads)>=1, physeq_obj_reads)
+physeq_obj_reads_pre = prune_samples(sample_sums(physeq_obj_reads_pre)>=1, physeq_obj_reads_pre)
+
+```
+
+
+
+
+```{r}
+#List of All Species Observed pre SOM
+species_list <- as.data.frame (get_taxa_unique(physeq_obj_reads, "Species"))
+names(species_list) <- "Species"
+
+species_list_pre <- as.data.frame (get_taxa_unique(physeq_obj_reads_pre, "Species"))
+names(species_list_pre) <- "Species"
+```
+
+
+
+```{r}
+#Summary Count of Taxonomic Ranks Observed post SOM
+Phylum <- length(get_taxa_unique(physeq_obj_reads, "Phylum"))
+Phylum <- as.data.frame(Phylum)
+Class <- length(get_taxa_unique(physeq_obj_reads, "Class"))
+Class <- as.data.frame(Class)
+Order <- length(get_taxa_unique(physeq_obj_reads, "Order"))-1
+Order <- as.data.frame(Order)
+Family <- length(get_taxa_unique(physeq_obj_reads, "Family"))
+Family <- as.data.frame(Family)
+Genus <- length(get_taxa_unique(physeq_obj_reads, "Genus"))-1
+Genus <- as.data.frame(Genus)
+Species <- length(get_taxa_unique(physeq_obj_reads, "Species"))-1
+Species <- as.data.frame(Species)
+
+table_step3 <- bind_cols(Phylum,Class,Order,Family,Genus,Species)
+
+rownames(table_step3) <- "Unique"
+
+table_step3
+```
+
+```{r}
+#Summary Count of Taxonomic Ranks Observed pre SOM
+Phylum_pre <- length(get_taxa_unique(physeq_obj_reads_pre, "Phylum"))
+Phylum_pre <- as.data.frame(Phylum_pre)
+Class_pre <- length(get_taxa_unique(physeq_obj_reads_pre, "Class"))
+Class_pre <- as.data.frame(Class_pre)
+Order_pre <- length(get_taxa_unique(physeq_obj_reads_pre, "Order"))-1
+Order_pre <- as.data.frame(Order_pre)
+Family_pre <- length(get_taxa_unique(physeq_obj_reads_pre, "Family"))
+Family_pre <- as.data.frame(Family_pre)
+Genus_pre <- length(get_taxa_unique(physeq_obj_reads_pre, "Genus"))-1
+Genus_pre <- as.data.frame(Genus_pre)
+Species_pre <- length(get_taxa_unique(physeq_obj_reads_pre, "Species"))-1
+Species_pre <- as.data.frame(Species_pre)
+
+table_step3_pre <- bind_cols(Phylum_pre,Class_pre,Order_pre,Family_pre,Genus_pre,Species_pre)
+
+rownames(table_step3_pre) <- "Unique"
+
+table_step3_pre
+```
+
+## Before and After SOM Comparison
+```{r}
+
+ports_pre_reads %>% 
+  separate(sum.taxonomy, into=c("Domain","Phylum","Class","Order","Family","Genus","Species"), sep =";", remove =F) -> pre_som_4_check
+
+pre_som_4_check$Species %>%  unique()
+pre_som_4_check$Genus %>%  unique()
+pre_som_4_check$Family %>%  unique()
+
+pre_som_4_check %>% 
+  filter(., str_detect(sum.taxonomy,"Phanerodon furcatus"))
+
+ports_post_reads %>% 
+  separate(sum.taxonomy, into=c("Domain","Phylum","Class","Order","Family","Genus","Species"), sep =";", remove =F) -> post_som_4_check
+
+post_som_4_check$Species %>%  unique()
+post_som_4_check$Genus %>%  unique()
+post_som_4_check$Family %>%  unique()
+
+
+SOM_results_to_keep_all <- readRDS( here("decontamination","occupancy_results_all.RDS"))
+
+SOM_results_to_keep_all %>% 
+  filter(., str_detect(sum.taxonomy, "Hypsypops"))
+
+pre_som_4_check %>% 
+  filter(., !sum.taxonomy %in% post_som_4_check$sum.taxonomy) %>% 
+    pivot_longer(.,cols=LA11_1_1:LB2_4_3, names_to = "New_name", values_to="nReads")  %>% 
+  dplyr::select(Species) %>% filter(., Species !="") %>%  unique()
+
+pre_som_4_check %>% 
+  filter(., !sum.taxonomy %in% post_som_4_check$sum.taxonomy) %>% 
+    pivot_longer(.,cols=LA11_1_1:LB2_4_3, names_to = "New_name", values_to="nReads") %>% 
+  group_by(sum.taxonomy
+, Family, Genus, Species) %>% 
+  dplyr::summarise( tot_reads = sum(nReads), count2 = length(nReads[nReads>0])) %>% 
+  arrange(desc(count2)) 
+  
+```
+
+
+
+```{r Mammals Pre SOM}
+mammals <- subset_taxa(physeq_obj_reads, Class=="Mammalia")
+get_taxa_unique(mammals, "Species")
+```
+
+
+```{r Fish Pre SOM}
+fish_1 <- subset_taxa(physeq_obj_reads, Class=="Actinopteri")
+get_taxa_unique(fish_1, "Species")
+
+```
+
+
+
+```{r Elasmobranchs Pre SOM}
+sharks_2 <- subset_taxa(physeq_obj_reads, Class=="Chondrichthyes")
+get_taxa_unique(sharks_2, "Species")
+
+```
+
+
+```{r Birds Pre SOM}
+birds <- subset_taxa(physeq_obj_reads, Class=="Aves")
+get_taxa_unique(birds, "Genus")
+```
+
+
+```{r}
+species_list <- as.data.frame (get_taxa_unique(physeq_obj_reads, "Species")) 
+names(species_list) <- "Species"
+species_list %>% 
+  filter(., Species !="") -> species_list
+
+
+kable(species_list, caption = "Species Detected using eDNA")
+
+
+```
+
+## Trawl vs. eDNA Species Detection
+```{r}
+
+species_list_pre <- as.data.frame (get_taxa_unique(physeq_obj_reads_pre, "Species")) 
+names(species_list_pre) <- "Species"
+species_list_pre %>% 
+  filter(., Species !="") -> species_list_pre
+
+
+
+setdiff(abundance_trawl$Scientific,species_list_pre$Species)
+setdiff(species_list_pre$Species, abundance_trawl$Scientific) %>%  sort()
+setdiff(species_list_pre$Species, species_list$Species) %>%  sort() %>% as.tibble() %>% 
+  dplyr::select(Species=value) %>% 
+filter(., !Species %in% CA_fish_list$Walker_Miller_Lea_Combo_20210216)
+
+
+
+
+```
+
+
+```{r}
+#Post
+setdiff(abundance_trawl$Scientific,species_list$Species)
+setdiff(species_list$Species, abundance_trawl$Scientific) %>%  sort()
+
+```
+
+```{r, Color Pallettes , include=FALSE}
+# Color Generation
+col3.gr <- wes_palette(name = "Darjeeling1", n=5, type="discrete")
+col2.gr <- wes_palette(name = "Darjeeling2", n=5, type="discrete")
+col1.gr <- wes_palette(name = "GrandBudapest1", n=4, type="discrete")
+col4.gr <- wes_palette(name = "Royal1", n=4, type="discrete")
+col5.gr <- wes_palette(name = "GrandBudapest2", n=4, type="discrete")
+col6.gr <- wes_palette(name = "Chevalier1", n=4, type="discrete")
+col7.gr <- wes_palette(name = "Moonrise3", n=4, type="discrete")
+col8.gr <- wes_palette(name = "IsleofDogs1", n=4, type="discrete")
+col9.gr <- wes_palette(name = "IsleofDogs2", n=4, type="discrete")
+col_mpa <- c(col3.gr[3],col3.gr[1], col3.gr[2])
+col.great <- c(col1.gr[2],col3.gr[1],col4.gr[2],col3.gr[3],col1.gr[1],col3.gr[4],col3.gr[2],col2.gr[2],col5.gr[4],col4.gr[2],col4.gr[4],col7.gr[2],col7.gr[3],col4.gr[3])
+#burnt orange, bright red, light pink, bright orange, yellow, teal, dark blue, lavendar, dark red, burnt orange, pink, green, baige)
+col.ports <- c(col3.gr[2], col2.gr[2],col3.gr[1],col3.gr[4],col9.gr[1],col8.gr[1],col3.gr[3])
+#purple to brown
+#brown to yellow
+#yellow to purple
+col.ports2 <- c(col3.gr[1], col3.gr[2],col3.gr[4],col2.gr[2],col8.gr[1],col9.gr[1],col3.gr[3])
+
+
+col.fill <- c("red", col1.gr[2],col3.gr[1],col4.gr[2], #reds
+              col9.gr[3],col1.gr[4],col3.gr[4],col4.gr[4], #oranges
+              col3.gr[2],col6.gr[1],"forestgreen",col7.gr[3], #greens
+              col3.gr[5],col2.gr[2],col5.gr[4],col7.gr[1], #blues
+              col4.gr[3],col3.gr[3], col8.gr[3],col6.gr[2] , #yellows
+              col5.gr[1],col5.gr[2],col8.gr[1], "purple", #purples
+              col9.gr[1],col9.gr[2],col9.gr[3],col8.gr[2],col6.gr[4] #browns
+              )
+
+col.fill2 <- c("red", col1.gr[2],col3.gr[1],col4.gr[2], #reds
+              col9.gr[3],col1.gr[4],col3.gr[4],col4.gr[4], #oranges
+              col3.gr[2],col6.gr[1],"forestgreen",col7.gr[3], #greens
+              col3.gr[5],col2.gr[2],col5.gr[4],col7.gr[1], #blues
+              col4.gr[3],col3.gr[3], col8.gr[3],col6.gr[2],"yellow", #yellows
+              col5.gr[1],col5.gr[2],col8.gr[1], "purple", #purples
+              col9.gr[1],col9.gr[2],col9.gr[3],col8.gr[2],col6.gr[4] #browns
+              )
+
+
+
+```
+
+# Figure 4. Venn
+
+```{r venn between eDNA and visual}
+
+
+species_list %>% 
+filter(!Species %in% get_taxa_unique(birds,"Species") ) %>% 
+  filter(!Species %in% get_taxa_unique(mammals,"Species") ) -> fish_species_list
+
+intersect(abundance_trawl$Scientific,fish_species_list$Species) -> common_species_level_ids
+setdiff(abundance_trawl$Scientific,fish_species_list$Species) -> vd_not_edna_species_level_ids
+setdiff(fish_species_list$Species,abundance_trawl$Scientific) -> eDNA_not_vd_species_level_ids
+
+#Species Level Venn
+grid.newpage()
+venn.plot <- draw.pairwise.venn(
+  filename = NULL, 
+	area1 = length(fish_species_list$Species),
+	area2 = length(abundance_trawl$Scientific),
+	cross.area = length(common_species_level_ids),
+	category = c("eDNA Detections", "Trawl Detections"),
+	fill = c(col5.gr[4],col3.gr[2]),
+	lty = rep("solid", 2),
+	euler.d = F, 
+	scaled = F,
+	cex = 3,
+	ext.text = FALSE,
+	cat.cex = 3,
+	cat.pos = c(-15, 15),
+	cat.dist = c(0.03,0.03),
+	fontface = rep("plain", 3),
+  fontfamily = rep("sans", 3),
+	alpha = 0.4,
+	ext.line.lty = "solid",
+	offset=.3
+	)
+grid.newpage()
+
+ggsave(filename =  here("analysis","Figures","Figure_4_venn.png"),
+       plot= venn.plot,
+       dpi = 300,
+       width = 10,
+  height = 8,
+  units = c("in"))
+
+
+```
+
+```{r}
+
+CCLME_species <- read.csv(file = "/Users/zackgold/Documents/UCLA_phd/Projects/California/reference_db/MS/data/fishcard/Data/CA_fish_species/CA_fish_list_20210216.csv" )
+
+monitored_list <- read.table(file="/Users/zackgold/Documents/UCLA_phd/Projects/California/reference_db/MS/data/fishcard/Data/CA_fish_species/Monitored_Species_list_2020216.txt", header=T, sep="\t")
+
+setdiff(eDNA_not_vd_species_level_ids,CCLME_species$Walker_Miller_Lea_Combo_20210216)
+
+setdiff(eDNA_not_vd_species_level_ids,monitored_list$Scientific.name)
+
+
+```
+
+
+# Figure 5. Site Species Comparisons
+```{r}
+#Format for Long Data
+# Convert to Long Data
+abundance_trawl %>% 
+  pivot_longer(., cols=`LA3`:`LB14`, names_to = "Site", values_to = "Counts") %>% 
+  dplyr::select(Species = Scientific, Site, Counts)-> abundance_trawl_long
+
+abundance_trawl_long %>% 
+  group_by(Species) %>% 
+  dplyr::summarise(tot_ind = sum(Counts)) %>% 
+  filter(., tot_ind> 1) -> species_to_keep_trawl
+
+#Format for Long Data
+
+# Convert to Long Data
+biomass_trawl %>% 
+  pivot_longer(., cols=`LA3`:`LB14`, names_to = "Site", values_to = "Kg") %>% 
+   dplyr::select(Species = Scientific, Site, Kg)-> biomass_trawl_long
+```
+
+```{r}
+ports_pre_eidx_sites %>% 
+  #split the taxonomy into different levels
+  separate(sum.taxonomy, into = c("Domain","Phylum","Class","Order","Family","Genus","Species" ), sep = "\\;", remove = F) %>%
+  ungroup() %>%
+mutate(., ID_mifish = if_else(Species == "", Genus, Species)) %>%
+mutate(., ID_mifish = if_else(ID_mifish == "", Family, ID_mifish)) %>%
+mutate(., ID_mifish = if_else(ID_mifish == "", Order, ID_mifish)) %>%
+mutate(., ID_mifish = if_else(ID_mifish == "", Class, ID_mifish)) %>%
+mutate(., ID_mifish = if_else(ID_mifish == "", Phylum, ID_mifish)) %>%
+mutate(., ID_mifish = if_else(ID_mifish == "", Domain, ID_mifish)) %>%
+mutate(., ID_mifish = replace_na(ID_mifish, "")) %>%
+  #select out all levels but species
+  dplyr::select(.,-Domain,-Phylum, -Class,-Order,-Family,-Genus, -Species, Species=ID_mifish) %>%
+  #remove ASVs without species level ID
+  pivot_longer(.,cols=LA11:LB2, names_to = "Site", values_to="eDNA_Index") %>% 
+  #split sample names
+  mutate(., presence_absence = if_else(eDNA_Index>0,1,0))  -> ports_long_pre
+
+
+#Prepare data for comparison
+ports_post_eidx_sites %>% 
+  #split the taxonomy into different levels
+  separate(sum.taxonomy, into = c("Domain","Phylum","Class","Order","Family","Genus","Species" ), sep = "\\;", remove = F) %>%
+  #select out all levels but species
+  dplyr::select(.,-sum.taxonomy,-Domain,-Phylum, -Class,-Order,-Family,-Genus) %>%
+  #remove ASVs without species level ID
+  pivot_longer(.,cols=LA11:LB2, names_to = "Site", values_to="eDNA_Index") %>% 
+  #split sample names
+  mutate(., presence_absence = if_else(eDNA_Index>0,1,0))  -> ports_long
+
+
+ports_long_pre %>% 
+  dplyr::select(-eDNA_Index) %>% 
+  unite(., grp, c("sum.taxonomy","Species","Site","presence_absence"), sep=":") -> ports_long_pre2
+  
+ports_long %>% 
+  dplyr::select(-eDNA_Index) %>% 
+  unite(., grp, c("sum.taxonomy","Species","Site","presence_absence"), sep=":") -> ports_long_2
+
+ports_long_pre2 %>% 
+  mutate(., post = if_else(grp %in% ports_long_2$grp, "Post SOM","Pre SOM")) %>% 
+  separate(., grp, into = c("sum.taxonomy","Species","Site","presence_absence"), sep=":") -> ports_long_up
+
+metadata2 %>% 
+  dplyr::select(Site, Station) %>%  distinct() %>% filter(., !is.na(Station)) -> metadata3
+
+ports_long_up %>% 
+  full_join(., abundance_trawl_long) %>%
+    left_join(metadata3) %>% 
+  mutate_if(is.numeric, funs(replace_na(., 0))) -> combined_long
+  
+combined_long$presence_absence <- as.numeric(combined_long$presence_absence)
+combined_long %>% 
+mutate(matching = case_when(presence_absence >0 & Counts > 0 & post =="Post SOM"~ "Both.Detected",
+                            presence_absence >0 & Counts == 0 & post =="Post SOM" ~ "eDNA.Detected.Only after SOM",
+                            presence_absence >0 & Counts == 0 & post =="Pre SOM" ~ "eDNA.Detected.Only without SOM",
+                              presence_absence == 0 & Counts == 0 ~ "Both.Missed",
+                              presence_absence == 0 & Counts > 0 & post == "Post SOM"~"Trawl.Detected.Only after SOM",
+        presence_absence == 0 & Counts > 0 & post == "Pre SOM"~"Trawl.Detected.Only without SOM")) %>% 
+  mutate(matching2 = case_when(presence_absence >0 & Counts > 0 ~ "Matching",
+                               presence_absence >0 & Counts == 0 ~ "eDNA.Detected.Only",
+                               presence_absence == 0 & Counts == 0 ~ "Matching",
+                               presence_absence == 0 & Counts > 0 ~ "Trawl.Detected.Only")) %>%
+  group_by(Species) %>% 
+  mutate(., eDNA_Presence_tot = sum(presence_absence),
+         trawl_Presence_tot = sum(Counts)) %>% 
+  mutate(eDNA_detect = case_when(eDNA_Presence_tot >0 ~ "eDNA.Detected",
+                                 TRUE ~ "missing")) %>%
+  mutate(Seine_detect = case_when(trawl_Presence_tot > 0 ~ "Trawl.Detected",
+                                  TRUE ~ "missing")) -> matching_df
+matching_df %>%  View()
+matching_df %>% 
+  group_by(Species) %>% 
+  count(matching) %>% 
+  group_by(Species) %>% 
+  mutate(., sum(n)) %>% 
+  mutate(., perc = n/ `sum(n)`) -> sz.matching_perc
+  
+  
+ sz.matching_perc %>% 
+  dplyr::select(Species, matching, perc) %>% 
+pivot_wider(., names_from=matching, values_from=perc, values_fill=0) -> sz_wide
+
+sz_wide %>% 
+  arrange(`Trawl.Detected.Only without SOM`, `Both.Detected`,  `eDNA.Detected.Only after SOM`)  -> sz_wide
+
+matching_df$Species <- factor(matching_df$Species, levels = sz_wide$Species)
+
+matching_df %>% 
+  as_tibble() %>% 
+  ggplot(., aes(x=Station, y=Species, fill=matching)) + 
+  geom_tile() + theme(axis.text.x = element_text(angle = 90)) + 
+  scale_fill_manual(name = "Detection Type", labels =c("Both Detected","Both Absent","eDNA Only after SOM","eDNA Only without SOM","Trawl Only"),values = c(col3.gr[2],"white",col5.gr[4],col3.gr[5],col5.gr[3])) +theme_bw() +theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.background = element_blank(), axis.text.x = element_text(size=18), axis.text.y = element_text(size=12), axis.title.x = element_text(size=20), axis.title.y = element_text(size=20)) ->plot6
+
+plot6
+```
+
+```{r}
+ggsave(filename =  here("analysis","Figures","Figure_5_site_species.png"),
+       plot = plot6,
+       dpi = 300,
+       width = 10,
+  height = 24,
+  units = c("in"))
+```
+<br />
+<br />
+
+# eDNA PERMANOVA and betadisper
+<br />
+
+```{r}
+#Generate Vegan formatted data table
+sampledf <- data.frame(sample_data(physeq_obj_eidx))
+carnivore_rel_abun<- vegan_otu(physeq_obj_eidx)
+
+#Bray curtis dissimilarity matrix
+d_carn <- vegdist(carnivore_rel_abun, method="bray") 
+
+#Permanova
+broom::tidy(adonis(carnivore_rel_abun~ sampledf$Station +sampledf$Site_station)$aov.tab)
+
+carnivore_rel_abun %>%  View()
+```
+
+```{r}
+
+#Homogeneity of dispersions test
+betadisper(d_carn, getElement(sampledf, "Station"))
+anova(betadisper(d_carn, getElement(sampledf, "Station")))
+broom::tidy(TukeyHSD(betadisper(d_carn, getElement(sampledf, "Station")))) %>%  kable()
+
+#Homogeneity of dispersions test
+betadisper(d_carn, getElement(sampledf, "Site_station"))
+anova(betadisper(d_carn, getElement(sampledf, "Site_station")))
+broom::tidy(TukeyHSD(betadisper(d_carn, getElement(sampledf, "Site_station")))) %>%  kable()
+
+```
+
+<br />
+<br />
+
+
+
+
+<br />
+<br />
+
+
+#Figure 6. NMDS Plots
+
+```{r, results="hide",warning=FALSE}
+# NMDS ordination
+ord <- ordinate(physeq_obj_eidx, method = "PCoA", distance = d_carn)
+nmdsplot <- plot_ordination(physeq_obj_eidx, ord, color = "Station", shape="Bio_rep") +
+  geom_point(size=5) +
+  theme_bw() + 
+  #geom_text(aes(x=NMDS1,y=NMDS2,label=Replicate),alpha=0.5)+
+  scale_color_manual(values=col.ports2) + scale_fill_manual(values=col.ports2)
+nmdsplot + stat_ellipse(geom = "polygon", type="norm", alpha=0.1, aes(group=Station, fill=Station))  + scale_fill_manual(values=col.ports2) +  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.background = element_blank(), axis.text.x = element_text(size=18), axis.text.y = element_text(size=18), axis.title.x = element_text(size=20), axis.title.y = element_text(size=20)) +labs(shape="Location")-> nmdsplot
+nmdsplot
+```
+
+```{r}
+ggsave(filename =  here("analysis","Figures","Figure_6_ordination.png"),
+       plot = nmdsplot ,
+       dpi = 300,
+       width = 12,
+  height = 8,
+  units = c("in"))
+```
+
+# Species Rarefaction Curves
+## Trawl
+
+###  Site Level
+
+```{r}
+abundance_trawl %>%
+  dplyr::select(-Common) %>% as.data.frame() -> trawl_4_inext
+
+###### iNEXT Species Accumulation Curves
+
+#Create List for iNEXT Species Incidence Frequencies
+mor_inc_site_trawl <-list ("Trawl" =trawl_4_inext)
+
+species_incidence_site_trawl <-lapply(mor_inc_site_trawl, as.incfreq)
+
+#Convert to iNEXT format
+t <- seq(1, 15, by=1)
+out.inc_site_trawl <- iNEXT(species_incidence_site_trawl, q=0, datatype="incidence_freq", size=t)
+
+out.inc_site_trawl$DataInfo
+
+out.inc_site_trawl$iNextEst
+```
+
+```{r}
+
+#Sample‐size‐based R/E curves
+ggiNEXT(out.inc_site_trawl, type=2, color.var="site") + 
+  theme_bw(base_size = 18) + scale_fill_manual(values=col3.gr[2]) +  scale_color_manual(values=col3.gr[2]) + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                                                                    panel.background = element_blank()) + xlab("Stations") + ylab("Sample Coverage") +scale_shape_manual(values = c(14,15,16,17,18,19,20))  -> trawl_sample_coverage_src
+
+
+ggiNEXT(out.inc_site_trawl, type=1, color.var="site") + 
+  theme_bw(base_size = 18) + scale_fill_manual(values=col3.gr[2]) +  scale_color_manual(values=col3.gr[2]) + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                                                                    panel.background = element_blank()) + xlab("Stations") + ylab("Species")+ylim(0,100)-> trawl_species_src
+
+
+```
+## eDNA
+
+
+### Station Level within Site, Trawl MatchingSpecies Only
+
+```{r}
+
+method.sampledf <- data.frame(sample_data(physeq_obj_reads))
+method.rel_abun<- vegan_otu(physeq_obj_reads)
+
+
+subset_taxa(physeq_obj_reads, Species %in% abundance_trawl$Scientific) -> physeq_obj_reads_trawl
+
+#isolate groups
+s1_phy <- subset_samples(physeq_obj_reads_trawl, Station=="S1")
+s2_phy <- subset_samples(physeq_obj_reads_trawl, Station=="S2")
+s3_phy <- subset_samples(physeq_obj_reads_trawl, Station=="S3")
+s4_phy <- subset_samples(physeq_obj_reads_trawl, Station=="S4")
+s5_phy <- subset_samples(physeq_obj_reads_trawl, Station=="S5")
+s6_phy <- subset_samples(physeq_obj_reads_trawl, Station=="S6")
+s7_phy <- subset_samples(physeq_obj_reads_trawl, Station=="S7")
+
+
+#Convert groups into vegan outputs
+veganComm_s1 <- vegan_otu(s1_phy)
+veganComm_s2 <- vegan_otu(s2_phy)
+veganComm_s3 <- vegan_otu(s3_phy)
+veganComm_s4 <- vegan_otu(s4_phy)
+veganComm_s5 <- vegan_otu(s5_phy)
+veganComm_s6 <- vegan_otu(s6_phy)
+veganComm_s7 <- vegan_otu(s7_phy)
+
+
+###### iNEXT Species Accumulation Curves
+
+#Create List for iNEXT Species Incidence Frequencies
+mor_inc <-list ("S1" =t(veganComm_s1),
+                "S2"=t(veganComm_s2),
+                "S3"=t(veganComm_s3),
+                "S4"=t(veganComm_s4),
+                "S5"=t(veganComm_s5),
+                "S6"=t(veganComm_s6),
+                "S7"=t(veganComm_s7))
+
+species_incidence <-lapply(mor_inc, as.incfreq)
+
+#Convert to iNEXT format
+t <- seq(1, 30, by=1)
+out.inc2 <- iNEXT(species_incidence, q=0, datatype="incidence_freq", size=t)
+
+out.inc2$DataInfo
+
+out.inc2$iNextEst
+```
+
+### Station Level within Port Complex, Trawl Matching Species
+
+```{r}
+#Convert groups into vegan outputs
+veganComm_s1 <- vegan_otu(physeq_obj_reads_trawl)
+
+
+###### iNEXT Species Accumulation Curves
+
+#Create List for iNEXT Species Incidence Frequencies
+mor_inc <-list ("S1" =t(veganComm_s1))
+
+species_incidence <-lapply(mor_inc, as.incfreq)
+
+#Convert to iNEXT format
+t <- seq(1, 100, by=1)
+out.inc2_matching <- iNEXT(species_incidence, q=0, datatype="incidence_freq", size=t)
+
+out.inc2_matching$DataInfo
+
+out.inc2_matching$iNextEst
+```
+
+### Site Level w/ Stations Combined All Species Pre SOM 
+
+```{r}
+#isolate groups
+
+phy_m_site = merge_samples(physeq_obj_reads, "Station",fun=sum)
+
+
+#Convert groups into vegan outputs
+veganComm_m_site <- vegan_otu(phy_m_site)
+
+
+###### iNEXT Species Accumulation Curves
+
+#Create List for iNEXT Species Incidence Frequencies
+mor_inc_site <-list ("eDNA All Taxa" =t(veganComm_m_site))
+
+species_incidence_site <-lapply(mor_inc_site, as.incfreq)
+
+#Convert to iNEXT format
+t <- seq(1, 15, by=1)
+out.inc_site <- iNEXT(species_incidence_site, q=0, datatype="incidence_freq", size=t)
+
+out.inc_site$DataInfo
+
+out.inc_site$iNextEst
+```
+
+
+```{r}
+
+#Sample‐size‐based R/E curves
+ggiNEXT(out.inc_site, type=2, color.var="site") + 
+  theme_bw(base_size = 18) + scale_fill_manual(values=col5.gr[4]) +  scale_color_manual(values=col5.gr[4]) + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                                                                    panel.background = element_blank()) + xlab("Stations") + ylab("Sample Coverage") +scale_shape_manual(values = c(14,15,16,17,18,19,20))-> sample_coverage_rarefaction_fig_site
+
+sample_coverage_rarefaction_fig_site
+
+
+#Sample‐size‐based R/E curves
+ggiNEXT(out.inc_site, type=1, color.var="site") + 
+  theme_bw(base_size = 18) + scale_fill_manual(values=col5.gr[4]) +  scale_color_manual(values=col5.gr[4]) + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                                                                    panel.background = element_blank()) + xlab("Stations") + ylab("Species") +scale_shape_manual(values = c(14,15,16,17,18,19,20))+ylim(0,100)-> species_rarefaction_fig_site
+
+species_rarefaction_fig_site
+
+
+
+```
+
+
+### Site Level within Port, Trawl Matching Species
+
+```{r}
+#isolate groups
+
+phy_m_site = merge_samples(physeq_obj_reads, "Station",fun=sum)
+
+subset_taxa(phy_m_site, Species %in% abundance_trawl$Scientific) -> phy_m_site_trawl
+
+
+#Convert groups into vegan outputs
+veganComm_m_site <- vegan_otu(phy_m_site_trawl)
+
+
+###### iNEXT Species Accumulation Curves
+
+#Create List for iNEXT Species Incidence Frequencies
+mor_inc_site <-list ("eDNA - Trawl Observed Taxa" =t(veganComm_m_site))
+
+species_incidence_site <-lapply(mor_inc_site, as.incfreq)
+
+#Convert to iNEXT format
+t <- seq(1, 15, by=1)
+out.inc_site_matching <- iNEXT(species_incidence_site, q=0, datatype="incidence_freq", size=t)
+
+out.inc_site_matching$DataInfo
+
+out.inc_site_matching$iNextEst
+```
+
+
+
+
+```{r}
+
+#Sample‐size‐based R/E curves
+ggiNEXT(out.inc_site_matching, type=2, color.var="site") + 
+  theme_bw(base_size = 18) + scale_fill_manual(values=col5.gr[2]) +  scale_color_manual(values=col5.gr[2]) + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                                                                    panel.background = element_blank()) + xlab("Stations") + ylab("Sample Coverage") +scale_shape_manual(values = c(14,15,16,17,18,19,20))-> sample_coverage_rarefaction_fig_site_trawl_matching
+
+sample_coverage_rarefaction_fig_site_trawl_matching
+
+
+#Sample‐size‐based R/E curves
+ggiNEXT(out.inc_site_matching, type=1, color.var="site") + 
+  theme_bw(base_size = 18) + scale_fill_manual(values=col5.gr[2]) +  scale_color_manual(values=col5.gr[2]) + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                                                                    panel.background = element_blank()) + xlab("Stations") + ylab("Species") +scale_shape_manual(values = c(14,15,16,17,18,19,20))+ylim(0,100)-> species_rarefaction_fig_site_trawl_matching
+
+species_rarefaction_fig_site_trawl_matching
+
+
+
+```
+
+
+
+# Figure S1. Site Level Port vs. eDNA Species Rarefaction Curve
+
+```{r}
+trawl_species_src + species_rarefaction_fig_site + species_rarefaction_fig_site_trawl_matching +
+  plot_layout(guides = 'collect')+ plot_annotation(tag_levels = 'A')
+
+ggsave(
+       filename = here("analysis","Figures","Figure_S1.png"),
+       width=12,
+       height = 8,
+       dpi = 300,
+      units = c("in"))
+```
+
+# Figure S2. Site Level Port vs. eDNA Sample Coverage
+
+```{r}
+
+trawl_sample_coverage_src + sample_coverage_rarefaction_fig_site +sample_coverage_rarefaction_fig_site_trawl_matching +
+  plot_layout(guides = 'collect')+ plot_annotation(tag_levels = 'A')
+
+ggsave( filename = here("analysis","Figures","Figure_S2.png"),
+       width=12,
+       height = 8,
+       dpi = 300,
+      units = c("in"))
+```
+
+### Station Level within Site All Species Pre SOM
+
+```{r}
+
+method.sampledf <- data.frame(sample_data(physeq_obj_reads))
+method.rel_abun<- vegan_otu(physeq_obj_reads)
+
+#isolate groups
+s1_phy <- subset_samples(physeq_obj_reads, Station=="S1")
+s2_phy <- subset_samples(physeq_obj_reads, Station=="S2")
+s3_phy <- subset_samples(physeq_obj_reads, Station=="S3")
+s4_phy <- subset_samples(physeq_obj_reads, Station=="S4")
+s5_phy <- subset_samples(physeq_obj_reads, Station=="S5")
+s6_phy <- subset_samples(physeq_obj_reads, Station=="S6")
+s7_phy <- subset_samples(physeq_obj_reads, Station=="S7")
+
+
+#Convert groups into vegan outputs
+veganComm_s1 <- vegan_otu(s1_phy)
+veganComm_s2 <- vegan_otu(s2_phy)
+veganComm_s3 <- vegan_otu(s3_phy)
+veganComm_s4 <- vegan_otu(s4_phy)
+veganComm_s5 <- vegan_otu(s5_phy)
+veganComm_s6 <- vegan_otu(s6_phy)
+veganComm_s7 <- vegan_otu(s7_phy)
+
+
+###### iNEXT Species Accumulation Curves
+
+#Create List for iNEXT Species Incidence Frequencies
+mor_inc <-list ("S1" =t(veganComm_s1),
+                "S2"=t(veganComm_s2),
+                "S3"=t(veganComm_s3),
+                "S4"=t(veganComm_s4),
+                "S5"=t(veganComm_s5),
+                "S6"=t(veganComm_s6),
+                "S7"=t(veganComm_s7))
+
+species_incidence <-lapply(mor_inc, as.incfreq)
+
+#Convert to iNEXT format
+t <- seq(1, 30, by=1)
+out.inc3 <- iNEXT(species_incidence, q=0, datatype="incidence_freq", size=t)
+
+out.inc3$DataInfo
+```
+
+```{r}
+
+#Sample‐size‐based R/E curves
+ggiNEXT(out.inc3, type=2, color.var="site") + 
+  theme_bw(base_size = 18) + scale_fill_manual(values=col.ports2) +  scale_color_manual(values=col.ports2) + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                                                                    panel.background = element_blank()) + xlab("Bottle Replicates") + ylab("Sample Coverage") +scale_shape_manual(values = c(14,15,16,17,18,19,20))-> sample_coverage_rarefaction_fig_eDNA_portwide
+
+
+ggiNEXT(out.inc3, type=1, color.var="site") + 
+  theme_bw(base_size = 18) + scale_fill_manual(values=col.ports2) +  scale_color_manual(values=col.ports2) + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                                                                    panel.background = element_blank()) + xlab("Bottle Replicates") + ylab("Species") +scale_shape_manual(values = c(14,15,16,17,18,19,20))-> species_rarefaction_fig_eDNA_portwide
+```
+
+### Species Rarefaction Curve - Station Level w/ Locations Combined, All Species Pre SOM
+
+```{r}
+
+method.sampledf <- data.frame(sample_data(physeq_obj_reads))
+method.rel_abun<- vegan_otu(physeq_obj_reads)
+
+#isolate groups
+
+s1_phy_m = merge_samples(s1_phy, "Site_station",fun=sum)
+s2_phy_m = merge_samples(s2_phy, "Site_station",fun=sum)
+s3_phy_m = merge_samples(s3_phy, "Site_station",fun=sum)
+s4_phy_m = merge_samples(s4_phy, "Site_station",fun=sum)
+s5_phy_m = merge_samples(s5_phy, "Site_station",fun=sum)
+s6_phy_m = merge_samples(s6_phy, "Site_station",fun=sum)
+s7_phy_m = merge_samples(s7_phy, "Site_station",fun=sum)
+
+
+#Convert groups into vegan outputs
+veganComm_s1_m <- vegan_otu(s1_phy_m)
+veganComm_s2_m <- vegan_otu(s2_phy_m)
+veganComm_s3_m <- vegan_otu(s3_phy_m)
+veganComm_s4_m <- vegan_otu(s4_phy_m)
+veganComm_s5_m <- vegan_otu(s5_phy_m)
+veganComm_s6_m <- vegan_otu(s6_phy_m)
+veganComm_s7_m <- vegan_otu(s7_phy_m)
+
+
+###### iNEXT Species Accumulation Curves
+
+#Create List for iNEXT Species Incidence Frequencies
+mor_inc_ind <-list ("S1" =t(veganComm_s1_m),
+                "S2"=t(veganComm_s2_m),
+                "S3"=t(veganComm_s3_m),
+                "S4"=t(veganComm_s4_m),
+                "S5"=t(veganComm_s5_m),
+                "S6"=t(veganComm_s6_m),
+                "S7"=t(veganComm_s7_m))
+
+species_incidence_ind <-lapply(mor_inc_ind, as.incfreq)
+
+#Convert to iNEXT format
+t <- seq(1, 30, by=1)
+out.inc_ind <- iNEXT(species_incidence_ind, q=0, datatype="incidence_freq", size=t)
+
+out.inc_ind$DataInfo
+```
+
+```{r}
+
+#Sample‐size‐based R/E curves
+ggiNEXT(out.inc_ind, type=2, color.var="site") + 
+  theme_bw(base_size = 18) + scale_fill_manual(values=col.ports2) +  scale_color_manual(values=col.ports2) + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                                                                    panel.background = element_blank()) + xlab("Locations") + ylab("Sample Coverage") +scale_shape_manual(values = c(14,15,16,17,18,19,20))+xlim(0,15)-> sample_coverage_rarefaction_fig_ind
+
+ggiNEXT(out.inc_ind, type=1, color.var="site") + 
+  theme_bw(base_size = 18) + scale_fill_manual(values=col.ports2) +  scale_color_manual(values=col.ports2) + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                                                                    panel.background = element_blank()) + xlab("Locations") + ylab("Species") +scale_shape_manual(values = c(14,15,16,17,18,19,20))+xlim(0,15)-> species_rarefaction_fig_ind
+
+
+
+
+```
+
+# Figure S3. eDNA Station Level Rarefaction Curves
+```{r}
+(sample_coverage_rarefaction_fig_ind+species_rarefaction_fig_ind)+
+  
+  plot_layout(guides = 'collect') + plot_annotation(tag_levels = 'A')
+  
+ggsave(  filename = here("analysis","Figures","Figure_S3.png"),
+       width=12,
+       height = 8,
+       dpi = 300,
+      units = c("in"))
+
+
+```
+
+## Location Level
+
+### Subset Samples per Site
+
+```{r}
+#isolate groups
+
+iNext_subset <- function(physeq_obj, variable_of_choice){
+  
+  # Subset Phyloseq Object 
+    sample_data_holder <- as.tibble(sample_data(physeq_obj))
+    var.levels <- sample_data_holder %>% dplyr::select(variable_of_choice) %>% unique() %>%       as.data.frame() %>% as.list()
+  
+  
+    subset_phy_df <- matrix(list(), ncol = 2, nrow = length(var.levels[[1]]))
+    for (i in 1:length(var.levels[[1]])) {
+        remove_idx = as.character(get_variable(physeq_obj,variable_of_choice )) ==                  var.levels[[1]][i]
+        subset_phy_df[[i]] <- prune_samples(remove_idx, physeq_obj)
+     }
+  
+  #Convert groups into vegan outputs
+    for (i in 1:length(var.levels[[1]])) {
+        subset_phy_df[,2][[i]] <- t(vegan_otu(subset_phy_df[[i]]))
+    }
+  
+  #Create List for iNEXT Species Incidence Frequencies
+    mor_inc <-list()
+    for (i in 1:length(var.levels[[1]])) {
+        mor_inc[[paste0(var.levels[[1]][[i]])]] = subset_phy_df[,2][[i]]
+    }
+  # Species Incidence Calculation
+    species_incidence <-lapply(mor_inc, as.incfreq)
+}
+
+```
+
+```{r}
+
+#Convert to iNEXT format
+species_incidence_subset <- function(species_incidence, sample_metadata, variable_of_choice, site_var){
+  
+  # Subset Metadata Object 
+    var.levels <- sample_metadata %>% dplyr::select(variable_of_choice) %>% unique() %>%     as.data.frame() %>% as.list()
+  
+    subset_vars <- list()
+    
+    for (i in 1:length(var.levels[[1]])) {
+        subset_meta = sample_metadata[sample_metadata[[variable_of_choice[[1]]]] == var.levels[[1]][i],]
+        
+        subset_vars[[paste0(var.levels[[1]][[i]])]] <- subset_meta[[site_var[[1]]]] %>% unique()
+     }
+  
+    #Create List of Subsetted Species Incidence Frequencies
+    subset_incidence_site <- list()
+    for (i in 1:length(var.levels[[1]])) {
+       subset_incidence_site[[paste0(var.levels[[1]][[i]])]] <- species_incidence_site[subset_vars[[paste0(var.levels[[1]][[i]])]]]
+      
+    }
+    subset_incidence_site
+}
+
+
+
+
+```
+
+```{r}
+
+t <- seq(1, 50, by=1)
+
+iNext_subset(s1_phy,"Bio_rep") -> species_incidence_site_s1
+out.inc_s1 <- iNEXT(species_incidence_site_s1, q=0, datatype="incidence_freq", size=t)
+
+
+iNext_subset(s2_phy,"Bio_rep") -> species_incidence_site_s2
+out.inc_s2 <- iNEXT(species_incidence_site_s2, q=0, datatype="incidence_freq", size=t)
+
+
+iNext_subset(s3_phy,"Bio_rep") -> species_incidence_site_s3
+out.inc_s3 <- iNEXT(species_incidence_site_s3, q=0, datatype="incidence_freq", size=t)
+
+
+iNext_subset(s4_phy,"Bio_rep") -> species_incidence_site_s4
+out.inc_s4 <- iNEXT(species_incidence_site_s4, q=0, datatype="incidence_freq", size=t)
+
+iNext_subset(s5_phy,"Bio_rep") -> species_incidence_site_s5
+out.inc_s5 <- iNEXT(species_incidence_site_s5, q=0, datatype="incidence_freq", size=t)
+
+iNext_subset(s1_phy,"Bio_rep") -> species_incidence_site_s1
+out.inc_s1 <- iNEXT(species_incidence_site_s1, q=0, datatype="incidence_freq", size=t)
+
+iNext_subset(s6_phy,"Bio_rep") -> species_incidence_site_s6
+out.inc_s6 <- iNEXT(species_incidence_site_s6, q=0, datatype="incidence_freq", size=t)
+
+iNext_subset(s7_phy,"Bio_rep") -> species_incidence_site_s7
+out.inc_s7 <- iNEXT(species_incidence_site_s7, q=0, datatype="incidence_freq", size=t)
+
+
+#Convert to iNEXT format
+
+out.inc_s1$DataInfo
+```
+
+#### S1
+
+```{r}
+
+ggiNEXT(out.inc_s1, type=2, color.var="site") + 
+  theme_bw(base_size = 18) + #scale_fill_manual(values=col.mor8_diff_2) +  #scale_color_manual(values=col.mor8_diff_2) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                                                                    panel.background = element_blank()) + xlab("Bottle Replicates") +ylab("Sample Coverage") +xlim(0,10) + 
+  ggtitle('S1')-> s1_sc
+
+
+
+ggiNEXT(out.inc_s1, type=1, color.var="site") + 
+  theme_bw(base_size = 18) + #scale_fill_manual(values=col.mor8_diff_2) +  #scale_color_manual(values=col.mor8_diff_2) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                                                                    panel.background = element_blank()) + xlab("Bottle Replicates") +ylab("Species") +xlim(0,10) +ylim(0,25)+ 
+  ggtitle('S1')-> s1_species
+
+
+```
+#### S2
+
+```{r}
+
+ggiNEXT(out.inc_s2, type=2, color.var="site") + 
+  theme_bw(base_size = 18) + #scale_fill_manual(values=col.mor8_diff_2) +  #scale_color_manual(values=col.mor8_diff_2) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                                                                    panel.background = element_blank()) + xlab("Bottle Replicates") +ylab("Sample Coverage") +xlim(0,10) + 
+  ggtitle('S2')-> s2_sc
+
+
+
+ggiNEXT(out.inc_s2, type=1, color.var="site") + 
+  theme_bw(base_size = 18) + #scale_fill_manual(values=col.mor8_diff_2) +  #scale_color_manual(values=col.mor8_diff_2) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                                                                    panel.background = element_blank()) + xlab("Bottle Replicates") +ylab("Species") +xlim(0,10) +ylim(0,25)+ 
+  ggtitle('S2')-> s2_species
+
+
+```
+#### S3
+
+```{r}
+
+ggiNEXT(out.inc_s3, type=2, color.var="site") + 
+  theme_bw(base_size = 18) + #scale_fill_manual(values=col.mor8_diff_2) +  #scale_color_manual(values=col.mor8_diff_2) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                                                                    panel.background = element_blank()) + xlab("Bottle Replicates") +ylab("Sample Coverage") +xlim(0,10) + 
+  ggtitle('S3')-> s3_sc
+
+
+
+ggiNEXT(out.inc_s3, type=1, color.var="site") + 
+  theme_bw(base_size = 18) + #scale_fill_manual(values=col.mor8_diff_2) +  #scale_color_manual(values=col.mor8_diff_2) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                                                                    panel.background = element_blank()) + xlab("Bottle Replicates") +ylab("Species") +xlim(0,10) +ylim(0,25)+ 
+  ggtitle('S3')-> s3_species
+
+
+```
+#### S4
+
+```{r}
+
+ggiNEXT(out.inc_s4, type=2, color.var="site") + 
+  theme_bw(base_size = 18) + #scale_fill_manual(values=col.mor8_diff_2) +  #scale_color_manual(values=col.mor8_diff_2) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                                                                    panel.background = element_blank()) + xlab("Bottle Replicates") +ylab("Sample Coverage") +xlim(0,10) + 
+  ggtitle('S4')-> s4_sc
+
+
+
+ggiNEXT(out.inc_s4, type=1, color.var="site") + 
+  theme_bw(base_size = 18) + #scale_fill_manual(values=col.mor8_diff_2) +  #scale_color_manual(values=col.mor8_diff_2) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                                                                    panel.background = element_blank()) + xlab("Bottle Replicates") +ylab("Species") +xlim(0,10) +ylim(0,25)+ 
+  ggtitle('S4')-> s4_species
+
+
+```
+#### S5
+
+```{r}
+
+ggiNEXT(out.inc_s5, type=2, color.var="site") + 
+  theme_bw(base_size = 18) + #scale_fill_manual(values=col.mor8_diff_2) +  #scale_color_manual(values=col.mor8_diff_2) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                                                                    panel.background = element_blank()) + xlab("Bottle Replicates") +ylab("Sample Coverage") +xlim(0,10) + 
+  ggtitle('S5')-> s5_sc
+
+
+
+ggiNEXT(out.inc_s5, type=1, color.var="site") + 
+  theme_bw(base_size = 18) + #scale_fill_manual(values=col.mor8_diff_2) +  #scale_color_manual(values=col.mor8_diff_2) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                                                                    panel.background = element_blank()) + xlab("Bottle Replicates") +ylab("Species") +xlim(0,10) +ylim(0,25)+ 
+  ggtitle('S5')-> s5_species
+
+
+```
+
+#### S6
+
+```{r}
+
+ggiNEXT(out.inc_s6, type=2, color.var="site") + 
+  theme_bw(base_size = 18) + #scale_fill_manual(values=col.mor8_diff_2) +  #scale_color_manual(values=col.mor8_diff_2) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                                                                    panel.background = element_blank()) + xlab("Bottle Replicates") +ylab("Sample Coverage") +xlim(0,10) + 
+  ggtitle('S6')-> s6_sc
+
+
+
+ggiNEXT(out.inc_s6, type=1, color.var="site") + 
+  theme_bw(base_size = 18) + #scale_fill_manual(values=col.mor8_diff_2) +  #scale_color_manual(values=col.mor8_diff_2) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                                                                    panel.background = element_blank()) + xlab("Bottle Replicates") +ylab("Species") +xlim(0,10) +ylim(0,25)+ 
+  ggtitle('S6')-> s6_species
+
+
+```
+#### S7
+
+```{r}
+
+ggiNEXT(out.inc_s7, type=2, color.var="site") + 
+  theme_bw(base_size = 18) + #scale_fill_manual(values=col.mor8_diff_2) +  #scale_color_manual(values=col.mor8_diff_2) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                                                                    panel.background = element_blank()) + xlab("Bottle Replicates") +ylab("Sample Coverage") +xlim(0,10) + 
+  ggtitle('S7')-> s7_sc
+
+
+
+ggiNEXT(out.inc_s7, type=1, color.var="site") + 
+  theme_bw(base_size = 18) + #scale_fill_manual(values=col.mor8_diff_2) +  #scale_color_manual(values=col.mor8_diff_2) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                                                                    panel.background = element_blank()) + xlab("Bottle Replicates") +ylab("Species") +xlim(0,10) +ylim(0,25)+ 
+  ggtitle('S7')-> s7_species
+
+
+```
+
+#Figure S4. Location Level Sample Coverage
+```{r}
+s1_sc+s2_sc+s3_sc+s4_sc+s5_sc+s6_sc+s7_sc +
+  plot_layout(guides = 'collect')
+
+
+ggsave(filename = here("analysis","Figures","Figure_S4.png"),
+       width=12,
+       height = 8,
+       dpi = 300,
+      units = c("in"))
+
+```
+
+#Figure S5. Location Level Species Rarefaction
+```{r}
+s1_species+s2_species+s3_species+s4_species+s5_species+s6_species+s7_species +
+  plot_layout(guides = 'collect')
+
+ggsave(filename = here("analysis","Figures","Figure_S5.png"),
+       width=12,
+       height = 8,
+       dpi = 300,
+      units = c("in"))
+
+```
+
+### Sample Coverage Estimate Summaries
+```{r}
+
+#Trawl Surveys
+bind_rows(out.inc_site_trawl$iNextEst, .id = "Station") %>% as_tibble() %>% 
+  mutate(., Level = "Site") -> inext_site_trawl
+
+inext_site_trawl %>% 
+  filter(., method =="observed") -> inext_site_obs_trawl
+
+inext_site_obs_trawl %>% 
+  dplyr::summarise(mean(SC), sd(SC))
+```
+
+
+```{r}
+#eDNA Surveys
+# Site Level
+bind_rows(out.inc_site$iNextEst, .id = "Station") %>% as_tibble() %>% 
+  mutate(., Level = "Site") -> inext_site
+
+inext_site %>% 
+  filter(., method =="observed") -> inext_site_obs
+
+
+inext_site_obs %>% 
+  dplyr::summarise(mean(SC), sd(SC))
+#99%
+```
+
+
+```{r}
+
+#Station level w/ Bio reps unique (did not use)
+bind_rows(out.inc2$iNextEst, .id = "Station") %>% as_tibble() %>% 
+  mutate(., Level = "Station") -> inext_station
+
+inext_station %>% 
+  filter(., method =="observed") -> inext_station_obs
+
+#Station level w/ Bio reps merged
+bind_rows(out.inc_ind$iNextEst, .id = "Station") %>% as_tibble() %>% 
+  mutate(., Level = "Station") -> inext_station_ind
+
+inext_station_ind %>% 
+  filter(., method =="observed") -> inext_station_ind_obs
+
+inext_station_ind_obs %>% 
+  dplyr::summarise(mean(SC), sd(SC), min(SC), max(SC))
+# 95%
+
+
+inext_station_ind %>% 
+  filter(., SC > 0.99) %>% 
+  group_by(Station) %>% 
+  dplyr::summarise(min(t)) %>% 
+  dplyr::summarise(mean(`min(t)`), max(`min(t)`),min(`min(t)`))
+```
+
+
+```{r}
+#Location Level
+bind_rows(out.inc_s1$iNextEst, .id = "Location") %>% as_tibble() %>% 
+  mutate(., Level = "Location",
+         Station = "S1") -> inext_s1
+
+bind_rows(out.inc_s2$iNextEst, .id = "Location") %>% as_tibble() %>% 
+  mutate(., Level = "Location",
+         Station = "S2") -> inext_s2
+
+bind_rows(out.inc_s3$iNextEst, .id = "Location") %>% as_tibble() %>% 
+  mutate(., Level = "Location",
+         Station = "S3") -> inext_s3
+
+bind_rows(out.inc_s4$iNextEst, .id = "Location") %>% as_tibble() %>% 
+  mutate(., Level = "Location",
+         Station = "S4") -> inext_s4
+
+bind_rows(out.inc_s5$iNextEst, .id = "Location") %>% as_tibble() %>% 
+  mutate(., Level = "Location",
+         Station = "S5") -> inext_s5
+
+bind_rows(out.inc_s6$iNextEst, .id = "Location") %>% as_tibble() %>% 
+  mutate(., Level = "Location",
+         Station = "S6") -> inext_s6
+
+bind_rows(out.inc_s7$iNextEst, .id = "Location") %>% as_tibble() %>% 
+  mutate(., Level = "Location",
+         Station = "S7") -> inext_s7
+
+rbind(inext_s1,inext_s2,inext_s3,inext_s4,inext_s5,inext_s6,inext_s7) -> inext_location
+
+inext_location %>% 
+  filter(., method =="observed") -> inext_location_obs
+
+inext_location_obs %>% 
+  dplyr::summarise(mean(SC), sd(SC),min(SC), max(SC))
+# 90%
+
+inext_location %>% 
+  filter(., SC > 0.99) %>% 
+  group_by(Location,Station) %>% 
+  dplyr::summarise(min(t)) %>% 
+  ungroup() %>% 
+  dplyr::summarise(mean(`min(t)`), max(`min(t)`),min(`min(t)`))
+```
+####Relative Abundance Comparisons  
+<br />
+<br />
+```{r}
+
+# eDNA Index site averaged
+ports_post_eidx_sites %>% 
+  separate(sum.taxonomy, into = c("Domain","Phylum","Class","Order","Family","Genus","Species" ), sep = "\\;", remove = F) %>%
+  #select out all levels but species
+  dplyr::select(.,-sum.taxonomy,-Domain,-Phylum, -Class,-Order,-Family,-Genus) %>%
+  #remove ASVs without species level ID
+  filter(., Species %in% common_species_level_ids) %>% 
+  pivot_longer(., cols=`LA11`:`LB2`, names_to = "Site", values_to = "eDNA_index") -> ports_post_eidx_sites_long
+
+
+abundance_trawl_long %>% 
+  group_by(Species) %>% 
+  dplyr::summarise(sum(Counts))
+```
+
+```{r, results="hide",warning=FALSE}
+
+#Prepare data for comparison
+ports_post_eidx %>% 
+  #split the taxonomy into different levels
+  separate(sum.taxonomy, into = c("Domain","Phylum","Class","Order","Family","Genus","Species" ), sep = "\\;", remove = F) %>%
+  #select out all levels but species
+  dplyr::select(.,-Domain,-Phylum, -Class,-Order,-Family,-Genus) %>%
+  #remove ASVs without species level ID
+  filter(., Species %in% common_species_level_ids) %>% 
+  pivot_longer(.,cols=LA11_1_1:LB2_4_3, names_to = "New_name", values_to="eDNA_Index") %>% 
+  #split sample names
+ left_join(metadata2) %>% 
+  dplyr::select(Species, New_name, eDNA_Index, Site, Bio_rep, Site_station, Tech_rep) %>% 
+  dplyr::group_by(Site,Species) %>% 
+  #count total reads per site
+  dplyr::summarise(stdev_eDNA_index=sd(eDNA_Index)) -> sd_dev_ports
+
+ports_post_eidx_sites_long %>% 
+  left_join(sd_dev_ports) %>% 
+  left_join(., abundance_trawl_long) %>% 
+  left_join(biomass_trawl_long) %>% 
+  mutate(ymin = eDNA_index-stdev_eDNA_index, ymax= eDNA_index + stdev_eDNA_index) -> trawl_comp
+```
+
+```{r}
+
+multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
+  library(grid)
+  
+  # Make a list from the ... arguments and plotlist
+  plots <- c(list(...), plotlist)
+  
+  numPlots = length(plots)
+  
+  # If layout is NULL, then use 'cols' to determine layout
+  if (is.null(layout)) {
+    # Make the panel
+    # ncol: Number of columns of plots
+    # nrow: Number of rows needed, calculated from # of cols
+    layout <- matrix(seq(1, cols * ceiling(numPlots/cols)),
+                     ncol = cols, nrow = ceiling(numPlots/cols))
+  }
+  
+  if (numPlots==1) {
+    print(plots[[1]])
+    
+  } else {
+    # Set up the page
+    grid.newpage()
+    pushViewport(viewport(layout = grid.layout(nrow(layout), ncol(layout))))
+    
+    # Make each plot, in the correct location
+    for (i in 1:numPlots) {
+      # Get the i,j matrix positions of the regions that contain this subplot
+      matchidx <- as.data.frame(which(layout == i, arr.ind = TRUE))
+      
+      print(plots[[i]], vp = viewport(layout.pos.row = matchidx$row,
+                                      layout.pos.col = matchidx$col))
+    }
+  }
+}
+
+```
+
+### Abundance
+
+```{r}
+
+my.formula <- y ~ x
+species_to_plot <- c("Engraulis mordax", "Genyonemus lineatus", "Paralabrax nebulifer", "Paralichthys californicus", "Synodus lucioceps")
+
+trawl_comp %>%
+    filter(., Species %in% species_to_plot) %>% 
+  dplyr::group_by(Species) %>% 
+  nest() %>% 
+  mutate(plot = purrr::map2(data,Species, ~ggplot(.x, aes(y= eDNA_index, x = Counts)) +   geom_smooth(method = "lm") + stat_poly_eq(formula = my.formula, 
+                aes(label = paste(..eq.label.., ..rr.label.., sep = "~~~")),
+                size = 4, label.x = 0.25, label.y = 0.1,
+                parse = TRUE) +
+     theme_bw()+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.background = element_blank()) +
+     geom_point() + theme(plot.title = element_text(size = 14, face = "bold")) +
+     geom_errorbar(aes(ymin = ymin, ymax = ymax), width = .1)+ ylab("eDNA Index") + xlab("Trawl Abundance") + ylim(-0.25,1.25)+
+       ggtitle(as.character(.y))))-> nps_comp.abundance
+
+  
+  
+nps_comp.abundance  
+nps_comp.abundance$plot[[2]]
+
+nps_comp.abundance$plot[[1]]+nps_comp.abundance$plot[[2]]+nps_comp.abundance$plot[[3]]+nps_comp.abundance$plot[[4]]+nps_comp.abundance$plot[[5]]
+
+ggsave(filename =  here("analysis","Figures","Figure_S7.png"),
+       dpi = 300,
+       width = 16,
+  height = 8,
+  units = c("in"))
+
+```
+
+
+### Biomass
+
+```{r}
+my.formula <- y ~ x
+species_to_keep_trawl$Species
+
+trawl_comp %>%
+  filter(., Species %in% species_to_plot) %>% 
+  dplyr::group_by(Species) %>% 
+  nest() %>% 
+  mutate(plot = purrr::map2(data,Species, ~ggplot(.x, aes(y= eDNA_index, x = Kg)) +   geom_smooth(method = "lm") + stat_poly_eq(formula = my.formula, 
+                aes(label = paste(..eq.label.., ..rr.label.., sep = "~~~")),
+                size = 4, label.x = 0.25, label.y = 0.1,
+                parse = TRUE) +
+     theme_bw()+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.background = element_blank()) +
+     geom_point() + theme(plot.title = element_text(size = 14, face = "bold")) +
+     geom_errorbar(aes(ymin = ymin, ymax = ymax), width = .01)+ ylab("eDNA Index") + xlab("Biomass (Kg)") + ylim(-0.3,1.25)+
+       ggtitle(as.character(.y))))-> nps_comp.biomass
+
+nps_comp.biomass$plot[[1]]+nps_comp.biomass$plot[[2]]+nps_comp.biomass$plot[[3]]+nps_comp.biomass$plot[[4]]+nps_comp.biomass$plot[[5]] 
+
+ggsave(filename =  here("analysis","Figures","Figure_S6.png"),
+       dpi = 300,
+       width = 16,
+  height = 8,
+  units = c("in"))
+```
+
+
+

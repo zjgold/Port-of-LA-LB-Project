@@ -1,0 +1,18 @@
+Common	Scientific	LA3	LA6	LA11	LA14	LB1	LB2	LB14
+Barred Sand Bass	Paralabrax nebulifer	0.391	0.512	0	0.091	0	0	0.75
+California Halibut	Paralichthys californicus	0.451	0.434	0	0	0	0.185	0.126
+California Lizardfish	Synodus lucioceps	0.246	0.021	0.163	0	0.36	0	0.06
+California Tonguefish	Symphurus atricaudus	0	0.036	0	0	0	0	0.023
+Diamond Turbot	Pleuronichthys guttulatus	0	0	0	0	0	0	0.247
+Fantail sole	Xystreurys liolepis	0	0	0.232	0	0	0	0
+Longfin Sanddab	Citharichthys xanthostigma	0	0	0.075	0	0	0	0
+Northern Anchovy	Engraulis mordax	0	0.002	0	0	0	0.078	0
+Queenfish	Seriphus politus	0	1.527	0	0	0	0	0
+Round Stingray	Urobatis halleri	0.441	0	0	0	0	0	0
+Shiner Surfpersh	Cymatogaster aggregata	0	0	0.056	0	0	0	0
+Specklefin Midshipman	Porichthys myriaster	0	0	0	0	0.041	0	0
+Spotted Sand Bass	Paralabrax maculatofasciatus	0	0	0	0.112	0	0	0
+Spotted Sculpin	Scorpaena guttata	0	0	0.16	0	0	0	0
+Spotted Turbot	Pleuronichthys ritteri	0	0	0	0	0	0.017	0
+White Croaker	Genyonemus lineatus	0	0	3.128	0	3.025	0.0038	0
+White Surfperch	Phanerodon furcatus	0.159	0	0	0	0	0	0
