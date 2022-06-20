@@ -62,7 +62,7 @@ Included on this page is
   2. *Metazoa_16s_taxonomy_tables* *Anacapa Toolkit* Output of MiFish *16S* Elasmobranch data using an old *CRUX* Reference database with no additional species barcodes added.
   3. *decontamination/* Directory with decontamination outputs.
 
-    **Note** *A few files needed for analyses are not immediately included on GitHub due to size, please see [See Dryad]INSERT LINK*
 
+**Note** *A few files needed for analyses are not immediately included on GitHub due to size, please see [See Dryad]INSERT LINK*
 
 **Raw sequence inputs, reference databases, and Anacapa scripts  are made available on Dryad**
