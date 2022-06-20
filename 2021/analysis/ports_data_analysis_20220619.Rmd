@@ -54,15 +54,15 @@ library(patchwork)
 
 ```{r Import Data}
 #For community ecology and richness tabulation
-ports_post_eidx <- readRDS(file =here("decontamination","Output_R","post_occupancy_results_sum.taxonomy_tech_reps_summed_eDNA_index.RDS"))
+ports_post_eidx <- readRDS(file =here("data","fish","decontamination","Output_R","post_occupancy_results_sum.taxonomy_tech_reps_summed_eDNA_index.RDS"))
                            
-ports_post_reads <- readRDS(file =here("decontamination","Output_R","post_occupancy_results_sum.taxonomy_tech_reps_summed_read_counts.RDS"))
+ports_post_reads <- readRDS(file =here("data","fish","decontamination","Output_R","post_occupancy_results_sum.taxonomy_tech_reps_summed_read_counts.RDS"))
 
-ports_pre_reads <- readRDS(file =here("decontamination","Output_R","pre_occupancy_results_sum.taxonomy_tech_reps_summed_read_counts.RDS"))
+ports_pre_reads <- readRDS(file =here("data","fish","decontamination","Output_R","pre_occupancy_results_sum.taxonomy_tech_reps_summed_read_counts.RDS"))
 
-ports_post_eidx_sites <- readRDS(file =here("decontamination","Output_R","post_occ_site_averaged_sum.taxonomy_e_index.RDS"))
+ports_post_eidx_sites <- readRDS(file =here("data","fish","decontamination","Output_R","post_occ_site_averaged_sum.taxonomy_e_index.RDS"))
 
-ports_pre_eidx_sites <- readRDS(file =here("decontamination","Output_R","pre_occ_site_averaged_sum.taxonomy_e_index.RDS"))
+ports_pre_eidx_sites <- readRDS(file =here("data","fish","decontamination","Output_R","pre_occ_site_averaged_sum.taxonomy_e_index.RDS"))
 
 #Trawl Data
 abundance_trawl <- read.table(here("data","abundance_trawl.txt"), header = 1, sep = "\t", stringsAsFactors = F)
@@ -73,7 +73,7 @@ input_meta_path <- here("data","la_ports_meta_data.txt")
 metadata <- read.table(input_meta_path, header = 1, sep = "\t", stringsAsFactors = F)
 
 #Load In All data
-ASV.nested <- readRDS(file=here("decontamination","ASV.nested_final.RDS"))
+ASV.nested <- readRDS(file=here("data","fish","decontamination","ASV.nested_final.RDS"))
 
 ASV.nested_old <- readRDS(file=here("data","Anacapa_output_old","decontamination","ASV.nested_final.RDS"))
 
@@ -81,7 +81,7 @@ ASV.nested_co1_16S <- readRDS(file=here("data","invert","decontamination","ASV.n
 
 
 #CA Fish Species
-input_CA_path <- here("data","CA_fish_list_20210216.csv")
+input_CA_path <- here("data","fish","CA_fish_list_20210216.csv")
 CA_fish_list <- read.table(input_CA_path, header = 1, sep = ",", stringsAsFactors = F)
 
 ```
