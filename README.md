@@ -30,9 +30,11 @@ Included on this page is
       * *20210420_ports_decontamination.R* This script processes the "raw" *Anacapa Toolkit* output and runs decontamination to remove poorly sequenced samples and contaminant ASVs. Used on the MiFish *12S* Universal Teleost and Elasmobranch data.
 
   /data/invert
+
       * *220220130_ports_CO1_16S_decontamination.R* This script processes the "raw" *Anacapa Toolkit* output and runs decontamination to remove poorly sequenced samples and contaminant ASVs.Used on the *CO1* and *16S* metazoan data.
 
     /data/Anacapa_output_old
+
       * *decontam.R* This script processes the "raw" *Anacapa Toolkit* output and runs decontamination to remove poorly sequenced samples and contaminant ASVs. Used on the MiFish *12S* Universal Teleost and Elasmobranch data that was processed with an older reference database that lacked hundreds of CA species barcodes.
 
 2. Data
