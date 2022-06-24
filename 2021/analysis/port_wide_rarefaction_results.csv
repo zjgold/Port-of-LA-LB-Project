@@ -1,0 +1,31 @@
+,Station,t,method,order,qD,qD.LCL,qD.UCL,SC,SC.LCL,SC.UCL,Level
+1,Trawl,1,interpolated,0,6,4.794,7.206,0.345,0.238,0.453,Site
+2,Trawl,2,interpolated,0,9.929,8.364,11.493,0.554,0.458,0.649,Site
+3,Trawl,3,interpolated,0,12.607,10.889,14.325,0.687,0.607,0.767,Site
+4,Trawl,4,interpolated,0,14.486,12.754,16.218,0.783,0.71,0.857,Site
+5,Trawl,5,interpolated,0,15.786,14.131,17.441,0.863,0.793,0.933,Site
+6,Trawl,6,interpolated,0,16.607,15.054,18.16,0.935,0.865,1,Site
+7,Trawl,7,interpolated,0,17,15.509,18.491,1,0.929,1,Site
+8,Trawl,8,observed,0,17,15.475,18.525,1,0.934,1,Site
+9,Trawl,9,extrapolated,0,17,15.349,18.651,1,0.939,1,Site
+10,Trawl,10,extrapolated,0,17,15.171,18.829,1,0.945,1,Site
+11,Trawl,11,extrapolated,0,17,14.972,19.028,1,0.95,1,Site
+12,Trawl,12,extrapolated,0,17,14.768,19.232,1,0.954,1,Site
+13,Trawl,13,extrapolated,0,17,14.571,19.429,1,0.959,1,Site
+14,Trawl,14,extrapolated,0,17,14.383,19.617,1,0.962,1,Site
+15,Trawl,15,extrapolated,0,17,14.208,19.792,1,0.966,1,Site
+16,eDNA All Taxa,1,interpolated,0,69.857,67.505,72.209,0.817,0.796,0.839,Site
+17,eDNA All Taxa,2,interpolated,0,82.619,79.704,85.534,0.925,0.911,0.939,Site
+18,eDNA All Taxa,3,interpolated,0,87.857,84.677,91.038,0.962,0.951,0.973,Site
+19,eDNA All Taxa,4,interpolated,0,90.514,87.142,93.887,0.977,0.968,0.987,Site
+20,eDNA All Taxa,5,interpolated,0,92.095,88.541,95.65,0.985,0.976,0.994,Site
+21,eDNA All Taxa,6,interpolated,0,93.143,89.396,96.889,0.988,0.979,0.997,Site
+22,eDNA All Taxa,7,observed,0,94,90.04,97.96,0.99,0.982,0.998,Site
+23,eDNA All Taxa,8,extrapolated,0,94.701,90.519,98.884,0.992,0.984,0.999,Site
+24,eDNA All Taxa,9,extrapolated,0,95.275,90.87,99.68,0.993,0.987,1,Site
+25,eDNA All Taxa,10,extrapolated,0,95.745,91.125,100.364,0.995,0.989,1,Site
+26,eDNA All Taxa,11,extrapolated,0,96.129,91.309,100.948,0.996,0.99,1,Site
+27,eDNA All Taxa,12,extrapolated,0,96.443,91.44,101.445,0.996,0.992,1,Site
+28,eDNA All Taxa,13,extrapolated,0,96.7,91.532,101.868,0.997,0.993,1,Site
+29,eDNA All Taxa,14,extrapolated,0,96.91,91.595,102.226,0.998,0.994,1,Site
+30,eDNA All Taxa,15,extrapolated,0,97.083,91.637,102.528,0.998,0.995,1,Site

@@ -667,7 +667,7 @@ post_som_4_check$Genus %>%  unique()
 post_som_4_check$Family %>%  unique()
 
 
-SOM_results_to_keep_all <- readRDS( here("decontamination","occupancy_results_all.RDS"))
+SOM_results_to_keep_all <- readRDS( here("data","fish","decontamination","occupancy_results_all.RDS"))
 
 SOM_results_to_keep_all %>% 
   filter(., str_detect(sum.taxonomy, "Hypsypops"))
@@ -1004,22 +1004,25 @@ carnivore_rel_abun<- vegan_otu(physeq_obj_eidx)
 d_carn <- vegdist(carnivore_rel_abun, method="bray") 
 
 #Permanova
+adonis(carnivore_rel_abun~ sampledf$Station +sampledf$Site_station)
 broom::tidy(adonis(carnivore_rel_abun~ sampledf$Station +sampledf$Site_station)$aov.tab)
 
 carnivore_rel_abun %>%  View()
 ```
 
 ```{r}
-
+here()
 #Homogeneity of dispersions test
 betadisper(d_carn, getElement(sampledf, "Station"))
 anova(betadisper(d_carn, getElement(sampledf, "Station")))
-broom::tidy(TukeyHSD(betadisper(d_carn, getElement(sampledf, "Station")))) %>%  kable()
+broom::tidy(TukeyHSD(betadisper(d_carn, getElement(sampledf, "Station")))) %>%  
+  write.csv(file=here("analysis","homogeneity_of_dispersions_station.csv"), quote = F)
 
 #Homogeneity of dispersions test
 betadisper(d_carn, getElement(sampledf, "Site_station"))
 anova(betadisper(d_carn, getElement(sampledf, "Site_station")))
-broom::tidy(TukeyHSD(betadisper(d_carn, getElement(sampledf, "Site_station")))) %>%  kable()
+broom::tidy(TukeyHSD(betadisper(d_carn, getElement(sampledf, "Site_station")))) %>%  
+  write.csv(file=here("analysis","homogeneity_of_dispersions_location.csv"), quote = F)
 
 ```
 
@@ -1719,7 +1722,7 @@ ggsave(filename = here("analysis","Figures","Figure_S5.png"),
 
 ```
 
-### Sample Coverage Estimate Summaries
+# Sample Coverage Estimate Summaries
 ```{r}
 
 #Trawl Surveys
@@ -1749,6 +1752,12 @@ inext_site_obs %>%
 #99%
 ```
 
+```{r}
+rbind(inext_site_trawl,inext_site) %>% 
+  write.csv(file=here("analysis","port_wide_rarefaction_results.csv"),quote=F)
+
+```
+
 
 ```{r}
 
@@ -1776,6 +1785,10 @@ inext_station_ind %>%
   group_by(Station) %>% 
   dplyr::summarise(min(t)) %>% 
   dplyr::summarise(mean(`min(t)`), max(`min(t)`),min(`min(t)`))
+
+inext_station_ind %>% 
+  write.csv(file=here("analysis","eDNA_station_rarefaction_results.csv"),quote=F)
+
 ```
 
 
@@ -1824,6 +1837,9 @@ inext_location %>%
   dplyr::summarise(min(t)) %>% 
   ungroup() %>% 
   dplyr::summarise(mean(`min(t)`), max(`min(t)`),min(`min(t)`))
+
+inext_location %>% 
+  write.csv(file=here("analysis","eDNA_location_rarefaction_results.csv"),quote=F)
 ```
 ####Relative Abundance Comparisons  
 <br />

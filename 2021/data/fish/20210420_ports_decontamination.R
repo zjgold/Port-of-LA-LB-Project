@@ -1114,7 +1114,7 @@ hash.key %>%
   ####How both datasets are combined, on a common, comparable scale.
   
   ### Output Read Count Data
-  pre_results_reads = cbind(barcode_1_prop,barcode_2_prop)
+  pre_results_reads = cbind(barcode_1_pre_df,barcode_2_pre_df)
   
   hash.key.updated.2 <- hash.key.updated[!duplicated(hash.key.updated$number), ]
   
@@ -1126,6 +1126,26 @@ hash.key %>%
 
   saveRDS(pre_results_reads,file="Output_R/pre_occupancy_results_sum.taxonomy_tech_reps_separate_read_counts.RDS")
   write_csv(pre_results_reads ,"Output_csv/pre_occupancy_results_sum.taxonomy_tech_reps_separate_read_counts.csv")
+  
+  
+  barcode_1_pre_df$number <- rownames(barcode_1_pre_df)
+  
+  barcode_1_pre_df %>% 
+    left_join(hash.key.updated.2, by="number") %>% 
+    dplyr::select(-number,-seq_number) -> barcode_1_pre_df
+  
+  saveRDS(barcode_1_pre_df,file="Output_R/pre_occupancy_results_sum.taxonomy_tech_reps_elas_read_counts.RDS")
+  write_csv(barcode_1_pre_df ,"Output_csv/pre_occupancy_results_sum.taxonomy_tech_reps_elas_read_counts.csv")
+  
+  barcode_2_pre_df$number <- rownames(barcode_2_pre_df)
+  
+  barcode_2_pre_df %>% 
+    left_join(hash.key.updated.2, by="number") %>% 
+    dplyr::select(-number,-seq_number) -> barcode_2_pre_df
+  
+  saveRDS(barcode_2_pre_df,file="Output_R/pre_occupancy_results_sum.taxonomy_tech_reps_miu_read_counts.RDS")
+  write_csv(barcode_2_pre_df ,"Output_csv/pre_occupancy_results_sum.taxonomy_tech_reps_miu_read_counts.csv")
+  
   
   ### Output eDNA Index Data
   
@@ -1232,6 +1252,24 @@ hash.key %>%
   
   saveRDS(results_post_occ_reads,file="Output_R/post_occupancy_results_sum.taxonomy_tech_reps_separate_read_counts.RDS")
   write_csv(results_post_occ_reads ,"Output_csv/post_occupancy_results_sum.taxonomy_tech_reps_separate_read_counts.csv")
+  
+  barcode_1_post_occ_df$number <- rownames(barcode_1_post_occ_df)
+  
+  barcode_1_post_occ_df %>% 
+    left_join(hash.key.updated.2, by="number") %>% 
+    dplyr::select(-number,-seq_number) -> barcode_1_post_occ_df
+  
+  saveRDS(barcode_1_post_occ_df,file="Output_R/post_occupancy_results_sum.taxonomy_tech_reps_elas_read_counts.RDS")
+  write_csv(barcode_1_post_occ_df ,"Output_csv/post_occupancy_results_sum.taxonomy_tech_reps_elas_read_counts.csv")
+  
+  barcode_2_post_occ_df$number <- rownames(barcode_2_post_occ_df)
+  
+  barcode_2_post_occ_df %>% 
+    left_join(hash.key.updated.2, by="number") %>% 
+    dplyr::select(-number,-seq_number) -> barcode_2_post_occ_df
+  
+  saveRDS(barcode_2_post_occ_df,file="Output_R/post_occupancy_results_sum.taxonomy_tech_reps_miu_read_counts.RDS")
+  write_csv(barcode_2_post_occ_df ,"Output_csv/post_occupancy_results_sum.taxonomy_tech_reps_miu_read_counts.csv")
   
   ### Output Post Occupancy eDNA Index Data
   combined_index$number <- rownames(combined_index)
