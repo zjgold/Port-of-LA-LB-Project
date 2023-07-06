@@ -1,4 +1,4 @@
-# A Manager’s Guide to Using eDNA Metabarcoding in Marine Ecosystems
+# [A Manager’s Guide to Using eDNA Metabarcoding in Marine Ecosystems](https://peerj.com/articles/14071/)
 
 Zachary Gold<sup>1</sup>, Adam R. Wall<sup>2</sup>, Teia M. Schweizer<sup>3</sup>, N. Dean Pentcheff<sup>2</sup>, Emily E. Curd<sup>4</sup>, Paul H. Barber<sup>1</sup>, Rachel S. Meyer<sup>1,5</sup>, Robert Wayne<sup>1</sup>, Kevin Stolzenbach<sup>6</sup>, Kat Prickett<sup>7</sup>, Justin Luedy<sup>8</sup>, Regina Wetzer<sup>2</sup>
 
